@@ -19,4 +19,8 @@ public class Joueur extends Entite {
     public void pincer_bouche() {
         ptsVie -= 50;
     }
+
+    public int getNiveau() {
+        return niveau;
+    }
 }
