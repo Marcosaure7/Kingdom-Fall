@@ -11,8 +11,9 @@ public class Ennemi extends Entite {
         this.poidsSpawn = poidsSpawn;
     }
 
-    public void setPoidsSpawn(int poidsSpawn) {
-        this.poidsSpawn = poidsSpawn;
-    }
+    // public void setPoidsSpawn(int poidsSpawn) { this.poidsSpawn = poidsSpawn; }
+    public int getPoidsSpawn() { return this.poidsSpawn; }
+    public String getNom() { return this.nom; }
+
 
 }

@@ -12,7 +12,7 @@ public class Joueur extends Entite {
         super(niveau);
         inventaire = new HashMap<>();
         for (Type_Objet o: Type_Objet.values()) {
-            inventaire.put(o, new Objet[o.getEspace_inventaire()]);
+            inventaire.put(o, new Objet[o.getEspaceInventaire()]);
         }
     }
 
