@@ -6,6 +6,7 @@ import personnages.Joueur;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Jeu {
 
@@ -14,21 +15,36 @@ public class Jeu {
     private int donjon = 0;
     private ArrayList<Ennemi> ennemis;
     private ArrayList<Arme> armes;
+    private Scanner sc;
 
-    public Jeu() {
+    public Jeu() throws InterruptedException {
         dbm = new DatabaseManager();
         joueur = new Joueur(100, 0, 1);
         int nbTours = 0;
         loadNouveauDonjon(0);
 
+        sc = new Scanner(System.in);
+        premierTour();
         /* Boucle de jeu
          * Version très prématurée
          */
-        while (true) {
+        while (donjon == 1) {
             nbTours++;
             System.out.printf("\n%sTour %d\n", App.LIGNE, nbTours);
             new Tour(joueur, nbTours % 2 == 1);
         }
+    }
+
+    private void premierTour() throws InterruptedException {
+        System.out.println("Voici le tour d'introduction à Kingdom Fall !");
+        System.out.println("Appuyer sur Entrée pour passer au prochain dialogue...");
+        sc.nextLine();
+        System.out.println("Un ennemi va apparaître sous peu pour vous montrer les bases.\n" + App.LIGNE);
+        Thread.sleep(2000);
+        System.out.println(ennemis.get(0) + "\n" + App.LIGNE);
+        Thread.sleep(2000);
+        System.out.println("Attaquer:att \t Inventaire:inv \t ");
+
     }
 
     private void loadNouveauDonjon(int donjon) {

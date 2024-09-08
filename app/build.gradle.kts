@@ -6,6 +6,7 @@
  */
 
 plugins {
+    java
     application
     kotlin("jvm") version "1.9.0" // Version plus récente de Kotlin
 }
@@ -16,11 +17,12 @@ repositories {
 
 val kotlinVersion = "1.9.0"
 
-
-
 dependencies {
     implementation("mysql:mysql-connector-java:8.0.33")
     implementation("org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion")
+
+    // Pour lire l'entrée utilisateur
+    implementation("org.jline:jline:3.21.0")
 
     // Si vous n'utilisez pas le catalogue de versions, décommentez ces lignes :
     testImplementation("junit:junit:4.13.2")
@@ -49,4 +51,8 @@ java {
 
 application {
     mainClass.set("application.App")
+}
+
+tasks.getByName("run", JavaExec::class) {
+ standardInput = System.`in`
 }
