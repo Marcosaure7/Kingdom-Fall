@@ -12,6 +12,7 @@ public class Arme extends Objet {
     }
 
     public void setEffetStatutFromString(String effetStatut) {
-        effet = EffetStatut.valueOf(effetStatut);
+        effet = EffetStatut.valueOf(effetStatut.toUpperCase());
     }
+
 }

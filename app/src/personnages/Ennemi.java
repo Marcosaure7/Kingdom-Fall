@@ -5,8 +5,8 @@ public class Ennemi extends Entite {
     private int poidsSpawn;
     private String nom;
 
-    public Ennemi(String nom, int niveau, int poidsSpawn){
-        super(niveau);
+    public Ennemi(String nom, int ptsVie, int niveau, int att, int poidsSpawn){
+        super(ptsVie, niveau, att);
         this.nom = nom;
         this.poidsSpawn = poidsSpawn;
     }

@@ -4,12 +4,12 @@ public abstract class Entite {
 
     int ptsVie;
     int niveau;
-    int att_base;
+    int attBase;
 
-    public Entite(int niveau) {
+    public Entite(int ptsVie, int niveau, int attBase) {
         this.niveau = niveau;
-        this.ptsVie = 20 * (niveau+1);
-        this.att_base = 5 * (niveau+1);
+        this.ptsVie = ptsVie;
+        this.attBase = attBase;
     }
 
     public int getPtsVie() {
@@ -20,7 +20,7 @@ public abstract class Entite {
         return niveau;
     }
 
-    public int getAtt_base() {
-        return att_base;
+    public int getAttBase() {
+        return attBase;
     }
 }

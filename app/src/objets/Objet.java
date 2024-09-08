@@ -9,4 +9,12 @@ public abstract class Objet {
         this.type = type;
         this.nom = nom;
     }
+
+    public Type_Objet getType() {
+        return type;
+    }
+
+    public String getNom() {
+        return nom;
+    }
 }

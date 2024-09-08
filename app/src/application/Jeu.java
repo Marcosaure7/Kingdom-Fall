@@ -1,82 +1,86 @@
 package application;
 
 import objets.Arme;
-import objets.EffetStatut;
-import org.jetbrains.annotations.NotNull;
 import personnages.Ennemi;
 import personnages.Joueur;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
-
-import static java.lang.Math.random;
 
 public class Jeu {
 
     private DatabaseManager dbm;
-    private ArrayList<Arme> banqueArmes;
-    private ArrayList<Ennemi> banqueEnnemis;
     private Joueur joueur;
+    private int donjon = 0;
+    private ArrayList<Ennemi> ennemis;
+    private ArrayList<Arme> armes;
 
     public Jeu() {
         dbm = new DatabaseManager();
-        joueur = new Joueur(0);
-        // banqueEnnemis = genererEnnemis();
-        // banqueArmes = genererBanqueArmes();
+        joueur = new Joueur(100, 0, 1);
+        int nbTours = 0;
+        loadNouveauDonjon(0);
+
+        /* Boucle de jeu
+         * Version très prématurée
+         */
+        while (true) {
+            nbTours++;
+            System.out.printf("\n%sTour %d\n", App.LIGNE, nbTours);
+            new Tour(joueur, nbTours % 2 == 1);
+        }
     }
 
-//    @NotNull
-//    private ArrayList<Arme> genererBanqueArmes() {
-//        ArrayList<Arme> armeArrayList = new ArrayList<>();
-//        armeArrayList.add(new Arme("Gourdin", 1, null));
-//        armeArrayList.add(new Arme("Hache", 0, EffetStatut.SAIGNEMENT));
-//        return armeArrayList;
-//    }
+    private void loadNouveauDonjon(int donjon) {
 
-    public Ennemi genererEnnemi(int id) {
-        Ennemi nouvelEnnemi = null;
-        try (Connection conn = dbm.getDataSource().getConnection())
+        // On load les ennemis du donjon
+        ennemis = new ArrayList<>();
+        try
         {
-            PreparedStatement stmt = conn.prepareStatement("SELECT * FROM ennemis WHERE id = ?");             stmt.setInt(1, id);
-            ResultSet rs = stmt.executeQuery();
-                if (rs.next()) {
-                    nouvelEnnemi = new Ennemi(rs.getString("nom"),
-                            rs.getInt("niveau"), rs.getInt("poidsSpawn"));
-                }
+            dbm.executerLecture(
+                    "SELECT * FROM ennemis WHERE donjon = ?",
+                    donjon,
+                    rs -> {
+                       while (rs.next()) {
+                           Ennemi en = new Ennemi(
+                                   rs.getString("nom"),
+                                   rs.getInt("ptsVie"),
+                                   rs.getInt("niveau"),
+                                   rs.getInt("attaque"),
+                                   rs.getInt("poidsSpawn"));
+
+                           ennemis.add(en);
+                       }
+                       return null;
+                    }
+                    );
         }
         catch (SQLException e) {
             e.printStackTrace();
         }
 
-        return nouvelEnnemi;
-    }
+        // On load les armes du donjon
+        armes = new ArrayList<>();
+        try
+        {
+            dbm.executerLecture(
+                    "SELECT * FROM armes WHERE donjon = ?",
+                    donjon,
+                    rs -> {
+                       while (rs.next()) {
+                           Arme arme = new Arme(
+                                   rs.getString("nom"),
+                                   rs.getInt("degats"),
+                                   rs.getString("effetStatut"));
 
-    @NotNull
-    private ArrayList<Ennemi> genererEnnemis() {
-        ArrayList<Ennemi> ennemiArrayList = new ArrayList<>();
-        ennemiArrayList.add(new Ennemi("Squelette", joueur.getNiveau(), 5));
-        ennemiArrayList.add(new Ennemi("Ogre", joueur.getNiveau(), 2));
-        return ennemiArrayList;
-    }
-
-
-    private Ennemi spawnerProchainEnnemi() {
-        int probabiliteTotale = 0;
-        for (Ennemi en : banqueEnnemis) {
-            probabiliteTotale += en.getPoidsSpawn();
+                           armes.add(arme);
+                       }
+                       return null;
+                    }
+                    );
         }
-
-        double r = random() * probabiliteTotale;
-        double somme_actuelle = 0;
-        for (Ennemi en : banqueEnnemis) {
-            somme_actuelle += en.getPoidsSpawn();
-            if (somme_actuelle >= r)
-                return en;
+        catch (SQLException e) {
+            e.printStackTrace();
         }
-
-        return null;
     }
 }

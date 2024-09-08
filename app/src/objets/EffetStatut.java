@@ -2,6 +2,6 @@ package objets;
 
 public enum EffetStatut {
 
-        SAIGNEMENT(), POISON, GELE, REGEN, FORCE, FORTIFIE;
+        AUCUN, SAIGNEMENT, POISON, GELE, REGEN, FORCE, FORTIFIE;
 
 }
