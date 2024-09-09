@@ -4,12 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="66f627f1-70bc-44bc-9c51-034ebccbde10" name="Changes" comment="- ennemis et armes stockés dans une ArrayList respective à chacun ;&#10;- ajout d'une colonne &quot;donjon&quot; et implémentation de &quot;loadNouveauDonjon&quot;">
+    <list default="true" id="66f627f1-70bc-44bc-9c51-034ebccbde10" name="Changes" comment="Lecture de l'imput utilisateur">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/objets/Drops.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/objets/Exp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/application/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/application/App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/application/Jeu.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/application/Jeu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/objets/Arme.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/objets/Arme.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/objets/Objet.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/objets/Objet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/personnages/Ennemi.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/personnages/Ennemi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/personnages/Entite.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/personnages/Entite.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/personnages/Joueur.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/personnages/Joueur.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,24 +51,26 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Exception" />
+        <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "Marcosaure7"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Marcosaure7&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Marcosaure7/Kingdom-Fall.git",
-    "accountId": "6eb6419f-5b4e-4831-94cc-4618d23e16d6"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Marcosaure7/Kingdom-Fall.git&quot;,
+    &quot;accountId&quot;: &quot;6eb6419f-5b4e-4831-94cc-4618d23e16d6&quot;
   }
-}]]></component>
+}</component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -71,6 +79,9 @@
   &quot;associatedIndex&quot;: 3
 }</component>
   <component name="ProjectId" id="2ljQOFhFCWg8LKyUXCNplu4MjSe" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -82,12 +93,13 @@
     "Gradle.KF - Gradle verbal.executor": "Run",
     "Gradle.Kingdom-Fall (terminal).executor": "Run",
     "Gradle.Kingdom-Fall [app:build].executor": "Debug",
-    "Gradle.Kingdom-Fall.executor": "Run",
+    "Gradle.Kingdom-Fall.executor": "Debug",
     "Gradle.Kingdom-Fall:app [:app:application.App.main()].executor": "Run",
     "Repository.Attach.Annotations": "false",
     "Repository.Attach.JavaDocs": "false",
     "Repository.Attach.Sources": "false",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "database.data.extractors.current.export.id": "Comma-separated (CSV)_id",
     "database.data.extractors.current.id": "Comma-separated (CSV)_id",
     "git-widget-placeholder": "main",
@@ -215,6 +227,10 @@
       <updated>1725690975579</updated>
       <workItem from="1725690978013" duration="2956000" />
       <workItem from="1725743696883" duration="20951000" />
+      <workItem from="1725774660370" duration="10617000" />
+      <workItem from="1725813454841" duration="73000" />
+      <workItem from="1725835686685" duration="1029000" />
+      <workItem from="1725839929624" duration="3844000" />
     </task>
     <task id="LOCAL-00001" summary="Implémentation de MySQL Database">
       <option name="closed" value="true" />
@@ -232,7 +248,15 @@
       <option name="project" value="LOCAL" />
       <updated>1725766038520</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Lecture de l'imput utilisateur">
+      <option name="closed" value="true" />
+      <created>1725774810437</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1725774810437</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -241,7 +265,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Implémentation de MySQL Database" />
     <MESSAGE value="- ennemis et armes stockés dans une ArrayList respective à chacun ;&#10;- ajout d'une colonne &quot;donjon&quot; et implémentation de &quot;loadNouveauDonjon&quot;" />
-    <option name="LAST_COMMIT_MESSAGE" value="- ennemis et armes stockés dans une ArrayList respective à chacun ;&#10;- ajout d'une colonne &quot;donjon&quot; et implémentation de &quot;loadNouveauDonjon&quot;" />
+    <MESSAGE value="Lecture de l'imput utilisateur" />
+    <option name="LAST_COMMIT_MESSAGE" value="Lecture de l'imput utilisateur" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -250,6 +275,11 @@
           <properties class="org.gradle.process.internal.ExecException" package="org.gradle.process.internal" />
           <option name="timeStamp" value="4" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/personnages/Joueur.java</url>
+          <line>58</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

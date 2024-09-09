@@ -23,4 +23,15 @@ public abstract class Entite {
     public int getAttBase() {
         return attBase;
     }
+
+    public void seFaitAttaquer(int attaqueRecue) {
+        ptsVie -= attaqueRecue;
+        if (ptsVie <= 0) {
+            ptsVie = 0;
+        }
+    }
+
+    public boolean estMort() {
+        return ptsVie <= 0;
+    }
 }
