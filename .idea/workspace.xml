@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="66f627f1-70bc-44bc-9c51-034ebccbde10" name="Changes" comment="Pondération des drop rates des armes">
+    <list default="true" id="66f627f1-70bc-44bc-9c51-034ebccbde10" name="Changes" comment="Faire apparaitre l'inventaire au user">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/application/Jeu.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/application/Jeu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/objets/Arme.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/objets/Arme.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/objets/Type_Objet.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/objets/Type_Objet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/personnages/Joueur.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/personnages/Joueur.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -106,7 +105,7 @@
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.50344825",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "settings.editor.selected.configurable": "PluginSettings",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -226,7 +225,10 @@
       <workItem from="1725835686685" duration="1029000" />
       <workItem from="1725839929624" duration="17076000" />
       <workItem from="1725920130007" duration="26000" />
-      <workItem from="1726024339907" duration="141000" />
+      <workItem from="1726024339907" duration="392000" />
+      <workItem from="1726024751082" duration="43000" />
+      <workItem from="1726024812487" duration="19000" />
+      <workItem from="1726024851718" duration="11115000" />
     </task>
     <task id="LOCAL-00001" summary="Implémentation de MySQL Database">
       <option name="closed" value="true" />
@@ -260,18 +262,38 @@
       <option name="project" value="LOCAL" />
       <updated>1725843948107</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Faire apparaitre l'inventaire au user">
+      <option name="closed" value="true" />
+      <created>1726024530638</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1726024530638</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Implémentation de MySQL Database" />
     <MESSAGE value="- ennemis et armes stockés dans une ArrayList respective à chacun ;&#10;- ajout d'une colonne &quot;donjon&quot; et implémentation de &quot;loadNouveauDonjon&quot;" />
     <MESSAGE value="Lecture de l'imput utilisateur" />
     <MESSAGE value="Pondération des drop rates des armes" />
-    <option name="LAST_COMMIT_MESSAGE" value="Pondération des drop rates des armes" />
+    <MESSAGE value="Faire apparaitre l'inventaire au user" />
+    <option name="LAST_COMMIT_MESSAGE" value="Faire apparaitre l'inventaire au user" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

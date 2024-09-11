@@ -80,12 +80,13 @@ public class Jeu {
                 System.out.println("La commande n'a pas été reconnue !");
         } while (!actionReconnue);
 
+        System.out.println("Retour au jeu.");
 
     }
 
     private void initiationALInventaire(Scanner sc) {
         System.out.println("Quand vous effectuez la commande 'inv' lorsque permis, votre inventaire s'ouvre comme ceci :");
-        joueur.ouvrirInventaire(sc);
+        joueur.getInventaire().ouvrirInventaire(sc);
     }
 
     private boolean executerAction(String action, Ennemi ennemiActuel) {
@@ -130,7 +131,7 @@ public class Jeu {
         switch (action) {
             case "ram":
                 try {
-                    joueur.ramasserObjet(objet);
+                    joueur.getInventaire().ramasserObjet(objet);
                     System.out.printf("Vous avez ajouté %s à votre inventaire !%n", objet);
                     actionReconnue = true;
                 } catch (InventairePleinException e) {
@@ -223,6 +224,8 @@ public class Jeu {
                        }
                        return null;
                     }
+
+
                     );
         }
         catch (SQLException e) {

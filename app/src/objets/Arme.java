@@ -6,13 +6,15 @@ public class Arme extends Objet {
 
     private int degats;
     private EffetStatut effet;
-    private String description;
+    private String description = "";
 
     public Arme(String nom, String description, double dropRate, int degats, String effetStatut) {
         super(Type_Objet.ARMES, nom, dropRate);
         this.degats = degats;
         setEffetStatutFromString(effetStatut);
-        this.description = genererDescription(description);
+        if (!description.equals("null")) {
+            this.description = description;
+        }
     }
 
     public static void pondererDropRates(ArrayList<Arme> armes) {
@@ -25,11 +27,6 @@ public class Arme extends Objet {
         }
     }
 
-    private String genererDescription(String description) {
-        return String.format("%s\n%s\nDégâts : %d\nEffet de statut : %s\nChances de drop : %.2f",
-                getNom(), description, degats, effet, getDropRate()*100) + "%";
-    }
-
     public void setEffetStatutFromString(String effetStatut) {
         effet = EffetStatut.valueOf(effetStatut.toUpperCase());
     }
@@ -40,6 +37,7 @@ public class Arme extends Objet {
     }
 
     public String getDescription() {
-        return description;
+        return String.format("%s\n%s\nDégâts : %d\nEffet de statut : %s\nChances de drop : %.2f",
+                getNom(), description, degats, effet, getDropRate()*100) + "%";
     }
 }
