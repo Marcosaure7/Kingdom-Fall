@@ -2,9 +2,9 @@ package objets;
 
 public enum Type_Objet {
 
-    ARME(5),
-    ARMURE(5),
-    POTION(5),
+    ARMES(5),
+    ARMURES(5),
+    POTIONS(5),
     DIVERS(100);
 
     private final int espaceInventaire;

@@ -4,17 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="66f627f1-70bc-44bc-9c51-034ebccbde10" name="Changes" comment="Lecture de l'imput utilisateur">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/objets/Drops.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/objets/Exp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+    <list default="true" id="66f627f1-70bc-44bc-9c51-034ebccbde10" name="Changes" comment="Pondération des drop rates des armes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/application/Jeu.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/application/Jeu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/objets/Arme.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/objets/Arme.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/objets/Objet.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/objets/Objet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/personnages/Ennemi.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/personnages/Ennemi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/personnages/Entite.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/personnages/Entite.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/objets/Type_Objet.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/objets/Type_Objet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/personnages/Joueur.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/personnages/Joueur.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -93,7 +87,7 @@
     "Gradle.KF - Gradle verbal.executor": "Run",
     "Gradle.Kingdom-Fall (terminal).executor": "Run",
     "Gradle.Kingdom-Fall [app:build].executor": "Debug",
-    "Gradle.Kingdom-Fall.executor": "Debug",
+    "Gradle.Kingdom-Fall.executor": "Run",
     "Gradle.Kingdom-Fall:app [:app:application.App.main()].executor": "Run",
     "Repository.Attach.Annotations": "false",
     "Repository.Attach.JavaDocs": "false",
@@ -109,10 +103,10 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Libraries",
+    "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.50344825",
-    "settings.editor.selected.configurable": "pyconsole",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -230,7 +224,9 @@
       <workItem from="1725774660370" duration="10617000" />
       <workItem from="1725813454841" duration="73000" />
       <workItem from="1725835686685" duration="1029000" />
-      <workItem from="1725839929624" duration="3844000" />
+      <workItem from="1725839929624" duration="17076000" />
+      <workItem from="1725920130007" duration="26000" />
+      <workItem from="1726024339907" duration="141000" />
     </task>
     <task id="LOCAL-00001" summary="Implémentation de MySQL Database">
       <option name="closed" value="true" />
@@ -256,7 +252,15 @@
       <option name="project" value="LOCAL" />
       <updated>1725774810437</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Pondération des drop rates des armes">
+      <option name="closed" value="true" />
+      <created>1725843948107</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1725843948107</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -266,7 +270,8 @@
     <MESSAGE value="Implémentation de MySQL Database" />
     <MESSAGE value="- ennemis et armes stockés dans une ArrayList respective à chacun ;&#10;- ajout d'une colonne &quot;donjon&quot; et implémentation de &quot;loadNouveauDonjon&quot;" />
     <MESSAGE value="Lecture de l'imput utilisateur" />
-    <option name="LAST_COMMIT_MESSAGE" value="Lecture de l'imput utilisateur" />
+    <MESSAGE value="Pondération des drop rates des armes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Pondération des drop rates des armes" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -275,11 +280,6 @@
           <properties class="org.gradle.process.internal.ExecException" package="org.gradle.process.internal" />
           <option name="timeStamp" value="4" />
         </breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/personnages/Joueur.java</url>
-          <line>58</line>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

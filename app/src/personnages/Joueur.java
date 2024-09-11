@@ -1,5 +1,6 @@
 package personnages;
 
+import application.App;
 import exceptions.InventairePleinException;
 import objets.*;
 import org.jetbrains.annotations.NotNull;
@@ -7,11 +8,13 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Scanner;
 
 public class Joueur extends Entite {
 
     // La Map contient comme clé un type d'objet et comme valeur la liste des objets de ce type dans l'inventaire.
-    private Map<Type_Objet, ArrayList<Objet>> inventaire;
+    private final Map<Type_Objet, ArrayList<Objet>> inventaire;
+    private Arme armeEquipee;
     private Exp xp;
     private int xpCap;
 
@@ -49,18 +52,51 @@ public class Joueur extends Entite {
         System.out.print("XP: " + this.xp.getValeur() + "/" + this.xpCap);
         if (this.xp.getValeur() >= xpCap) {
             System.out.println(String.format("\tVous montez de niveau !\tNiv:%d -> %d", niveau, ++niveau));
-            this.xp = new Exp((int) (this.xp.getValeur() - xpCap));
+            this.xp = new Exp(this.xp.getValeur() - xpCap);
             xpCap = (int) (xpCap * 1.5);
             System.out.println(String.format("Prochain niveau : XP: %d/%d", this.xp.getValeur(), xpCap));
         }
     }
 
-    public void ajouterALInventaire(Objet objet) throws InventairePleinException {
-        if (inventaire.get(objet.getType()).size() < objet.getType().getEspaceInventaire()) {
-            inventaire.get(objet.getType()).add(objet);
+    public void ouvrirInventaire(Scanner sc) {
+        System.out.println();
+        for (Type_Objet type : inventaire.keySet()) {
+            System.out.println(type);
         }
-        else {
-            throw new InventairePleinException("Inventaire plein!");
+
+        // Quelle catégorie ouvrir?
+        boolean actionReconnue = false;
+        StringBuilder inventaireDuType = new StringBuilder();
+        String type;
+        Type_Objet typeObjet = null;
+        do {
+            type = sc.nextLine().toUpperCase();
+            try {
+                typeObjet = Type_Objet.valueOf(type);
+                actionReconnue = true;
+                for  (int i = 0; i < typeObjet.getEspaceInventaire(); i++) {
+                    String objetStr;
+                    if (i > inventaire.get(typeObjet).size() - 1)
+                        objetStr = "(Vide)";
+                    else
+                        objetStr = inventaire.get(typeObjet).get(i).getNom();
+
+                    inventaireDuType.append(objetStr).append("\n");
+                }
+            } catch (IllegalArgumentException e) {
+                System.out.println("La commande n'a pas été reconnue !");
+            }
         }
+        while (!actionReconnue);
+
+        switch (typeObjet) {
+            case ARMES:
+                System.out.printf("%nArme équipée : %s%n%n", armeEquipee == null ? "Aucun(e)" : armeEquipee.getNom());
+                break;
+            case ARMURES:
+                System.out.printf("%nArmure équipée : %s%n%n", "ARMURE_EQUIPEE");
+                break;
+        }
+        System.out.println(inventaireDuType);
     }
 }

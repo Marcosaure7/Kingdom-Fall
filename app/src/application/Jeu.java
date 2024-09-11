@@ -55,27 +55,51 @@ public class Jeu {
         {
             action = sc.nextLine();
         }
-        System.out.printf("%s%nBravo! Ce %s en a mangé une belle!%n", App.LIGNE, ennemiActuel.getNom());
+        Thread.sleep(1000);
+        System.out.printf("%s%nBravo! %s en a mangé une belle!%n", App.LIGNE, ennemiActuel.getNom());
+        System.out.println("Cette dernière section du tutoriel vous servira à naviguer dans l'inventaire.");
+        System.out.println("À chaque tour, la commande 'inv' restera disponible pour vous comme ceci :\nInventaire:inv");
+
+        boolean actionReconnue = false;
+        String[][] reponses = {{"oui", "o"}, {"non", "n"}};
+        do {
+            System.out.printf("%s%nVoulez-vous passer l'exploration de l'inventaire? (Oui:%s, Non:%s)%n", App.LIGNE, Arrays.toString(reponses[0]), Arrays.toString(reponses[1]));
+            action = sc.nextLine();
+
+            String finalAction = action;
+            if (Arrays.stream(reponses)
+                    .flatMap(Arrays::stream)
+                    .anyMatch(element -> element.equals(finalAction)))
+            {
+                actionReconnue = true;
+                if (Arrays.asList(reponses[1]).contains(finalAction)) // Réponse positive
+                    initiationALInventaire(sc);
+
+            }
+            else
+                System.out.println("La commande n'a pas été reconnue !");
+        } while (!actionReconnue);
+
 
     }
 
+    private void initiationALInventaire(Scanner sc) {
+        System.out.println("Quand vous effectuez la commande 'inv' lorsque permis, votre inventaire s'ouvre comme ceci :");
+        joueur.ouvrirInventaire(sc);
+    }
+
     private boolean executerAction(String action, Ennemi ennemiActuel) {
-        boolean actionReconnue;
-        switch (action) {
-            case "att":
-                System.out.printf("%s\nVous attaquez, infligeant %d dégât(s) au %s%n", App.LIGNE, joueur.getAttBase(), ennemiActuel.getNom());
-                ennemiActuel.seFaitAttaquer(joueur.getAttBase());
-                if (ennemiActuel.estMort())
-                {
-                    ennemiVaincu(ennemiActuel);
-                }
-                actionReconnue = true;
-                break;
-            default:
-                actionReconnue = false;
-                System.out.println("La commande n'a pas été reconnue !");
-                break;
+        boolean actionReconnue = action.equalsIgnoreCase("att");
+        if (actionReconnue) {
+            System.out.printf("%s\nVous attaquez, infligeant %d dégât(s) au %s%n", App.LIGNE, joueur.getAttBase(), ennemiActuel.getNom());
+            ennemiActuel.seFaitAttaquer(joueur.getAttBase());
+            if (ennemiActuel.estMort()) {
+                ennemiVaincu(ennemiActuel);
+            }
         }
+        else
+            System.out.println("La commande n'a pas été reconnue !");
+
         return actionReconnue;
     }
 
@@ -103,11 +127,10 @@ public class Jeu {
 
     private boolean phaseRamassage(String action, Objet objet) throws InterruptedException {
         boolean actionReconnue = false;
-        Thread.sleep(1000);
         switch (action) {
             case "ram":
                 try {
-                    joueur.ajouterALInventaire(objet);
+                    joueur.ramasserObjet(objet);
                     System.out.printf("Vous avez ajouté %s à votre inventaire !%n", objet);
                     actionReconnue = true;
                 } catch (InventairePleinException e) {
@@ -122,6 +145,9 @@ public class Jeu {
                 // On ne met pas actionReconnue à true car on veut redemander ce que l'usager fait de l'objet.
                 System.out.println(App.LIGNE + "\n" + objet.getDescription());
                 Thread.sleep(1000);
+                break;
+            default:
+                System.out.println("La commande n'a pas été reconnue !");
         }
         return actionReconnue;
     }

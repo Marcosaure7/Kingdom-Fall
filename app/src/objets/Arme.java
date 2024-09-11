@@ -9,7 +9,7 @@ public class Arme extends Objet {
     private String description;
 
     public Arme(String nom, String description, double dropRate, int degats, String effetStatut) {
-        super(Type_Objet.ARME, nom, dropRate);
+        super(Type_Objet.ARMES, nom, dropRate);
         this.degats = degats;
         setEffetStatutFromString(effetStatut);
         this.description = genererDescription(description);
