@@ -17,27 +17,26 @@ public class Arme extends Objet {
         }
     }
 
-    public static void pondererDropRates(ArrayList<Arme> armes) {
-        double totalDropRates = 0;
-        for (Arme arme : armes) {
-            totalDropRates += arme.getDropRate();
-        }
-        for (Arme arme : armes) {
-            arme.dropRate /= totalDropRates;
-        }
+    public Arme (Arme autre)
+    {
+        super(autre);
+        this.degats = autre.degats;
+        this.effet = autre.effet;
+        this.description = autre.description;
     }
 
     public void setEffetStatutFromString(String effetStatut) {
         effet = EffetStatut.valueOf(effetStatut.toUpperCase());
     }
 
-    @Override
-    public String toString() {
-        return String.format("%s", getNom());
-    }
-
     public String getDescription() {
-        return String.format("%s\n%s\nDégâts : %d\nEffet de statut : %s\nChances de drop : %.2f",
+        return String.format("%s\n%s\nDegats : %d\nEffet de statut : %s\nChances de drop : %.2f",
                 getNom(), description, degats, effet, getDropRate()*100) + "%";
     }
+
+    public int getDegats() {
+        return degats;
+    }
+
+    public EffetStatut getEffet () {return effet;}
 }

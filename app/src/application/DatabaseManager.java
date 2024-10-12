@@ -30,7 +30,7 @@ public class DatabaseManager {
         T handle(ResultSet rs) throws SQLException;
     }
 
-    public <T> T executerLecture(String sql, Object value, ResultSetHandler<T> handler) throws SQLException {
+    public <T> void executerLecture(String sql, Object value, ResultSetHandler<T> handler) throws SQLException {
         try (PreparedStatement stmt = conn.prepareStatement(sql)) {
 
             // Détermination du type de la value
@@ -45,12 +45,11 @@ public class DatabaseManager {
             }
 
             try (ResultSet rs = stmt.executeQuery()) {
-                return handler.handle(rs);
+                handler.handle(rs);
             }
         }
         catch (Exception e) {
             e.printStackTrace();
-            return null;
         }
     }
 

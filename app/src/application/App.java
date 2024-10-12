@@ -1,11 +1,9 @@
 package application;
 
-import objets.Arme;
-import personnages.Ennemi;
-
 public class App {
 
     public static final String LIGNE = "***********************************************************************************************************";
+    public static final String CMD_INCONNUE = "La commande n'a pas ete reconnue !";
 
     public static void main(String[] args) {
         try {
@@ -15,7 +13,6 @@ public class App {
         catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
 

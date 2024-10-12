@@ -8,14 +8,20 @@
 plugins {
     java
     application
-    kotlin("jvm") version "1.9.0" // Version plus récente de Kotlin
+    kotlin("jvm") version "1.9.20" // Version plus récente de Kotlin
+    id("org.openjfx.javafxplugin") version "0.1.0"
+}
+
+javafx {
+    version = "21"
+    modules("javafx.controls", "javafx.fxml")
 }
 
 repositories {
     mavenCentral()
 }
 
-val kotlinVersion = "1.9.0"
+val kotlinVersion = "1.9.20"
 
 dependencies {
     implementation("mysql:mysql-connector-java:8.0.33")
@@ -28,9 +34,9 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     implementation("com.google.guava:guava:31.1-jre")
 
-    implementation("com.fasterxml.jackson.core:jackson-databind:2.13.0")
-    implementation("com.fasterxml.jackson.core:jackson-core:2.13.0")
-    implementation("com.fasterxml.jackson.core:jackson-annotations:2.13.0")
+    implementation("com.fasterxml.jackson.core:jackson-databind:2.15.3")
+    implementation("com.fasterxml.jackson.core:jackson-core:2.15.3")
+    implementation("com.fasterxml.jackson.core:jackson-annotations:2.15.3")
 
     // Si vous utilisez le catalogue de versions, gardez ces lignes :
     // testImplementation(libs.junit)
@@ -40,12 +46,14 @@ dependencies {
 sourceSets {
     main {
         java.srcDirs("src")
+        resources.srcDirs("resources")
     }
+
 }
 
 java {
     toolchain {
-        languageVersion.set(JavaLanguageVersion.of(8)) // Ou une version plus récente si possible
+        languageVersion.set(JavaLanguageVersion.of(21)) // Ou une version plus récente si possible
     }
 }
 
@@ -53,6 +61,11 @@ application {
     mainClass.set("application.App")
 }
 
+tasks.withType<JavaCompile> {
+    options.encoding = "UTF-8"
+}
+
 tasks.getByName("run", JavaExec::class) {
- standardInput = System.`in`
+    standardInput = System.`in`
+    jvmArgs = listOf("-Dfile.encoding=UTF-8")
 }

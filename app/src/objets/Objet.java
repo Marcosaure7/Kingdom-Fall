@@ -1,5 +1,7 @@
 package objets;
 
+import java.util.ArrayList;
+
 public abstract class Objet extends Drops {
 
     protected Type_Objet type;
@@ -10,6 +12,13 @@ public abstract class Objet extends Drops {
         this.type = type;
         this.nom = nom;
         this.dropRate = dropRate;
+    }
+
+    public Objet (Objet autre)
+    {
+        this.type = autre.type;
+        this.nom = autre.nom;
+        this.dropRate = autre.dropRate;
     }
 
     public Type_Objet getType() {
@@ -25,7 +34,19 @@ public abstract class Objet extends Drops {
     }
 
     @Override
-    public abstract String toString();
+    public String toString() {
+        return nom;
+    }
 
     public abstract String getDescription();
+
+    public static void pondererDropRates(ArrayList<Objet> objets) {
+        double totalDropRates = 0;
+        for (Objet objet : objets) {
+            totalDropRates += objet.getDropRate();
+        }
+        for (Objet objet : objets) {
+            objet.dropRate /= totalDropRates;
+        }
+    }
 }

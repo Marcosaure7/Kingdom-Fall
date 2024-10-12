@@ -4,11 +4,31 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="66f627f1-70bc-44bc-9c51-034ebccbde10" name="Changes" comment="Faire apparaitre l'inventaire au user">
+    <list default="true" id="66f627f1-70bc-44bc-9c51-034ebccbde10" name="Changes" comment="Équiper une arme/armure, système de retour à travers l'inventaire (SEULEMENT COMMENCÉ, PAS FINAL)">
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/resources/fenetre.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/objets/Armure.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/objets/Potion.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/user/Action.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1fef7d30-ab85-41e6-8855-617270b7d99f.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/1fef7d30-ab85-41e6-8855-617270b7d99f.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/kotlinc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/kotlinc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/application/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/application/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/application/DatabaseManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/application/DatabaseManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/application/Jeu.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/application/Jeu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/application/Tour.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/application/Tour.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/objets/Arme.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/objets/Arme.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/objets/EffetStatut.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/objets/EffetStatut.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/objets/Objet.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/objets/Objet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/personnages/Ennemi.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/personnages/Ennemi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/personnages/Entite.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/personnages/Entite.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/personnages/Joueur.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/personnages/Joueur.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle.kts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,6 +66,8 @@
         <option value="Exception" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="FxmlFile" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -81,7 +103,9 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Database Script.Query_MySQL.executor": "Run",
     "Downloaded.Files.Path.Enabled": "true",
+    "Gradle.Build Kingdom-Fall.executor": "Run",
     "Gradle.Debug App.executor": "Run",
     "Gradle.KF - Gradle verbal.executor": "Run",
     "Gradle.Kingdom-Fall (terminal).executor": "Run",
@@ -95,8 +119,10 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "database.data.extractors.current.export.id": "Comma-separated (CSV)_id",
     "database.data.extractors.current.id": "Comma-separated (CSV)_id",
+    "full.screen.before.presentation.mode": "false",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/mag20/AppData/Roaming/JetBrains/IntelliJIdea2024.2/consoles/db/1fef7d30-ab85-41e6-8855-617270b7d99f/console.sql",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -105,18 +131,23 @@
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.50344825",
-    "settings.editor.selected.configurable": "PluginSettings",
+    "settings.editor.selected.configurable": "Console",
+    "sql.rename.search.for.storage.occurrences": "true",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
     "DatabaseDriversLRU": [
       "mysql"
+    ],
+    "RunConfigurationTargetLRU": [
+      "1fef7d30-ab85-41e6-8855-617270b7d99f"
     ]
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\mag20\OneDrive - Université Laval\Kingdom Fall\Kingdom-Fall\app" />
+      <recent name="C:\Users\mag20\OneDrive - Université Laval\Kingdom Fall\Kingdom-Fall\app\src" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -125,6 +156,12 @@
     </option>
   </component>
   <component name="RunManager" selected="Gradle.Kingdom-Fall">
+    <configuration name="Query_MySQL" type="DatabaseScript">
+      <script-file value="$APPLICATION_CONFIG_DIR$/consoles/db/1fef7d30-ab85-41e6-8855-617270b7d99f/console.sql" />
+      <script-mode>FILE</script-mode>
+      <data-source id="1fef7d30-ab85-41e6-8855-617270b7d99f" />
+      <method v="2" />
+    </configuration>
     <configuration name="KF - Gradle verbal" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -183,7 +220,7 @@
             <option value="run" />
           </list>
         </option>
-        <option name="vmOptions" />
+        <option name="vmOptions" value="-Dfile.encoding=UTF-8 -Dconsole.encoding=UTF-8" />
       </ExternalSystemSettings>
       <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
@@ -192,6 +229,7 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Database Script.Query_MySQL" />
       <item itemvalue="Gradle.Kingdom-Fall" />
       <item itemvalue="Gradle.Kingdom-Fall (terminal)" />
       <item itemvalue="Gradle.KF - Gradle verbal" />
@@ -228,7 +266,27 @@
       <workItem from="1726024339907" duration="392000" />
       <workItem from="1726024751082" duration="43000" />
       <workItem from="1726024812487" duration="19000" />
-      <workItem from="1726024851718" duration="11115000" />
+      <workItem from="1726024851718" duration="12818000" />
+      <workItem from="1726062343766" duration="18944000" />
+      <workItem from="1726111340209" duration="76000" />
+      <workItem from="1726190263228" duration="3257000" />
+      <workItem from="1726861041570" duration="211000" />
+      <workItem from="1726861277711" duration="18000" />
+      <workItem from="1726964346935" duration="2086000" />
+      <workItem from="1726966486305" duration="147000" />
+      <workItem from="1726966688854" duration="938000" />
+      <workItem from="1726967687900" duration="85000" />
+      <workItem from="1726967808864" duration="2886000" />
+      <workItem from="1726972389849" duration="6253000" />
+      <workItem from="1727458405350" duration="231000" />
+      <workItem from="1727458657565" duration="165000" />
+      <workItem from="1728166606359" duration="939000" />
+      <workItem from="1728444269666" duration="1060000" />
+      <workItem from="1728445366380" duration="1105000" />
+      <workItem from="1728446529214" duration="6121000" />
+      <workItem from="1728603784317" duration="8329000" />
+      <workItem from="1728666709322" duration="179000" />
+      <workItem from="1728702032994" duration="10658000" />
     </task>
     <task id="LOCAL-00001" summary="Implémentation de MySQL Database">
       <option name="closed" value="true" />
@@ -270,7 +328,15 @@
       <option name="project" value="LOCAL" />
       <updated>1726024530638</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Équiper une arme/armure, système de retour à travers l'inventaire (SEULEMENT COMMENCÉ, PAS FINAL)">
+      <option name="closed" value="true" />
+      <created>1726037985804</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1726037985804</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -293,7 +359,8 @@
     <MESSAGE value="Lecture de l'imput utilisateur" />
     <MESSAGE value="Pondération des drop rates des armes" />
     <MESSAGE value="Faire apparaitre l'inventaire au user" />
-    <option name="LAST_COMMIT_MESSAGE" value="Faire apparaitre l'inventaire au user" />
+    <MESSAGE value="Équiper une arme/armure, système de retour à travers l'inventaire (SEULEMENT COMMENCÉ, PAS FINAL)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Équiper une arme/armure, système de retour à travers l'inventaire (SEULEMENT COMMENCÉ, PAS FINAL)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -304,5 +371,9 @@
         </breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

@@ -1,10 +1,7 @@
 package application;
 
 import exceptions.InventairePleinException;
-import objets.Arme;
-import objets.Drops;
-import objets.Exp;
-import objets.Objet;
+import objets.*;
 import personnages.Ennemi;
 import personnages.Joueur;
 
@@ -15,10 +12,15 @@ public class Jeu {
 
     private final DatabaseManager dbm;
     private final Joueur joueur;
-    private final int donjon = 0;
-    private ArrayList<Ennemi> ennemis;
-    private ArrayList<Arme> armes;
-    private final Scanner sc;
+    protected int donjon = 0;
+
+    ArrayList<Ennemi> ennemis;
+    ArrayList<Objet> armes;
+    ArrayList<Objet> armures;
+    ArrayList<Objet> potions;
+    ArrayList<Objet> divers;
+
+    final Scanner sc;
 
     public Jeu() throws InterruptedException {
         dbm = new DatabaseManager();
@@ -28,37 +30,40 @@ public class Jeu {
 
         sc = new Scanner(System.in);
         premierTour();
+        donjon++;
+        loadNouveauDonjon(donjon);
+
         /* Boucle de jeu
-         * Version très prématurée
+         * Version très prematuree
          */
-//        while (donjon == 1) {
-//            nbTours++;
-//            System.out.printf("\n%sTour %d\n", App.LIGNE, nbTours);
-//            new Tour(joueur, nbTours % 2 == 1);
-//        }
+        while (donjon == 1) {
+            nbTours++;
+            System.out.printf("\n%s\nTour %d\n", App.LIGNE, nbTours);
+            new Tour(this, joueur);
+        }
     }
 
     private void premierTour() throws InterruptedException {
-        System.out.println("Voici le tour d'introduction à Kingdom Fall !");
-        System.out.println("Appuyer sur Entrée pour passer au prochain dialogue...");
+        System.out.println("Voici le tour d'introduction a Kingdom Fall !");
+        System.out.println("Appuyer sur Entree pour passer au prochain dialogue...");
         sc.nextLine();
-        System.out.println("Un ennemi va apparaître sous peu pour vous montrer les bases.\n" + App.LIGNE);
+        System.out.println("Un ennemi va apparaitre sous peu pour vous montrer les bases.\n" + App.LIGNE);
         Thread.sleep(2000);
 
-        Ennemi ennemiActuel = ennemis.get(0);
-        System.out.println(ennemiActuel + "\n" + App.LIGNE);
+        Ennemi ennemiActuel = ennemis.getFirst();
+        System.out.println(ennemiActuel);
         Thread.sleep(2000);
         System.out.println("Attaquer:att");
-        System.out.println(joueur);
+        System.out.println(App.LIGNE + "\n" + joueur);
         String action = sc.nextLine();
         while (!executerAction(action, ennemiActuel))
         {
             action = sc.nextLine();
         }
         Thread.sleep(1000);
-        System.out.printf("%s%nBravo! %s en a mangé une belle!%n", App.LIGNE, ennemiActuel.getNom());
-        System.out.println("Cette dernière section du tutoriel vous servira à naviguer dans l'inventaire.");
-        System.out.println("À chaque tour, la commande 'inv' restera disponible pour vous comme ceci :\nInventaire:inv");
+        System.out.printf("%s%nBravo! %s en a mange une belle!%n", App.LIGNE, ennemiActuel.getNom());
+        System.out.println("Cette derniere section du tutoriel vous servira a naviguer dans l'inventaire.");
+        System.out.println("A chaque tour, la commande 'inv' restera disponible pour vous comme ceci :\nInventaire:inv");
 
         boolean actionReconnue = false;
         String[][] reponses = {{"oui", "o"}, {"non", "n"}};
@@ -72,12 +77,12 @@ public class Jeu {
                     .anyMatch(element -> element.equals(finalAction)))
             {
                 actionReconnue = true;
-                if (Arrays.asList(reponses[1]).contains(finalAction)) // Réponse positive
+                if (Arrays.asList(reponses[1]).contains(finalAction)) // Reponse positive
                     initiationALInventaire(sc);
 
             }
             else
-                System.out.println("La commande n'a pas été reconnue !");
+                System.out.println("La commande n'a pas ete reconnue !");
         } while (!actionReconnue);
 
         System.out.println("Retour au jeu.");
@@ -89,30 +94,30 @@ public class Jeu {
         joueur.getInventaire().ouvrirInventaire(sc);
     }
 
-    private boolean executerAction(String action, Ennemi ennemiActuel) {
+    boolean executerAction(String action, Ennemi ennemiActuel) {
         boolean actionReconnue = action.equalsIgnoreCase("att");
         if (actionReconnue) {
-            System.out.printf("%s\nVous attaquez, infligeant %d dégât(s) au %s%n", App.LIGNE, joueur.getAttBase(), ennemiActuel.getNom());
-            ennemiActuel.seFaitAttaquer(joueur.getAttBase());
+            System.out.printf("%s\nVous attaquez, infligeant %d degat(s) au %s%n", App.LIGNE, joueur.getAtt(), ennemiActuel.getNom());
+            ennemiActuel.seFaitAttaquer(joueur.getAtt(), joueur.getEffetArme());
             if (ennemiActuel.estMort()) {
                 ennemiVaincu(ennemiActuel);
             }
         }
         else
-            System.out.println("La commande n'a pas été reconnue !");
+            System.out.println("La commande n'a pas ete reconnue !");
 
         return actionReconnue;
     }
 
-    private void ennemiVaincu(Ennemi ennemiActuel) {
-        System.out.printf("%s a été vaincu(e)!%n", ennemiActuel.getNom());
+    void ennemiVaincu(Ennemi ennemiActuel) {
+        System.out.printf("%s a ete vaincu(e)!%n", ennemiActuel.getNom());
         Map<String, Drops> drops = genererDrops(ennemiActuel);
-        System.out.printf("%s\nIl a lâché : %s, %s%n", App.LIGNE, drops.get("Objet").toString(), drops.get("XP").toString());
+        System.out.printf("%s\nIl a lache : %s, %s%n", App.LIGNE, drops.get("Objet").toString(), drops.get("XP").toString());
         joueur.gainXp((Exp) drops.get("XP"));
         demanderRamasser((Objet) drops.get("Objet"));
     }
 
-    private void demanderRamasser(Objet objet) {
+    void demanderRamasser(Objet objet) {
         String action;
 
         try {
@@ -126,16 +131,17 @@ public class Jeu {
         }
     }
 
-    private boolean phaseRamassage(String action, Objet objet) throws InterruptedException {
+    boolean phaseRamassage(String action, Objet objet) throws InterruptedException {
         boolean actionReconnue = false;
         switch (action) {
             case "ram":
                 try {
                     joueur.getInventaire().ramasserObjet(objet);
-                    System.out.printf("Vous avez ajouté %s à votre inventaire !%n", objet);
+                    System.out.printf("Vous avez ajoute %s à votre inventaire !%n", objet);
                     actionReconnue = true;
                 } catch (InventairePleinException e) {
                     System.err.println(e.getMessage());
+                    System.out.print("");
                 }
                 break;
             case "jet":
@@ -148,28 +154,56 @@ public class Jeu {
                 Thread.sleep(1000);
                 break;
             default:
-                System.out.println("La commande n'a pas été reconnue !");
+                System.out.println(App.CMD_INCONNUE);
         }
         return actionReconnue;
     }
 
-    private Map<String, Drops> genererDrops(Ennemi ennemiActuel) {
+    Map<String, Drops> genererDrops(Ennemi ennemiActuel) {
         Map<String, Drops> drops = new HashMap<>();
 
-        // Générer le drop d'arme
-        Arme armeChoisie = null;
+        // Generer le drop d'arme
+        Objet objetChoisi = null;
         double r = Math.random();
         double sommeAccumul = 0;
-        for (Arme arme : armes) {
-            sommeAccumul += arme.getDropRate();
+        ArrayList<Objet> dropsList;
+
+        if (donjon > 0) {
+            // r *= 4;
+            double rFoisTrois = 3*r;
+            if (0 <= rFoisTrois && rFoisTrois < 1)
+                dropsList = armes;
+            else if (1 <= rFoisTrois && rFoisTrois < 2)
+                dropsList = armures;
+            else if (2 <= rFoisTrois && rFoisTrois < 3)
+                dropsList = potions;
+//            else if (3 <= r && r < 4)
+//                dropsList = divers;
+            else {
+                dropsList = null;
+                System.out.println("Erreur, drop incorrect.");
+            }
+        }
+        else
+            dropsList = armes;
+
+        assert dropsList != null;
+        for (Objet objet : dropsList) {
+            sommeAccumul += objet.getDropRate();
             if (sommeAccumul >= r) {
-                armeChoisie = arme;
+                switch (objet) {
+                    case Arme arme -> objetChoisi = new Arme(arme);
+                    case Armure armure -> objetChoisi = new Armure(armure);
+                    case Potion potion -> objetChoisi = new Potion(potion);
+                    default -> {}
+                }
+
                 break;
             }
         }
-        drops.put("Objet", armeChoisie);
+        drops.put("Objet", objetChoisi);
 
-        // Générer xp
+        // Generer xp
         drops.put("XP", ennemiActuel.getXpDrop());
 
         return drops;
@@ -177,7 +211,7 @@ public class Jeu {
 
     private void loadNouveauDonjon(int donjon) {
 
-        // On load les ennemis du donjon
+        // On charge les ennemis du donjon
         ennemis = new ArrayList<>();
         try
         {
@@ -191,7 +225,7 @@ public class Jeu {
                                    rs.getInt("ptsVie"),
                                    rs.getInt("niveau"),
                                    rs.getInt("attaque"),
-                                   rs.getInt("poidsSpawn"),
+                                   rs.getDouble("poidsSpawn"),
                                    rs.getInt("xpDrop"));
 
                            ennemis.add(en);
@@ -203,6 +237,7 @@ public class Jeu {
         catch (SQLException e) {
             e.printStackTrace();
         }
+        Ennemi.pondererPoidsSpawn(ennemis);
 
         // On load les armes du donjon
         armes = new ArrayList<>();
@@ -223,15 +258,77 @@ public class Jeu {
                            armes.add(arme);
                        }
                        return null;
-                    }
-
-
-                    );
+                    });
         }
         catch (SQLException e) {
             e.printStackTrace();
         }
-
         Arme.pondererDropRates(armes);
+
+
+        // On load les armures
+        armures = new ArrayList<>();
+        try
+        {
+            dbm.executerLecture(
+                    "SELECT * FROM armures WHERE donjon = ?",
+                    donjon,
+                    rs -> {
+                       while (rs.next()) {
+                           Armure armure = new Armure(
+                                   rs.getString("nom"),
+                                   rs.getString("description"),
+                                   rs.getInt("ptsArmure"),
+                                   rs.getDouble("drop_rate"));
+
+                           armures.add(armure);
+                       }
+                       return null;
+                    });
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+        Armure.pondererDropRates(armures);
+
+        potions = new ArrayList<>();
+        try {
+            dbm.executerLecture(
+                    "SELECT * FROM potions WHERE donjon = ?",
+                    donjon,
+                    rs -> {
+                        while (rs.next()) {
+                            Potion potion = new Potion(
+                                    rs.getString("nom"),
+                                    rs.getInt("soin"),
+                                    rs.getDouble("drop_rate"));
+
+                            potions.add(potion);
+                        }
+                        return null;
+                    }
+            );
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+        }
+        Potion.pondererDropRates(potions);
+    }
+
+    public Ennemi genererProchainEnnemi ()
+    {
+        Ennemi ennemiChoisi = Ennemi.LAMBDA;
+        double r = Math.random();
+        double sommeAccumul = 0;
+
+        for (Ennemi ennemi : ennemis) {
+            sommeAccumul += ennemi.getPoidsSpawn();
+            if (sommeAccumul >= r) {
+                ennemiChoisi = new Ennemi(ennemi);
+                break;
+            }
+        }
+
+        return ennemiChoisi;
     }
 }
