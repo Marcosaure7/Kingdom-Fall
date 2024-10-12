@@ -4,31 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="66f627f1-70bc-44bc-9c51-034ebccbde10" name="Changes" comment="Équiper une arme/armure, système de retour à travers l'inventaire (SEULEMENT COMMENCÉ, PAS FINAL)">
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/resources/fenetre.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/objets/Armure.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/objets/Potion.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/user/Action.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1fef7d30-ab85-41e6-8855-617270b7d99f.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/1fef7d30-ab85-41e6-8855-617270b7d99f.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/kotlinc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/kotlinc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="66f627f1-70bc-44bc-9c51-034ebccbde10" name="Changes" comment="Inventaire terminé, boucle de tour fonctionnelle, drops spécifiques à chaque Ennemi (commencé).">
+      <change afterPath="$PROJECT_DIR$/app/src/application/EnnemiDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/objets/Divers.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/application/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/application/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/application/DatabaseManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/application/DatabaseManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/application/Jeu.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/application/Jeu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/application/Tour.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/application/Tour.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/objets/Arme.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/objets/Arme.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/objets/EffetStatut.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/objets/EffetStatut.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/objets/Objet.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/objets/Objet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/personnages/Ennemi.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/personnages/Ennemi.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/personnages/Entite.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/personnages/Entite.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/personnages/Joueur.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/personnages/Joueur.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle.kts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,9 +47,9 @@
       <list>
         <option value="Exception" />
         <option value="Interface" />
-        <option value="Class" />
         <option value="FxmlFile" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -286,7 +268,7 @@
       <workItem from="1728446529214" duration="6121000" />
       <workItem from="1728603784317" duration="8329000" />
       <workItem from="1728666709322" duration="179000" />
-      <workItem from="1728702032994" duration="10658000" />
+      <workItem from="1728702032994" duration="15457000" />
     </task>
     <task id="LOCAL-00001" summary="Implémentation de MySQL Database">
       <option name="closed" value="true" />
@@ -336,7 +318,15 @@
       <option name="project" value="LOCAL" />
       <updated>1726037985804</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Inventaire terminé, boucle de tour fonctionnelle, drops spécifiques à chaque Ennemi (commencé).">
+      <option name="closed" value="true" />
+      <created>1728713020363</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1728713020363</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -360,7 +350,8 @@
     <MESSAGE value="Pondération des drop rates des armes" />
     <MESSAGE value="Faire apparaitre l'inventaire au user" />
     <MESSAGE value="Équiper une arme/armure, système de retour à travers l'inventaire (SEULEMENT COMMENCÉ, PAS FINAL)" />
-    <option name="LAST_COMMIT_MESSAGE" value="Équiper une arme/armure, système de retour à travers l'inventaire (SEULEMENT COMMENCÉ, PAS FINAL)" />
+    <MESSAGE value="Inventaire terminé, boucle de tour fonctionnelle, drops spécifiques à chaque Ennemi (commencé)." />
+    <option name="LAST_COMMIT_MESSAGE" value="Inventaire terminé, boucle de tour fonctionnelle, drops spécifiques à chaque Ennemi (commencé)." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -369,6 +360,16 @@
           <properties class="org.gradle.process.internal.ExecException" package="org.gradle.process.internal" />
           <option name="timeStamp" value="4" />
         </breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/objets/Objet.java</url>
+          <line>43</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/app/src/application/Jeu.java</url>
+          <line>163</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
   </component>

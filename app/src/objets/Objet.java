@@ -40,7 +40,7 @@ public abstract class Objet extends Drops {
 
     public abstract String getDescription();
 
-    public static void pondererDropRates(ArrayList<Objet> objets) {
+    public static ArrayList<Objet> pondererDropRates(ArrayList<Objet> objets) {
         double totalDropRates = 0;
         for (Objet objet : objets) {
             totalDropRates += objet.getDropRate();
@@ -48,5 +48,7 @@ public abstract class Objet extends Drops {
         for (Objet objet : objets) {
             objet.dropRate /= totalDropRates;
         }
+
+        return objets;
     }
 }

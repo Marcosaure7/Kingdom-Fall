@@ -10,11 +10,14 @@ public class Ennemi extends Entite {
     private double poidsSpawn;
     private final Exp xpDrop;
 
-    public static final Ennemi LAMBDA = new Ennemi("lambda", 0, 0, 0, 0, 0);
+    private final ArrayList<Objet> drops;
+
+    public static final Ennemi LAMBDA = new Ennemi("lambda", 0, 0, 0, 0, 0, new ArrayList<>());
 
 
-    public Ennemi(String nom, int ptsVie, int niveau, int att, double poidsSpawn, int xpDrop) {
+    public Ennemi(String nom, int ptsVie, int niveau, int att, double poidsSpawn, int xpDrop, ArrayList<Objet> drops) {
         super(nom, ptsVie, niveau, att);
+        this.drops = drops;
         this.poidsSpawn = poidsSpawn;
         this.xpDrop = new Exp(xpDrop);
     }
@@ -26,7 +29,7 @@ public class Ennemi extends Entite {
     public Ennemi (Ennemi autre)
     {
         super(autre);
-        this.nom = autre.nom;
+        this.drops = autre.drops;
         this.poidsSpawn = autre.poidsSpawn;
         this.xpDrop = new Exp(autre.xpDrop.getValeur());
     }
@@ -38,6 +41,10 @@ public class Ennemi extends Entite {
         return String.format("%s\n\nNiv:%d\tPV:%d\tAtt:%d\t", nom, niveau, ptsVie, attBase);
     }
     public Exp getXpDrop() { return this.xpDrop; }
+    public ArrayList<Objet> getDrops ()
+    {
+        return this.drops;
+    }
 
     public static void pondererPoidsSpawn(ArrayList<Ennemi> ennemis) {
         double totalDropRates = 0;

@@ -5,6 +5,7 @@ import objets.*;
 import personnages.Ennemi;
 import personnages.Joueur;
 
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.*;
 
@@ -166,28 +167,8 @@ public class Jeu {
         Objet objetChoisi = null;
         double r = Math.random();
         double sommeAccumul = 0;
-        ArrayList<Objet> dropsList;
+        ArrayList<Objet> dropsList = ennemiActuel.getDrops();
 
-        if (donjon > 0) {
-            // r *= 4;
-            double rFoisTrois = 3*r;
-            if (0 <= rFoisTrois && rFoisTrois < 1)
-                dropsList = armes;
-            else if (1 <= rFoisTrois && rFoisTrois < 2)
-                dropsList = armures;
-            else if (2 <= rFoisTrois && rFoisTrois < 3)
-                dropsList = potions;
-//            else if (3 <= r && r < 4)
-//                dropsList = divers;
-            else {
-                dropsList = null;
-                System.out.println("Erreur, drop incorrect.");
-            }
-        }
-        else
-            dropsList = armes;
-
-        assert dropsList != null;
         for (Objet objet : dropsList) {
             sommeAccumul += objet.getDropRate();
             if (sommeAccumul >= r) {
@@ -195,9 +176,9 @@ public class Jeu {
                     case Arme arme -> objetChoisi = new Arme(arme);
                     case Armure armure -> objetChoisi = new Armure(armure);
                     case Potion potion -> objetChoisi = new Potion(potion);
+                    case Divers divers -> objetChoisi = new Divers(divers);
                     default -> {}
                 }
-
                 break;
             }
         }
@@ -211,108 +192,118 @@ public class Jeu {
 
     private void loadNouveauDonjon(int donjon) {
 
-        // On charge les ennemis du donjon
-        ennemis = new ArrayList<>();
-        try
-        {
-            dbm.executerLecture(
-                    "SELECT * FROM ennemis WHERE donjon = ?",
-                    donjon,
-                    rs -> {
-                       while (rs.next()) {
-                           Ennemi en = new Ennemi(
-                                   rs.getString("nom"),
-                                   rs.getInt("ptsVie"),
-                                   rs.getInt("niveau"),
-                                   rs.getInt("attaque"),
-                                   rs.getDouble("poidsSpawn"),
-                                   rs.getInt("xpDrop"));
 
-                           ennemis.add(en);
-                       }
-                       return null;
-                    }
-                    );
+//        try
+//        {
+//            dbm.executerLecture(
+//                    "SELECT * FROM ennemis WHERE donjon = ?",
+//                    donjon,
+//                    rs -> {
+//                       while (rs.next()) {
+//                           Ennemi en = new Ennemi(
+//                                   rs.getString("nom"),
+//                                   rs.getInt("ptsVie"),
+//                                   rs.getInt("niveau"),
+//                                   rs.getInt("attaque"),
+//                                   rs.getDouble("poidsSpawn"),
+//                                   rs.getInt("xpDrop"));
+//
+//                           ennemis.add(en);
+//                       }
+//                       return null;
+//                    }
+//                    );
+//        }
+//        catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+
+
+        // On charge les ennemis du donjon
+        try {
+            Connection c = dbm.getDataSource().getConnection();
+            EnnemiDAO ennemiDAO = new EnnemiDAO(c);
+            ennemis = ennemiDAO.recupererEnnemis(donjon);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
-        catch (SQLException e) {
-            e.printStackTrace();
-        }
+
         Ennemi.pondererPoidsSpawn(ennemis);
 
         // On load les armes du donjon
-        armes = new ArrayList<>();
-        try
-        {
-            dbm.executerLecture(
-                    "SELECT * FROM armes WHERE donjon = ?",
-                    donjon,
-                    rs -> {
-                       while (rs.next()) {
-                           Arme arme = new Arme(
-                                   rs.getString("nom"),
-                                   rs.getString("description"),
-                                   rs.getDouble("drop_rate"),
-                                   rs.getInt("degats"),
-                                   rs.getString("effetStatut"));
-
-                           armes.add(arme);
-                       }
-                       return null;
-                    });
-        }
-        catch (SQLException e) {
-            e.printStackTrace();
-        }
-        Arme.pondererDropRates(armes);
-
-
-        // On load les armures
-        armures = new ArrayList<>();
-        try
-        {
-            dbm.executerLecture(
-                    "SELECT * FROM armures WHERE donjon = ?",
-                    donjon,
-                    rs -> {
-                       while (rs.next()) {
-                           Armure armure = new Armure(
-                                   rs.getString("nom"),
-                                   rs.getString("description"),
-                                   rs.getInt("ptsArmure"),
-                                   rs.getDouble("drop_rate"));
-
-                           armures.add(armure);
-                       }
-                       return null;
-                    });
-        }
-        catch (SQLException e) {
-            e.printStackTrace();
-        }
-        Armure.pondererDropRates(armures);
-
-        potions = new ArrayList<>();
-        try {
-            dbm.executerLecture(
-                    "SELECT * FROM potions WHERE donjon = ?",
-                    donjon,
-                    rs -> {
-                        while (rs.next()) {
-                            Potion potion = new Potion(
-                                    rs.getString("nom"),
-                                    rs.getInt("soin"),
-                                    rs.getDouble("drop_rate"));
-
-                            potions.add(potion);
-                        }
-                        return null;
-                    }
-            );
-        }
-        catch (SQLException e) {
-            e.printStackTrace();
-        }
-        Potion.pondererDropRates(potions);
+//        armes = new ArrayList<>();
+//        try
+//        {
+//            dbm.executerLecture(
+//                    "SELECT * FROM armes WHERE donjon = ?",
+//                    donjon,
+//                    rs -> {
+//                       while (rs.next()) {
+//                           Arme arme = new Arme(
+//                                   rs.getString("nom"),
+//                                   rs.getString("description"),
+//                                   rs.getDouble("drop_rate"),
+//                                   rs.getInt("degats"),
+//                                   rs.getString("effetStatut"));
+//
+//                           armes.add(arme);
+//                       }
+//                       return null;
+//                    });
+//        }
+//        catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//        Arme.pondererDropRates(armes);
+//
+//
+//        // On load les armures
+//        armures = new ArrayList<>();
+//        try
+//        {
+//            dbm.executerLecture(
+//                    "SELECT * FROM armures WHERE donjon = ?",
+//                    donjon,
+//                    rs -> {
+//                       while (rs.next()) {
+//                           Armure armure = new Armure(
+//                                   rs.getString("nom"),
+//                                   rs.getString("description"),
+//                                   rs.getInt("ptsArmure"),
+//                                   rs.getDouble("drop_rate"));
+//
+//                           armures.add(armure);
+//                       }
+//                       return null;
+//                    });
+//        }
+//        catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//        Armure.pondererDropRates(armures);
+//
+//        potions = new ArrayList<>();
+//        try {
+//            dbm.executerLecture(
+//                    "SELECT * FROM potions WHERE donjon = ?",
+//                    donjon,
+//                    rs -> {
+//                        while (rs.next()) {
+//                            Potion potion = new Potion(
+//                                    rs.getString("nom"),
+//                                    rs.getInt("soin"),
+//                                    rs.getDouble("drop_rate"));
+//
+//                            potions.add(potion);
+//                        }
+//                        return null;
+//                    }
+//            );
+//        }
+//        catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//        Potion.pondererDropRates(potions);
     }
 
     public Ennemi genererProchainEnnemi ()
