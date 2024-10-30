@@ -2,6 +2,7 @@ package application;
 
 import exceptions.InventairePleinException;
 import objets.*;
+import personnages.Boss;
 import personnages.Ennemi;
 import personnages.Joueur;
 
@@ -13,7 +14,8 @@ public class Jeu {
 
     private final DatabaseManager dbm;
     private final Joueur joueur;
-    protected int donjon = 0;
+    protected int numDonjon = 0;
+    private final ArrayList<Donjon> donjonsDebloques = new ArrayList<>(5);
 
     ArrayList<Ennemi> ennemis;
     ArrayList<Objet> armes;
@@ -31,17 +33,20 @@ public class Jeu {
 
         sc = new Scanner(System.in);
         premierTour();
-        donjon++;
-        loadNouveauDonjon(donjon);
+        loadNouveauDonjon(numDonjon + 1);
 
+
+        boolean quitterJeu = false;
         /* Boucle de jeu
-         * Version très prematuree
+         * Version très prématurée
          */
-        while (donjon == 1) {
+        while (!quitterJeu) {
             nbTours++;
             System.out.printf("\n%s\nTour %d\n", App.LIGNE, nbTours);
-            new Tour(this, joueur);
+            quitterJeu = donjonsDebloques.get(numDonjon).newTour();
         }
+
+        quitterJeu();
     }
 
     private void premierTour() throws InterruptedException {
@@ -116,6 +121,31 @@ public class Jeu {
         System.out.printf("%s\nIl a lache : %s, %s%n", App.LIGNE, drops.get("Objet").toString(), drops.get("XP").toString());
         joueur.gainXp((Exp) drops.get("XP"));
         demanderRamasser((Objet) drops.get("Objet"));
+
+        if (ennemiActuel instanceof Boss bossActuel) bossVaincu(bossActuel);
+    }
+
+    void bossVaincu(Boss bossActuel) {
+        boolean donjonDejaDebloque = false;
+
+        // On regarde si le donjon a déjà été débloqué par le joueur
+        for (Donjon d: donjonsDebloques) {
+            if (d.getNiveau() == bossActuel.getDonjonDebloque())
+            {
+                donjonDejaDebloque = true;
+                break;
+            }
+        }
+        if (!donjonDejaDebloque)
+        {
+            System.out.printf(
+                    "Vous avez vaincu le/la %s qui hantait ce donjon. C'est tout a votre honneur.%n" +
+                            "Vous venez de debloquer le donjon de niveau %d.%n", bossActuel.getNom(), bossActuel.getDonjonDebloque());
+
+            System.out.println("Vous voyagez vers le prochain donjon...");
+
+            loadNouveauDonjon(bossActuel.getDonjonDebloque());
+        }
     }
 
     void demanderRamasser(Objet objet) {
@@ -176,7 +206,7 @@ public class Jeu {
                     case Arme arme -> objetChoisi = new Arme(arme);
                     case Armure armure -> objetChoisi = new Armure(armure);
                     case Potion potion -> objetChoisi = new Potion(potion);
-                    case Divers divers -> objetChoisi = new Divers(divers);
+                    case ObjetInvoqueBoss objetInvoqueBoss -> objetChoisi = new ObjetInvoqueBoss(objetInvoqueBoss);
                     default -> {}
                 }
                 break;
@@ -192,118 +222,21 @@ public class Jeu {
 
     private void loadNouveauDonjon(int donjon) {
 
-
-//        try
-//        {
-//            dbm.executerLecture(
-//                    "SELECT * FROM ennemis WHERE donjon = ?",
-//                    donjon,
-//                    rs -> {
-//                       while (rs.next()) {
-//                           Ennemi en = new Ennemi(
-//                                   rs.getString("nom"),
-//                                   rs.getInt("ptsVie"),
-//                                   rs.getInt("niveau"),
-//                                   rs.getInt("attaque"),
-//                                   rs.getDouble("poidsSpawn"),
-//                                   rs.getInt("xpDrop"));
-//
-//                           ennemis.add(en);
-//                       }
-//                       return null;
-//                    }
-//                    );
-//        }
-//        catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-
+        Donjon nouveauDonjon = new Donjon(donjon, this, joueur);
 
         // On charge les ennemis du donjon
         try {
             Connection c = dbm.getDataSource().getConnection();
             EnnemiDAO ennemiDAO = new EnnemiDAO(c);
-            ennemis = ennemiDAO.recupererEnnemis(donjon);
+            ennemis = ennemiDAO.recupererEnnemis(nouveauDonjon);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         }
 
         Ennemi.pondererPoidsSpawn(ennemis);
 
-        // On load les armes du donjon
-//        armes = new ArrayList<>();
-//        try
-//        {
-//            dbm.executerLecture(
-//                    "SELECT * FROM armes WHERE donjon = ?",
-//                    donjon,
-//                    rs -> {
-//                       while (rs.next()) {
-//                           Arme arme = new Arme(
-//                                   rs.getString("nom"),
-//                                   rs.getString("description"),
-//                                   rs.getDouble("drop_rate"),
-//                                   rs.getInt("degats"),
-//                                   rs.getString("effetStatut"));
-//
-//                           armes.add(arme);
-//                       }
-//                       return null;
-//                    });
-//        }
-//        catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//        Arme.pondererDropRates(armes);
-//
-//
-//        // On load les armures
-//        armures = new ArrayList<>();
-//        try
-//        {
-//            dbm.executerLecture(
-//                    "SELECT * FROM armures WHERE donjon = ?",
-//                    donjon,
-//                    rs -> {
-//                       while (rs.next()) {
-//                           Armure armure = new Armure(
-//                                   rs.getString("nom"),
-//                                   rs.getString("description"),
-//                                   rs.getInt("ptsArmure"),
-//                                   rs.getDouble("drop_rate"));
-//
-//                           armures.add(armure);
-//                       }
-//                       return null;
-//                    });
-//        }
-//        catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//        Armure.pondererDropRates(armures);
-//
-//        potions = new ArrayList<>();
-//        try {
-//            dbm.executerLecture(
-//                    "SELECT * FROM potions WHERE donjon = ?",
-//                    donjon,
-//                    rs -> {
-//                        while (rs.next()) {
-//                            Potion potion = new Potion(
-//                                    rs.getString("nom"),
-//                                    rs.getInt("soin"),
-//                                    rs.getDouble("drop_rate"));
-//
-//                            potions.add(potion);
-//                        }
-//                        return null;
-//                    }
-//            );
-//        }
-//        catch (SQLException e) {
-//            e.printStackTrace();
-//        }
-//        Potion.pondererDropRates(potions);
+        donjonsDebloques.add(nouveauDonjon);
+        numDonjon = donjon; // Permet de dire à l'objet jeu à quel donjon on est présentement.
     }
 
     public Ennemi genererProchainEnnemi ()
@@ -321,5 +254,11 @@ public class Jeu {
         }
 
         return ennemiChoisi;
+    }
+
+    public void quitterJeu()
+    {
+        System.out.println("Appuyer sur la touche Entree pour fermer Kingdom Fall...");
+        sc.nextLine(); System.exit(0);
     }
 }

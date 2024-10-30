@@ -1,6 +1,6 @@
 package objets;
 
-public class Divers extends Objet {
+public abstract class Divers extends Objet {
 
     private final String description;
 
@@ -20,4 +20,6 @@ public class Divers extends Objet {
     public String getDescription() {
         return String.format("%s%n%s%nChances de drop : %.2f%n", nom, description, dropRate);
     }
+
+    public void utiliser () {}
 }

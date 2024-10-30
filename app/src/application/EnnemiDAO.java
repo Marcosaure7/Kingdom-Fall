@@ -1,25 +1,28 @@
 package application;
 
 import objets.*;
+import personnages.Boss;
 import personnages.Ennemi;
 
 import java.sql.*;
 import java.util.ArrayList;
 
 public class EnnemiDAO {
-    private Connection connection;
+    private final Connection connection;
+    private Donjon donjon;
 
     public EnnemiDAO(Connection connection) {
         this.connection = connection;
     }
 
-    public ArrayList<Ennemi> recupererEnnemis(int donjon) throws SQLException {
+    public ArrayList<Ennemi> recupererEnnemis(Donjon donjon) throws SQLException {
         ArrayList<Ennemi> ennemis = new ArrayList<>();
+        this.donjon = donjon;
 
         // Étape 1 : Récupérer les informations de l'ennemi
         String selectEnnemiSQL = "SELECT * FROM ennemis WHERE donjon = ?";
         try (PreparedStatement pstmt = connection.prepareStatement(selectEnnemiSQL)) {
-            pstmt.setInt(1, donjon);
+            pstmt.setInt(1, donjon.getNiveau());
             ResultSet rs = pstmt.executeQuery();
 
             while (rs.next()) {
@@ -30,15 +33,15 @@ public class EnnemiDAO {
                         rs.getInt("attaque"),
                         rs.getDouble("poidsSpawn"),
                         rs.getInt("xpDrop"),
-                        recupererDropsPourEnnemi(rs.getInt("id"))));
+                        recupererDropsPourEnnemi(rs.getInt("id"), "ennemi")));
             }
         }
         return ennemis;
     }
 
-    private ArrayList<Objet> recupererDropsPourEnnemi(int ennemiId) throws SQLException {
+    private ArrayList<Objet> recupererDropsPourEnnemi(int ennemiId, String typeEnnemi) throws SQLException {
         ArrayList<Objet> drops = new ArrayList<>();
-        String selectDropTypesSQL = "SELECT drop_id, drop_type FROM ennemi_drops WHERE ennemi_id = ?";
+        String selectDropTypesSQL = "SELECT drop_id, drop_type FROM " + typeEnnemi + "_drops WHERE " + typeEnnemi + "_id = ?";
 
         try (PreparedStatement pstmt = connection.prepareStatement(selectDropTypesSQL)) {
             pstmt.setInt(1, ennemiId);
@@ -99,16 +102,18 @@ public class EnnemiDAO {
                     }
                     case "divers" -> {
                         // Préparer le statement pour récupérer les informations de divers
-                        String selectDiversSQL = "SELECT nom, description, drop_rate FROM divers WHERE id = ?";
-                        try (PreparedStatement pstmtDivers = connection.prepareStatement(selectDiversSQL)) {
-                            pstmtDivers.setInt(1, dropId);
-                            ResultSet rsDivers = pstmtDivers.executeQuery();
+                        String selectInvocationSQL = "SELECT nom, description, drop_rate, boss_id FROM invocation_boss WHERE id = ?";
+                        try (PreparedStatement pstmtInvocation = connection.prepareStatement(selectInvocationSQL)) {
+                            pstmtInvocation.setInt(1, dropId);
+                            ResultSet rsInvocation = pstmtInvocation.executeQuery();
 
-                            if (rsDivers.next()) {
-                                drops.add(new Divers(
-                                        rsDivers.getString("nom"),
-                                        rsDivers.getString("description"),
-                                        rsDivers.getDouble("drop_rate")));
+                            if (rsInvocation.next()) {
+                                drops.add(new ObjetInvoqueBoss(
+                                        rsInvocation.getString("nom"),
+                                        rsInvocation.getString("description"),
+                                        rsInvocation.getDouble("drop_rate"),
+                                        recupererBoss(rsInvocation.getInt("boss_id")),
+                                        donjon));
                             }
                         }
                     }
@@ -116,6 +121,29 @@ public class EnnemiDAO {
             }
         }
         return Objet.pondererDropRates(drops);
+    }
+
+    private Boss recupererBoss(int bossKey) throws SQLException
+    {
+        String selectBossSQL = "SELECT * FROM bosses WHERE id = ?";
+        try (PreparedStatement pstmtInvocation = connection.prepareStatement(selectBossSQL)) {
+            pstmtInvocation.setInt(1, bossKey);
+            ResultSet rsBoss = pstmtInvocation.executeQuery();
+            if (rsBoss.next())
+            {
+                return new Boss(
+                        rsBoss.getString("nom"),
+                        rsBoss.getString("description"),
+                        rsBoss.getInt("niveau"),
+                        rsBoss.getInt("ptsVie"),
+                        rsBoss.getInt("attaque"),
+                        rsBoss.getInt("xp_drop"),
+                        rsBoss.getInt("ptsArmure"),
+                        recupererDropsPourEnnemi(bossKey, "boss"));
+            }
+        }
+
+        return null;
     }
 }
 

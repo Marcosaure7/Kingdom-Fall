@@ -159,10 +159,10 @@ public class Joueur extends Entite {
          *
          * @param cmd Commande reçue
          * @param typeObjet Type d'objet ouvert dans l'inventaire
-         * @return Un tableau booleen, où :
+         * @return Un tableau booléen, où :
          * [0] : La commande a ete reconnue ou non ;
-         * [1] : L'utilisateur a demande un retour ;
-         * [2] : L'utilisateur a demande de quitter l'inventaire.
+         * [1] : L'utilisateur a demandé un retour ;
+         * [2] : L'utilisateur a demandé de quitter l'inventaire.
          */
         private boolean[] traiterCommandeDedansType(String cmd, Type_Objet typeObjet) {
             boolean retour = cmd.equalsIgnoreCase("retour");
@@ -221,7 +221,7 @@ public class Joueur extends Entite {
                     if (indObjetSelectionne == -1) {
                         switch (commandeDeveloppee[0]) {
                             case "equip":
-                                System.out.printf("Vous avez dejà equipe %s%n", arg);
+                                System.out.printf("Vous avez deja equipe %s%n", arg);
                                 break;
                             case "info":
                                 cmdReconnue = true;
@@ -252,8 +252,10 @@ public class Joueur extends Entite {
                                     soigner(p);
                                     inv.get(Type_Objet.POTIONS).remove(indObjetSelectionne);
                                 }
-
-                                // TODO Utiliser un objet divers
+                                else if (objetSelectionne instanceof Divers obj) {
+                                    obj.utiliser();
+                                    inv.get(Type_Objet.DIVERS).remove(indObjetSelectionne);
+                                }
 
                                 else
                                     System.out.println("Cet objet ne peut pas être 'utilise' !");
@@ -322,7 +324,6 @@ public class Joueur extends Entite {
                     return inv.get(typeObjet).indexOf(obj);
             }
 
-            // TODO Rajouter la condition pour les armures
             if ((typeObjet == Type_Objet.ARMES && armeEquipee != null && armeEquipee.getNom().equalsIgnoreCase(objet)
                     || (typeObjet == Type_Objet.ARMURES && armureEquipee != null && armureEquipee.getNom().equalsIgnoreCase(objet))))
                 return -1;

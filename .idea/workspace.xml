@@ -4,13 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="66f627f1-70bc-44bc-9c51-034ebccbde10" name="Changes" comment="Inventaire terminé, boucle de tour fonctionnelle, drops spécifiques à chaque Ennemi (commencé).">
-      <change afterPath="$PROJECT_DIR$/app/src/application/EnnemiDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/objets/Divers.java" afterDir="false" />
+    <list default="true" id="66f627f1-70bc-44bc-9c51-034ebccbde10" name="Changes" comment="Drops spécifiques à chaque mob, table de jonction pour drops créés, query qui va chercher les drops modifié, ennemi changé pour avoir un attribut 'drops'.">
+      <change afterPath="$PROJECT_DIR$/app/src/objets/ObjetInvoqueBoss.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/personnages/Boss.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1fef7d30-ab85-41e6-8855-617270b7d99f.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/1fef7d30-ab85-41e6-8855-617270b7d99f.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/application/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/application/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/application/EnnemiDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/application/EnnemiDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/application/Jeu.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/application/Jeu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/objets/Objet.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/objets/Objet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/personnages/Ennemi.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/personnages/Ennemi.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/application/Tour.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/application/Donjon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/objets/Arme.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/objets/Arme.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/objets/Divers.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/objets/Divers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/objets/Type_Objet.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/objets/Type_Objet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/personnages/Joueur.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/personnages/Joueur.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/user/Action.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/user/Action.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,7 +121,7 @@
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.50344825",
-    "settings.editor.selected.configurable": "Console",
+    "settings.editor.selected.configurable": "editor.preferences.fonts.default",
     "sql.rename.search.for.storage.occurrences": "true",
     "vue.rearranger.settings.migration": "true"
   },
@@ -268,7 +276,16 @@
       <workItem from="1728446529214" duration="6121000" />
       <workItem from="1728603784317" duration="8329000" />
       <workItem from="1728666709322" duration="179000" />
-      <workItem from="1728702032994" duration="15457000" />
+      <workItem from="1728702032994" duration="16751000" />
+      <workItem from="1728760447372" duration="2815000" />
+      <workItem from="1728781386021" duration="7160000" />
+      <workItem from="1728920566803" duration="283000" />
+      <workItem from="1730226146356" duration="422000" />
+      <workItem from="1730226631945" duration="1095000" />
+      <workItem from="1730228299937" duration="662000" />
+      <workItem from="1730258468775" duration="362000" />
+      <workItem from="1730258866985" duration="1158000" />
+      <workItem from="1730260074314" duration="11082000" />
     </task>
     <task id="LOCAL-00001" summary="Implémentation de MySQL Database">
       <option name="closed" value="true" />
@@ -326,7 +343,15 @@
       <option name="project" value="LOCAL" />
       <updated>1728713020363</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Drops spécifiques à chaque mob, table de jonction pour drops créés, query qui va chercher les drops modifié, ennemi changé pour avoir un attribut 'drops'.">
+      <option name="closed" value="true" />
+      <created>1728718861055</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1728718861055</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -351,7 +376,8 @@
     <MESSAGE value="Faire apparaitre l'inventaire au user" />
     <MESSAGE value="Équiper une arme/armure, système de retour à travers l'inventaire (SEULEMENT COMMENCÉ, PAS FINAL)" />
     <MESSAGE value="Inventaire terminé, boucle de tour fonctionnelle, drops spécifiques à chaque Ennemi (commencé)." />
-    <option name="LAST_COMMIT_MESSAGE" value="Inventaire terminé, boucle de tour fonctionnelle, drops spécifiques à chaque Ennemi (commencé)." />
+    <MESSAGE value="Drops spécifiques à chaque mob, table de jonction pour drops créés, query qui va chercher les drops modifié, ennemi changé pour avoir un attribut 'drops'." />
+    <option name="LAST_COMMIT_MESSAGE" value="Drops spécifiques à chaque mob, table de jonction pour drops créés, query qui va chercher les drops modifié, ennemi changé pour avoir un attribut 'drops'." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -361,14 +387,9 @@
           <option name="timeStamp" value="4" />
         </breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/objets/Objet.java</url>
-          <line>43</line>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/app/src/application/Jeu.java</url>
-          <line>163</line>
-          <option name="timeStamp" value="6" />
+          <url>file://$PROJECT_DIR$/app/src/personnages/Joueur.java</url>
+          <line>255</line>
+          <option name="timeStamp" value="16" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

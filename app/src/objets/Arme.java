@@ -17,6 +17,7 @@ public class Arme extends Objet {
         }
     }
 
+
     public Arme (Arme autre)
     {
         super(autre);

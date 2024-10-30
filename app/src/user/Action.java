@@ -2,31 +2,42 @@ package user;
 
 public enum Action {
 
-    NOT_DEFINED("N/A", "N/A"),
+    NOT_DEFINED(),
     OUVRIR_INVENTAIRE("inventaire", "inv"),
+    OUVRIR_MENU("menu", "m"),
     INFO("info", "i"),
     ATTAQUER("attaquer", "att"),
     OUI("oui", "o"),
-    NON("non", "n");
+    NON("non", "n"),
+    QUITTER("quitter", "q");
 
-    public final String choix1;
-    public final String choix2;
+    public final String[] choix;
 
-    Action(String choix1, String choix2)
+    Action(String... choix)
     {
-        this.choix1 = choix1;
-        this.choix2 = choix2;
+        this.choix = choix;
     }
 
 
     @Override
     public String toString()
     {
-        return "(" + choix1 + ":" + choix2 + ") ";
+        StringBuilder retour = new StringBuilder("(");
+        for (String s: choix) retour.append(s).append(", ");
+
+        retour.delete(retour.length() - 2, retour.length()); // Enlève les derniers ", " pour closer avec le dernier élément
+        retour.append(")");
+
+        return retour.toString();
     }
 
     public boolean correspondreStringAction (String cmd)
     {
-        return cmd.equalsIgnoreCase(choix1) || cmd.equalsIgnoreCase(choix2);
+        for (String s: choix)
+        {
+            if (cmd.equalsIgnoreCase(s))
+                return true;
+        }
+        return false;
     }
 }

@@ -5,7 +5,7 @@ public enum Type_Objet {
     ARMES(5),
     ARMURES(5),
     POTIONS(5),
-    DIVERS(100);
+    DIVERS(10);
 
     private final int espaceInventaire;
 
