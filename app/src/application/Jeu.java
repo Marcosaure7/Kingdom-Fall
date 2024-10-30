@@ -5,6 +5,7 @@ import objets.*;
 import personnages.Boss;
 import personnages.Ennemi;
 import personnages.Joueur;
+import user.Action;
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -18,10 +19,6 @@ public class Jeu {
     private final ArrayList<Donjon> donjonsDebloques = new ArrayList<>(5);
 
     ArrayList<Ennemi> ennemis;
-    ArrayList<Objet> armes;
-    ArrayList<Objet> armures;
-    ArrayList<Objet> potions;
-    ArrayList<Objet> divers;
 
     final Scanner sc;
 
@@ -59,7 +56,7 @@ public class Jeu {
         Ennemi ennemiActuel = ennemis.getFirst();
         System.out.println(ennemiActuel);
         Thread.sleep(2000);
-        System.out.println("Attaquer:att");
+        System.out.println(Action.ATTAQUER);
         System.out.println(App.LIGNE + "\n" + joueur);
         String action = sc.nextLine();
         while (!executerAction(action, ennemiActuel))
@@ -71,25 +68,27 @@ public class Jeu {
         System.out.println("Cette derniere section du tutoriel vous servira a naviguer dans l'inventaire.");
         System.out.println("A chaque tour, la commande 'inv' restera disponible pour vous comme ceci :\nInventaire:inv");
 
-        boolean actionReconnue = false;
-        String[][] reponses = {{"oui", "o"}, {"non", "n"}};
+        Action[] actions = {Action.OUI, Action.NON};
+        Action finalAction = Action.NOT_DEFINED;
+
         do {
-            System.out.printf("%s%nVoulez-vous passer l'exploration de l'inventaire? (Oui:%s, Non:%s)%n", App.LIGNE, Arrays.toString(reponses[0]), Arrays.toString(reponses[1]));
+            System.out.printf("%s%nVoulez-vous commencer l'exploration de l'inventaire?%n%s %s%n", App.LIGNE, actions[0], actions[1]);
             action = sc.nextLine();
 
-            String finalAction = action;
-            if (Arrays.stream(reponses)
-                    .flatMap(Arrays::stream)
-                    .anyMatch(element -> element.equals(finalAction)))
-            {
-                actionReconnue = true;
-                if (Arrays.asList(reponses[1]).contains(finalAction)) // Reponse positive
-                    initiationALInventaire(sc);
-
+            for (Action a : actions) {
+                if (a.correspondreStringAction(action)) {
+                    finalAction = a;
+                    break;
+                }
             }
-            else
-                System.out.println("La commande n'a pas ete reconnue !");
-        } while (!actionReconnue);
+
+            if (finalAction == Action.NOT_DEFINED)
+                System.out.println(App.CMD_INCONNUE);
+        }
+        while (finalAction == Action.NOT_DEFINED);
+
+        if (finalAction == Action.OUI) // Reponse positive
+            initiationALInventaire(sc);
 
         System.out.println("Retour au jeu.");
 
@@ -101,7 +100,7 @@ public class Jeu {
     }
 
     boolean executerAction(String action, Ennemi ennemiActuel) {
-        boolean actionReconnue = action.equalsIgnoreCase("att");
+        boolean actionReconnue = Action.ATTAQUER.correspondreStringAction(action);
         if (actionReconnue) {
             System.out.printf("%s\nVous attaquez, infligeant %d degat(s) au %s%n", App.LIGNE, joueur.getAtt(), ennemiActuel.getNom());
             ennemiActuel.seFaitAttaquer(joueur.getAtt(), joueur.getEffetArme());

@@ -134,7 +134,7 @@ public class EnnemiDAO {
                 return new Boss(
                         rsBoss.getString("nom"),
                         rsBoss.getString("description"),
-                        rsBoss.getInt("niveau"),
+                        rsBoss.getInt("donjon"),
                         rsBoss.getInt("ptsVie"),
                         rsBoss.getInt("attaque"),
                         rsBoss.getInt("xp_drop"),

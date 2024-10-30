@@ -52,13 +52,20 @@ public class Joueur extends Entite {
     }
 
     private void gainNiveau() {
-        // Le joueur est entièrement soigné et ses PV max augmente de 10.
+        // Le joueur est entièrement soigné et ses PV max augmente de 10 par niveau gagné.
+        int ancienNiveau = niveau;
+        int ancienPVCap = PVCap;
 
-        System.out.printf("\tVous montez de niveau !\tNiv:%d -> %d\tPV:%d -> %d%n", niveau, ++niveau, PVCap, PVCap += 10);
+        while (xp.getValeur() >= xpCap) {
+            this.xp = new Exp(this.xp.getValeur() - xpCap);
+            xpCap = (int) (xpCap * XP_CAP_INC);
+            niveau++; PVCap += 10;
+        }
+
+        System.out.printf("\tVous montez de niveau !\tNiv:%d -> %d\tPV:%d -> %d%n", ancienNiveau, niveau, ancienPVCap, PVCap);
         ptsVie = PVCap;
 
-        this.xp = new Exp(this.xp.getValeur() - xpCap);
-        xpCap = (int) (xpCap * XP_CAP_INC);
+
         System.out.printf("Prochain niveau : XP: %d/%d", this.xp.getValeur(), xpCap);
 
 
@@ -253,8 +260,13 @@ public class Joueur extends Entite {
                                     inv.get(Type_Objet.POTIONS).remove(indObjetSelectionne);
                                 }
                                 else if (objetSelectionne instanceof Divers obj) {
-                                    obj.utiliser();
-                                    inv.get(Type_Objet.DIVERS).remove(indObjetSelectionne);
+                                    try {
+                                        obj.utiliser();
+                                        inv.get(Type_Objet.DIVERS).remove(indObjetSelectionne);
+                                        Thread.sleep(1000);
+                                    } catch (InterruptedException e) {
+                                        throw new RuntimeException(e);
+                                    }
                                 }
 
                                 else

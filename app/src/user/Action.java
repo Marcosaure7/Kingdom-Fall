@@ -23,9 +23,9 @@ public enum Action {
     public String toString()
     {
         StringBuilder retour = new StringBuilder("(");
-        for (String s: choix) retour.append(s).append(", ");
+        for (String s: choix) retour.append(s).append(":");
 
-        retour.delete(retour.length() - 2, retour.length()); // Enlève les derniers ", " pour closer avec le dernier élément
+        retour.delete(retour.length() - 1, retour.length()); // Enlève les derniers ", " pour closer avec le dernier élément
         retour.append(")");
 
         return retour.toString();
