@@ -4,7 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="66f627f1-70bc-44bc-9c51-034ebccbde10" name="Changes" comment="Suppression du directory ressources pour but de séparer le code des 2 versions en 2 projets IntelliJ" />
+    <list default="true" id="66f627f1-70bc-44bc-9c51-034ebccbde10" name="Changes" comment="Suppression du directory ressources pour but de séparer le code des 2 versions en 2 projets IntelliJ">
+      <change afterPath="$PROJECT_DIR$/../Kingdom-Fall-UI-Enabled/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Kingdom-Fall-UI-Enabled/app/resources/fenetreApp.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Kingdom-Fall-UI-Enabled/app/src/controller/FenetreAppController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Kingdom-Fall-UI-Enabled/app/src/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Kingdom-Fall-UI-En/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Kingdom-Fall-UI-En/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Kingdom-Fall-UI-En/.idea/gradle.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Kingdom-Fall-UI-En/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Kingdom-Fall-UI-En/build.gradle.kts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Kingdom-Fall-UI-En/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Kingdom-Fall-UI-En/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Kingdom-Fall-UI-En/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Kingdom-Fall-UI-En/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Kingdom-Fall-UI-En/settings.gradle.kts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -47,7 +64,7 @@
     </option>
   </component>
   <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
   &quot;lastFilter&quot;: {
@@ -97,7 +114,7 @@
     &quot;full.screen.before.presentation.mode&quot;: &quot;false&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/mag20/AppData/Roaming/JetBrains/IntelliJIdea2024.2/consoles/db/1fef7d30-ab85-41e6-8855-617270b7d99f/console.sql&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/mag20/OneDrive - Université Laval/Kingdom Fall/Kingdom-Fall-UI-Enabled&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -106,7 +123,7 @@
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.50344825&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;PluginSettings&quot;,
     &quot;sql.rename.search.for.storage.occurrences&quot;: &quot;true&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
@@ -205,8 +222,8 @@
     </configuration>
     <list>
       <item itemvalue="Database Script.Query_MySQL" />
-      <item itemvalue="Gradle.Kingdom-Fall" />
       <item itemvalue="Gradle.Kingdom-Fall (terminal)" />
+      <item itemvalue="Gradle.Kingdom-Fall" />
       <item itemvalue="Gradle.KF - Gradle verbal" />
     </list>
     <recent_temporary>
@@ -272,6 +289,11 @@
       <workItem from="1730258866985" duration="1158000" />
       <workItem from="1730260074314" duration="12460000" />
       <workItem from="1730306393102" duration="3158000" />
+      <workItem from="1730310401862" duration="1431000" />
+      <workItem from="1730311879817" duration="844000" />
+      <workItem from="1730334795707" duration="588000" />
+      <workItem from="1730335418232" duration="7000" />
+      <workItem from="1730347524359" duration="1140000" />
     </task>
     <task id="LOCAL-00001" summary="Implémentation de MySQL Database">
       <option name="closed" value="true" />

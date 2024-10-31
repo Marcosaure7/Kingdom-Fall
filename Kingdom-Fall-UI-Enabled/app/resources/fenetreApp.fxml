@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ProgressBar?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.TextFlow?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: lightgray;" styleClass="root" stylesheets="@bordures.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.FenetreAppController">
+   <bottom>
+      <VBox prefHeight="119.0" prefWidth="800.0" BorderPane.alignment="CENTER">
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+         <children>
+            <HBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="800.0" styleClass="bordure-ridge-doree" stylesheets="@bordures.css">
+               <children>
+                  <HBox alignment="CENTER" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Button fx:id="boutonAttaquer" mnemonicParsing="false" text="⚔ Attaquer">
+                           <font>
+                              <Font name="0xProto Nerd Font Propo" size="12.0" />
+                           </font>
+                           <effect>
+                              <InnerShadow />
+                           </effect>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Button fx:id="boutonSoinRapide" mnemonicParsing="false" text="❤ Soin rapide">
+                           <font>
+                              <Font name="0xProto Nerd Font Propo" size="12.0" />
+                           </font>
+                           <effect>
+                              <InnerShadow />
+                           </effect>
+                        </Button>
+                     </children>
+                  </HBox>
+                  <HBox alignment="CENTER" HBox.hgrow="ALWAYS">
+                     <children>
+                        <Button fx:id="boutonInventaire" mnemonicParsing="false" text="📖 Inventaire">
+                           <font>
+                              <Font name="0xProto Nerd Font Propo" size="12.0" />
+                           </font>
+                           <effect>
+                              <InnerShadow />
+                           </effect>
+                        </Button>
+                     </children>
+                  </HBox>
+               </children>
+            </HBox>
+            <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
+               <children>
+                  <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="81.0" prefWidth="804.0" styleClass="bordure-ridge-doree" stylesheets="@bordures.css" HBox.hgrow="ALWAYS">
+                     <children>
+                        <HBox prefHeight="100.0" prefWidth="200.0">
+                           <children>
+                              <VBox prefHeight="45.0" prefWidth="449.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <Label fx:id="labelNomJoueur" prefHeight="17.0" prefWidth="61.0" text="Joueur" textFill="WHITE">
+                                       <font>
+                                          <Font name="Old English Text MT" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <HBox alignment="CENTER_LEFT" prefHeight="26.0" prefWidth="100.0">
+                                       <children>
+                                          <Label text="Vie :" textFill="WHITE">
+                                             <HBox.margin>
+                                                <Insets />
+                                             </HBox.margin>
+                                             <font>
+                                                <Font name="Old English Text MT" size="16.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets bottom="5.0" />
+                                       </VBox.margin>
+                                       <padding>
+                                          <Insets left="20.0" />
+                                       </padding>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                              <VBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="1131.0">
+                                 <children>
+                                    <HBox alignment="BOTTOM_LEFT" prefHeight="3.0" prefWidth="100.0">
+                                       <children>
+                                          <Label fx:id="labelVie" style="-fx-text-fill: red;" text="100/100">
+                                             <font>
+                                                <Font name="0xProto Nerd Font Propo" size="12.0" />
+                                             </font>
+                                          </Label>
+                                          <Label style="-fx-text-fill: red;" text=" PV">
+                                             <font>
+                                                <Font name="0xProto Nerd Font Propo" size="12.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                    <ProgressBar fx:id="barreVie" prefHeight="14.0" prefWidth="197.0" progress="1.0" styleClass="hp-bar" stylesheets="@progress.css" />
+                                 </children>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                                 <HBox.margin>
+                                    <Insets left="10.0" />
+                                 </HBox.margin>
+                              </VBox>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER_LEFT" prefHeight="71.0" prefWidth="800.0">
+                           <children>
+                              <HBox alignment="BOTTOM_LEFT" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <Label text="Exp :" textFill="WHITE">
+                                       <HBox.margin>
+                                          <Insets left="20.0" />
+                                       </HBox.margin>
+                                       <font>
+                                          <Font name="Old English Text MT" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="labelXPJoueur" text="Label" textFill="WHITE">
+                                       <font>
+                                          <Font name="Old English Text MT" size="16.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets left="5.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="BOTTOM_CENTER" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                                 <children>
+                                    <Label alignment="CENTER" text="NIV." textFill="WHITE">
+                                       <font>
+                                          <Font name="Old English Text MT" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="labelNiveauJoueur" text="Label" textFill="WHITE">
+                                       <font>
+                                          <Font name="Old English Text MT" size="16.0" />
+                                       </font>
+                                       <HBox.margin>
+                                          <Insets left="5.0" />
+                                       </HBox.margin>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+                        <HBox VBox.vgrow="NEVER">
+                           <children>
+                              <ProgressBar fx:id="barreXP" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="67.0" prefWidth="792.0" progress="0.65" styleClass="exp-bar" stylesheets="@progress.css" HBox.hgrow="ALWAYS" />
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </bottom>
+   <right>
+      <VBox prefHeight="419.0" prefWidth="159.0" styleClass="bordure-ridge-doree" stylesheets="@bordures.css" BorderPane.alignment="CENTER">
+         <children>
+            <HBox>
+               <children>
+                  <Label text="Donjon " textFill="WHITE">
+                     <font>
+                        <Font name="Old English Text MT" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="labelDonjon" text="Label" textFill="WHITE">
+                     <font>
+                        <Font name="Old English Text MT" size="16.0" />
+                     </font>
+                  </Label>
+               </children>
+            </HBox>
+            <Label text="Messages :" textFill="WHITE">
+               <VBox.margin>
+                  <Insets top="20.0" />
+               </VBox.margin>
+               <font>
+                  <Font name="Old English Text MT" size="16.0" />
+               </font>
+            </Label>
+            <TextFlow fx:id="textFlowMessages" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="291.0" prefWidth="156.0" style="-fx-background-color: #3B3B3BFF;" VBox.vgrow="ALWAYS">
+               <VBox.margin>
+                  <Insets top="10.0" />
+               </VBox.margin>
+            </TextFlow>
+         </children></VBox>
+   </right>
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="Sauvegarder/Quitter">
+            <items>
+              <MenuItem mnemonicParsing="false" text="💾 Sauvegarder" />
+                  <MenuItem mnemonicParsing="false" text="⬅ Quitter" />
+                  <MenuItem mnemonicParsing="false" text="⏏ Sauvegarder et quitter" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Aide" />
+        </menus>
+      </MenuBar>
+   </top>
+   <center>
+      <HBox BorderPane.alignment="BOTTOM_CENTER">
+         <children>
+            <ImageView fx:id="imageEnnemi" fitHeight="358.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/squelette-0.png" />
+               </image>
+            </ImageView>
+            <VBox alignment="CENTER_LEFT" prefHeight="357.0" prefWidth="233.0">
+               <children>
+                  <Label fx:id="labelNomEnnemi" alignment="TOP_CENTER" text="NomEnnemi" textFill="WHITE">
+                     <font>
+                        <Font name="0xProto Nerd Font Propo" size="16.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="20.0" />
+                     </VBox.margin>
+                  </Label>
+                  <GridPane prefHeight="79.0" prefWidth="641.0">
+                     <columnConstraints>
+                        <ColumnConstraints halignment="RIGHT" hgrow="ALWAYS" minWidth="10.0" prefWidth="10.0" />
+                        <ColumnConstraints hgrow="ALWAYS" minWidth="10.0" prefWidth="150.0" />
+                     </columnConstraints>
+                     <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="33.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+                     </rowConstraints>
+                     <children>
+                        <Label text="Vie : " textFill="WHITE">
+                           <font>
+                              <Font name="Old English Text MT" size="16.0" />
+                           </font>
+                        </Label>
+                        <VBox prefHeight="48.0" prefWidth="100.0" GridPane.columnIndex="1">
+                           <children>
+                              <HBox>
+                                 <children>
+                                    <Label fx:id="labelVieEnnemi" style="-fx-text-fill: red;" text="100/100" textFill="WHITE">
+                                       <font>
+                                          <Font name="0xProto Nerd Font Propo" size="12.0" />
+                                       </font>
+                                    </Label>
+                                    <Label style="-fx-text-fill: red;" text=" PV">
+                                       <font>
+                                          <Font name="0xProto Nerd Font Propo" size="12.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                                 <VBox.margin>
+                                    <Insets top="5.0" />
+                                 </VBox.margin>
+                              </HBox>
+                              <ProgressBar fx:id="barreVieEnnemie" prefHeight="14.0" prefWidth="110.0" progress="1.0" styleClass="hp-bar" stylesheets="@progress.css" />
+                           </children>
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
+                        </VBox>
+                        <Label text="⚔ : " textFill="WHITE" GridPane.rowIndex="1">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="labelAttaqueEnnemie" text="Label" textFill="WHITE" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <font>
+                              <Font name="0xProto Nerd Font Propo" size="16.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </GridPane>
+               </children>
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </VBox>
+         </children>
+      </HBox>
+   </center>
+</BorderPane>
