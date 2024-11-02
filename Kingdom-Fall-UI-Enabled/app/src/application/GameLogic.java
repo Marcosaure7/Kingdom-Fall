@@ -39,6 +39,11 @@ public class GameLogic extends Thread {
         }
     }
 
+    public Jeu getJeuEnCours()
+    {
+        return jeuEnCours;
+    }
+
     public void stopGame() {
         running = false; // Arrête le jeu
         this.interrupt(); // Réveille le thread si en pause
@@ -57,9 +62,18 @@ public class GameLogic extends Thread {
         }
     }
 
+    public void relacherLatch()
+    {
+        latch.countDown();
+    }
+
     public void attaque() {
         executor.submit(() -> jeuEnCours.effectuerAttaque());
-        latch.countDown();
+    }
+
+    public void ramasser() {
+        jeuEnCours.ramasser();
+        relacherLatch();
     }
 }
 
