@@ -1,7 +1,6 @@
 package application;
 
 import controller.FenetreAppController;
-import javafx.application.Platform;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
@@ -12,14 +11,13 @@ public class GameLogic extends Thread {
 
     public Jeu jeuEnCours;
     private ExecutorService executor;
-    private CountDownLatch latch;
+    private CountDownLatch latchFinTour;
 
     public GameLogic(FenetreAppController controller)
     {
         super();
         controller.setThread(this);
         executor = Executors.newSingleThreadExecutor();
-        latch = new CountDownLatch(1);
         jeuEnCours = new Jeu(this, controller);
     }
 
@@ -53,9 +51,10 @@ public class GameLogic extends Thread {
         // Code pour mettre à jour le jeu (mouvement, collision, etc.)
     }
 
-    public void attendreAction() {
+    public void attendreFinTour() {
         try {
-            latch.await();
+            latchFinTour = new CountDownLatch(1);
+            latchFinTour.await();
         }
         catch (InterruptedException e) {
             throw new RuntimeException(e);
@@ -64,7 +63,7 @@ public class GameLogic extends Thread {
 
     public void relacherLatch()
     {
-        latch.countDown();
+        latchFinTour.countDown();
     }
 
     public void attaque() {

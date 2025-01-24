@@ -1,0 +1,9 @@
+.exp-bar {
+    -fx-background-color: rgb(227, 227, 227);
+    -fx-accent: #e0da21; /* couleur partie pleine */
+}
+
+.hp-bar {
+    -fx-background-color: rgb(227, 227, 227);
+    -fx-accent: #e03721;
+}

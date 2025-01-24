@@ -1,22 +1,39 @@
 package controller;
 
 import application.GameLogic;
-import application.Jeu;
+import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import javafx.scene.image.ImageView;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import objets.Objet;
+import objets.Potion;
+import objets.Type_Objet;
 import personnages.Ennemi;
+import personnages.Entite;
 import personnages.Joueur;
+
+import java.io.IOException;
+import java.util.ArrayList;
+
+import static javafx.application.Application.STYLESHEET_CASPIAN;
 
 public class FenetreAppController {
 
     private GameLogic gameLogic;
+    private InventaireController inventaireController;
+    private OptionsController optionsController;
 
     @FXML
     private ProgressBar barreVie;
@@ -76,11 +93,17 @@ public class FenetreAppController {
     private Label labelXPJoueur;
 
     @FXML
+    private MenuItem menuOptions;
+
+    @FXML
     private TextFlow textFlowMessages;
 
     @FXML
     private ImageView imageDrop;
     private final ContextMenu menuInfosDrop = new ContextMenu();
+
+    @FXML
+    private BorderPane root;
 
     @FXML
     private ImageView imageEnnemi;
@@ -112,9 +135,25 @@ public class FenetreAppController {
         boutonRamasser.setVisible(false);
         boutonJeter.setVisible(false);
 
+        initializeFenetreInventaire();
+        initializeFenetreOptions();
 
+        root.setOnKeyPressed(event -> {
+            switch (event.getCode())
+            {
+                case A -> gameLogic.attaque();
+                case I -> inventaireController.ouvrirInventaire(root.getScene().getWindow().getX(), root.getScene().getWindow().getY(), gameLogic.getJeuEnCours().getJoueur());
+                case H -> soinRapide();
+                case ESCAPE -> ouvrirOptions();
+            }
+        });
+
+        menuOptions.setOnAction(event -> {
+            ouvrirOptions();
+        });
 
         boutonAttaquer.setOnAction(event -> gameLogic.attaque());
+        boutonSoinRapide.setOnAction(event -> soinRapide());
         boutonRamasser.setOnAction(event -> {
             gameLogic.ramasser();
             Platform.runLater(() -> {
@@ -125,24 +164,114 @@ public class FenetreAppController {
                 boutonJeter.setVisible(false);
             });
         });
-        boutonJeter.setOnAction(event ->
+
+        boutonJeter.setOnAction(event -> {
             Platform.runLater(() -> {
+                labelEnnemiLache.setText("");
                 imageDrop.setImage(null);
+                labelItemDrop.setText("");
                 boutonRamasser.setVisible(false);
                 boutonJeter.setVisible(false);
-                gameLogic.relacherLatch();
-            }));
-
-        imageDrop.setOnMouseEntered(event -> {
-            if (imageDrop.getImage() != null)
-                menuInfosDrop.show(imageDrop, event.getScreenX(), event.getScreenY());
+            });
+            gameLogic.relacherLatch();
         });
-        imageDrop.setOnMouseExited(event -> menuInfosDrop.hide());
 
+        boutonInventaire.setOnAction(event ->
+                inventaireController.ouvrirInventaire(((Button) event.getSource()).getScene().getWindow().getX(),
+                                                        ((Button) event.getSource()).getScene().getWindow().getY(),
+                                                        gameLogic.getJeuEnCours().getJoueur())
+        );
+
+        imageDrop.setOnMouseMoved(event -> {
+            if (imageDrop.getImage() != null)
+                menuInfosDrop.show(imageDrop, event.getScreenX() + 10, event.getScreenY() - 120);
+        });
+
+        imageDrop.setOnMouseExited(event -> {
+            menuInfosDrop.hide(); // Ferme le popup
+        });
+
+        menuInfosDrop.setConsumeAutoHidingEvents(true);
 
         Text messageBienvenue = new Text("Bienvenue à Kingdom Fall!\n\n");
         messageBienvenue.setFill(Color.WHITE);
         textFlowMessages.getChildren().add(messageBienvenue);
+    }
+
+    private void ouvrirOptions()
+    {
+        optionsController.getStageOptions().show();
+        optionsController.getStageOptions().toFront();
+    }
+
+    private void soinRapide() {
+
+        Joueur joueurCourant = gameLogic.getJeuEnCours().getJoueur();
+        ArrayList<Objet> potions = joueurCourant.getInventaire().getListType(Type_Objet.POTIONS);
+
+        if (!potions.isEmpty())
+            joueurCourant.getInventaire().utiliser(potions.getFirst(), 0);
+        else
+            envoyerMessage("Vous n'avez pas de potions dans votre inventaire.");
+    }
+
+    private void initializeFenetreInventaire() {
+        Stage stageInventaire = new Stage();
+
+        FXMLLoader loaderInventaire = new FXMLLoader(getClass().getResource("/fenetreInventaire.fxml"));
+        Parent root;
+        try {
+            // Charger le layout depuis le fichier FXML
+            root = loaderInventaire.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        Scene scene = new Scene(root);
+
+        Application.setUserAgentStylesheet(STYLESHEET_CASPIAN);
+
+        stageInventaire.setTitle("Kingdom Fall - Inventaire");
+        stageInventaire.setScene(scene);
+        stageInventaire.initModality(Modality.APPLICATION_MODAL);
+
+        stageInventaire.setWidth(960);
+        stageInventaire.setHeight(540);
+
+        scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
+
+        inventaireController = loaderInventaire.getController();
+        inventaireController.setStageInventaire(stageInventaire);
+    }
+
+    private void initializeFenetreOptions()
+    {
+        Stage stageOptions = new Stage();
+
+        FXMLLoader loaderOptions = new FXMLLoader(getClass().getResource("/fenetreOptions.fxml"));
+        Parent root;
+        try {
+            // Charger le layout depuis le fichier FXML
+            root = loaderOptions.load();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        Scene scene = new Scene(root);
+
+        Application.setUserAgentStylesheet(STYLESHEET_CASPIAN);
+
+        stageOptions.setTitle("Kingdom Fall - Options");
+        stageOptions.setScene(scene);
+        stageOptions.initModality(Modality.APPLICATION_MODAL);
+
+        stageOptions.setWidth(960);
+        stageOptions.setHeight(540);
+
+        scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
+
+        optionsController = loaderOptions.getController();
+        optionsController.setStageOptions(stageOptions);
     }
 
     public void setThread (GameLogic thread) {
@@ -160,7 +289,6 @@ public class FenetreAppController {
 
     public void afficherEnnemi(Ennemi ennemiAffiche) {
         Platform.runLater(() -> {
-            // TODO Faire afficher l'image spécifique de l'ennemi
             imageEnnemi.setImage(new Image("/images/" + ennemiAffiche.getNom().toLowerCase() + ".png"));
 
             labelNomEnnemi.setText(ennemiAffiche.getNom());
@@ -169,6 +297,26 @@ public class FenetreAppController {
         });
 
         changerProgresBarreAnime(barreVieEnnemie, (double) ennemiAffiche.getVieRestante() / ennemiAffiche.getPtsVie());
+    }
+
+    public void afficherAttaquer(Entite entiteAttaquee) {
+        String stringVieRestante = entiteAttaquee.getVieRestante() + "/" + entiteAttaquee.getPtsVie();
+        double ratioVieRestante = (double) entiteAttaquee.getVieRestante() / entiteAttaquee.getPtsVie();
+
+        switch (entiteAttaquee)
+        {
+            case Ennemi e ->
+            {
+                Platform.runLater(() -> labelVieEnnemi.setText(stringVieRestante));
+                changerProgresBarreAnime(barreVieEnnemie, ratioVieRestante);
+            }
+            case Joueur j ->
+            {
+                Platform.runLater(() -> labelVie.setText(stringVieRestante));
+                changerProgresBarreAnime(barreVie, ratioVieRestante);
+            }
+            default -> throw new IllegalStateException("Unexpected value: " + entiteAttaquee); // Pas sensé aller là
+        }
     }
 
     public void changerProgresBarreAnime(ProgressBar barre, double nouvelleValeur) {
@@ -219,10 +367,12 @@ public class FenetreAppController {
         }
 
         changerProgresBarreAnime(barreXP, (double) joueur.getXP().getValeur() / joueur.getXpCap());
+        if (nbNiveauxGagnes > 0) changerProgresBarreAnime(barreVie, 1.0);
+
         Platform.runLater(() -> {
             labelGainXP.setText("");
-            labelXPJoueur.setText(((double) joueur.getXP().getValeur() / joueur.getXpCap()) + "%");
-            labelVie.setText(joueur.getPtsVie() + "/" + joueur.getPtsVie());
+            labelXPJoueur.setText(String.format("%.1f%%", (double) joueur.getXP().getValeur() / joueur.getXpCap() * 100));
+            labelVie.setText(joueur.getVieRestante() + "/" + joueur.getPtsVie());
         });
 
     }
@@ -231,7 +381,10 @@ public class FenetreAppController {
         Platform.runLater(() -> {
             boutonAttaquer.setDisable(true);
 
-            imageDrop.setImage(new Image("/images/" + objetChoisi.getNom().toLowerCase() + ".png"));
+            String url = "/images/" + objetChoisi.getNom().toLowerCase() + ".png";
+
+            System.out.println(url);
+            imageDrop.setImage(new Image(url));
             if (!menuInfosDrop.getItems().isEmpty()) menuInfosDrop.getItems().removeFirst();
             menuInfosDrop.getItems().add(new MenuItem(objetChoisi.getDescription()));
 
@@ -240,5 +393,25 @@ public class FenetreAppController {
             boutonRamasser.setVisible(true);
             boutonJeter.setVisible(true);
         });
+    }
+
+
+    public void afficherDonjon(int donjon) {
+        Platform.runLater(() -> labelDonjon.setText(donjon + ""));
+    }
+
+    public void afficherSoin(Entite entite) {
+        if (entite instanceof Joueur joueur)
+        {
+            Platform.runLater(() -> labelVie.setText(joueur.getVieRestante() + "/" + joueur.getPtsVie()));
+            changerProgresBarreAnime(barreVie, (double) joueur.getVieRestante() / joueur.getPtsVie());
+            boutonSoinRapide.setDisable(joueur.getVieRestante() == joueur.getPtsVie() && joueur.getInventaire().getListType(Type_Objet.POTIONS).isEmpty());
+        }
+
+        else
+        {
+            Platform.runLater(() -> labelVieEnnemi.setText(entite.getVieRestante() + "/" + entite.getPtsVie()));
+            changerProgresBarreAnime(barreVieEnnemie, (double) entite.getVieRestante() / entite.getPtsVie());
+        }
     }
 }

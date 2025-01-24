@@ -1,0 +1,15 @@
+.bordure-ridge-doree {
+    -fx-border-style: solid;
+    -fx-border-width: 2px;
+    -fx-border-color: #aba644;
+}
+
+.test {
+    -fx-border-color: #3b3b3b;
+}
+
+.root {
+    -fx-background-image: url("images/black-brick-wall.jpg"); /* Remplace par le chemin de ton image */
+    -fx-background-size: cover; /* Pour couvrir tout l'espace */
+    -fx-background-position: center;
+}

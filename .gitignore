@@ -3,3 +3,8 @@ Kingdom-Fall/.gradle
 
 # Ignore Gradle build output directory
 Kingdom-Fall/build
+Kingdom-Fall/app/build
+
+Kingdom-Fall-UI-Enabled/build
+Kingdom-Fall-UI-Enabled/.gradle
+
