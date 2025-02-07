@@ -1,8 +1,10 @@
 package objets;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public abstract class Objet extends Drops {
+public abstract class Objet extends Drops implements Serializable
+{
 
     protected Type_Objet type;
     protected String nom;

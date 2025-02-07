@@ -1,8 +1,10 @@
 package objets;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Arme extends Objet {
+public class Arme extends Objet implements Serializable
+{
 
     private int degats;
     private EffetStatut effet;

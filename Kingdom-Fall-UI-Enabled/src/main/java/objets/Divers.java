@@ -1,6 +1,9 @@
 package objets;
 
-public abstract class Divers extends Objet {
+import java.io.Serializable;
+
+public abstract class Divers extends Objet implements Serializable
+{
 
     private final String description;
 

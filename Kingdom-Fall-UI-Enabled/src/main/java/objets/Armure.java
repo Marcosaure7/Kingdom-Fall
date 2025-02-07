@@ -1,6 +1,9 @@
 package objets;
 
-public class Armure extends Objet {
+import java.io.Serializable;
+
+public class Armure extends Objet implements Serializable
+{
 
     private String description;
     private final int ptsArmure;

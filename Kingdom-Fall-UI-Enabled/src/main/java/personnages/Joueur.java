@@ -7,12 +7,12 @@ import exceptions.InventairePleinException;
 import objets.*;
 
 
+import java.io.Serializable;
 import java.util.*;
 
-public class Joueur extends Entite {
-
+public class Joueur extends Entite implements Serializable
+{
     private static final double XP_CAP_INC = 1.5;
-
 
     // La Map contient comme cle un type d'objet et comme valeur la liste des objets de ce type dans l'inventaire.
     private final Inventaire inventaire;
@@ -23,7 +23,8 @@ public class Joueur extends Entite {
     private int att;
     private Jeu jeu;
 
-    public Joueur(Jeu jeu, int ptsVie, int niveau, int attBase) {
+    public Joueur(Jeu jeu, int ptsVie, int niveau, int attBase)
+    {
         super("Joueur", ptsVie, niveau, attBase);
         this.jeu = jeu;
         inventaire = new Inventaire();
@@ -85,7 +86,8 @@ public class Joueur extends Entite {
         return type == Type_Objet.ARMES ? armeEquipee : armureEquipee;
     }
 
-    public class Inventaire {
+    public class Inventaire implements Serializable
+    {
         protected Map<Type_Objet, ArrayList<Objet>> inv = new HashMap<>();
 
         public Inventaire() {

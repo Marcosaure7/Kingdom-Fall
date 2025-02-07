@@ -4,7 +4,10 @@ import application.App;
 import controller.FenetreAppController;
 import objets.EffetStatut;
 
-public abstract class Entite {
+import java.io.Serializable;
+
+public abstract class Entite implements Serializable
+{
 
     public final int efficaciteArmure = 100; // 100 et 200 sont des valeurs courantes utilisées
 
@@ -17,6 +20,15 @@ public abstract class Entite {
     int dureeEffetStatut;
     int degatsEffetStatut;
     int ptsArmure;
+
+    public Entite()
+    {
+        this.nom = "";
+        this.ptsVie = 0;
+        this.vieRestante = 0;
+        this.niveau = 0;
+        this.attBase = 0;
+    }
 
     public Entite(String nom, int ptsVie, int niveau, int attBase) {
         this.nom = nom;
@@ -56,6 +68,10 @@ public abstract class Entite {
 
     public int getAttBase() {
         return attBase;
+    }
+
+    public String getNom() {
+        return nom;
     }
 
     public String seFaitAttaquer(int attaqueRecue, EffetStatut effetStatutApplique) {

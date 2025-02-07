@@ -1,6 +1,8 @@
 package objets;
 
-public abstract class Drops {
+import java.io.Serializable;
+
+public abstract class Drops implements Serializable {
 
     @Override
     public abstract String toString();

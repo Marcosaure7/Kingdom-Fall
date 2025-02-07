@@ -3,7 +3,10 @@ package objets;
 import application.Donjon;
 import personnages.Boss;
 
-public class ObjetInvoqueBoss extends Divers {
+import java.io.Serializable;
+
+public class ObjetInvoqueBoss extends Divers implements Serializable
+{
 
     private final Boss bossInvoque;
     private final Donjon donjon;

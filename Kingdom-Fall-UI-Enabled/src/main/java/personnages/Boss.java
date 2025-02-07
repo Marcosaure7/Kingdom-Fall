@@ -3,7 +3,8 @@ package personnages;
 import objets.Objet;
 import java.util.ArrayList;
 
-public class Boss extends Ennemi {
+public class Boss extends Ennemi
+{
 
     private final int ptsArmure;
     private final int donjonDebloque;

@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
@@ -12,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="507.0" prefWidth="683.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.InventaireController">
+<BorderPane prefHeight="507.0" prefWidth="683.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.InventaireController">
    <left>
       <VBox prefHeight="507.0" prefWidth="180.0" style="-fx-border-color: black;" BorderPane.alignment="CENTER">
          <children>
@@ -137,10 +138,10 @@
       </VBox>
    </right>
    <center>
-      <FlowPane fx:id="paneObjets" prefHeight="407.0" prefWidth="307.0" BorderPane.alignment="CENTER">
-         <BorderPane.margin>
-            <Insets bottom="50.0" left="20.0" right="50.0" />
-         </BorderPane.margin>
-      </FlowPane>
+      <ScrollPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <content>
+            <FlowPane fx:id="paneObjets" prefHeight="407.0" prefWidth="307.0" />
+         </content>
+      </ScrollPane>
    </center>
 </BorderPane>

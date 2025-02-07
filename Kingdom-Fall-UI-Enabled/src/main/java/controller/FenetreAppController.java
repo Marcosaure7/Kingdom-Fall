@@ -1,6 +1,7 @@
 package controller;
 
 import application.GameLogic;
+import application.Sauvegarde;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -9,7 +10,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
@@ -18,7 +18,6 @@ import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import objets.Objet;
-import objets.Potion;
 import objets.Type_Objet;
 import personnages.Ennemi;
 import personnages.Entite;
@@ -32,8 +31,10 @@ import static javafx.application.Application.STYLESHEET_CASPIAN;
 public class FenetreAppController {
 
     private GameLogic gameLogic;
+    public  Stage stageApp;
     private InventaireController inventaireController;
     private OptionsController optionsController;
+    private static FenetreAppController singleton;
 
     @FXML
     private ProgressBar barreVie;
@@ -103,6 +104,12 @@ public class FenetreAppController {
     private final ContextMenu menuInfosDrop = new ContextMenu();
 
     @FXML
+    private MenuItem menuCharger;
+
+    @FXML
+    private MenuItem menuSauvegarder;
+
+    @FXML
     private BorderPane root;
 
     @FXML
@@ -111,6 +118,8 @@ public class FenetreAppController {
 
     @FXML
     public void initialize() {
+        singleton = this;
+
         imageEnnemi.setImage(null);
         imageDrop.setImage(null);
 
@@ -182,6 +191,29 @@ public class FenetreAppController {
                                                         gameLogic.getJeuEnCours().getJoueur())
         );
 
+        menuSauvegarder.setOnAction(event -> Sauvegarde.sauvegarderJeu(gameLogic.jeuEnCours, OptionsController.PLAYER_NAME));
+
+        menuCharger.setOnAction(event ->
+        {
+            gameLogic.jeuEnCours = Sauvegarde.chargerJeu();
+            labelNomJoueur.setText(OptionsController.PLAYER_NAME);
+            gameLogic.jeuEnCours.loadNouveauDonjon(gameLogic.jeuEnCours.numDonjon);
+            labelDonjon.setText(gameLogic.jeuEnCours.numDonjon + "");
+            labelNomEnnemi.setText(gameLogic.jeuEnCours.ennemiCourant.getNom());
+            labelAttaqueEnnemie.setText(gameLogic.jeuEnCours.ennemiCourant.getAttBase() + "");
+            imageEnnemi.setImage(new Image(String.format("images/%s.png", gameLogic.jeuEnCours.ennemiCourant.getNom().toLowerCase())));
+            boutonInventaire.setDisable(false);
+            if (!gameLogic.jeuEnCours.getJoueur().getInventaire().getListType(Type_Objet.POTIONS).isEmpty())
+                boutonSoinRapide.setDisable(false);
+
+            barreVie.setProgress(0);
+            barreVieEnnemie.setProgress(0);
+            barreXP.setProgress(0);
+            afficherAttaquer(gameLogic.jeuEnCours.getJoueur());
+            afficherAttaquer(gameLogic.jeuEnCours.ennemiCourant);
+            changerProgresBarreAnime(barreXP, gameLogic.jeuEnCours.getJoueur().getXP().getValeur());
+        });
+
         imageDrop.setOnMouseMoved(event -> {
             if (imageDrop.getImage() != null)
                 menuInfosDrop.show(imageDrop, event.getScreenX() + 10, event.getScreenY() - 120);
@@ -196,6 +228,11 @@ public class FenetreAppController {
         Text messageBienvenue = new Text("Bienvenue à Kingdom Fall!\n\n");
         messageBienvenue.setFill(Color.WHITE);
         textFlowMessages.getChildren().add(messageBienvenue);
+    }
+
+    public static FenetreAppController getSingleton()
+    {
+        return singleton;
     }
 
     private void ouvrirOptions()
@@ -238,8 +275,7 @@ public class FenetreAppController {
         stageInventaire.setScene(scene);
         stageInventaire.initModality(Modality.APPLICATION_MODAL);
 
-//        stageInventaire.setWidth(960);
-//        stageInventaire.setHeight(540);
+        stageInventaire.setResizable(false);
 
         scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
 
@@ -268,8 +304,11 @@ public class FenetreAppController {
         stageOptions.setScene(scene);
         stageOptions.initModality(Modality.APPLICATION_MODAL);
 
-        stageOptions.setWidth(960);
-        stageOptions.setHeight(540);
+        stageOptions.sizeToScene();
+        Platform.runLater(() -> stageOptions.setMinHeight(scene.getHeight()));
+        Platform.runLater(() -> stageOptions.setMinWidth(scene.getWidth()));
+
+        stageOptions.setResizable(false);
 
         scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
 

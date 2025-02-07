@@ -6,19 +6,20 @@ import personnages.Ennemi;
 import personnages.Entite;
 import personnages.Joueur;
 
+import java.io.Serializable;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.*;
 import controller.FenetreAppController;
 
-public class Jeu {
+public class Jeu implements Serializable
+{
+    public static FenetreAppController controller;
+    public transient GameLogic gameLogic;
 
-    public final FenetreAppController controller;
-    public GameLogic gameLogic;
-
-    private DatabaseManager dbm;
+    private static DatabaseManager dbm;
     private Joueur joueur;
-    protected int numDonjon = 0;
+    public int numDonjon = 0;
     private final ArrayList<Donjon> donjonsDebloques = new ArrayList<>(5);
 
     public Ennemi ennemiCourant;
@@ -27,7 +28,7 @@ public class Jeu {
 
     Map<String, Drops> dropsCourants;
 
-    final Scanner sc;
+    final transient Scanner sc;
 
     public Jeu(GameLogic gameLogic, FenetreAppController controller) {
         this.controller = controller;
@@ -183,7 +184,7 @@ public class Jeu {
         return drops;
     }
 
-    private void loadNouveauDonjon(int donjon) {
+    public void loadNouveauDonjon(int donjon) {
 
         Donjon nouveauDonjon = new Donjon(donjon, this);
 

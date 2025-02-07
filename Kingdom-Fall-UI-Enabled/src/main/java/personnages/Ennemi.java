@@ -3,9 +3,11 @@ package personnages;
 import objets.Exp;
 import objets.Objet;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Ennemi extends Entite {
+public class Ennemi extends Entite implements Serializable
+{
 
     private double poidsSpawn;
     private final Exp xpDrop;
@@ -14,6 +16,13 @@ public class Ennemi extends Entite {
 
     public static final Ennemi LAMBDA = new Ennemi("lambda", 0, 0, 0, 0, 0, new ArrayList<>());
 
+    public Ennemi()
+    {
+        super("lambda", 0, 0, 0);
+        this.poidsSpawn = 0;
+        this.drops = new ArrayList<>();
+        this.xpDrop = new Exp(0);
+    }
 
     public Ennemi(String nom, int ptsVie, int niveau, int att, double poidsSpawn, int xpDrop, ArrayList<Objet> drops) {
         super(nom, ptsVie, niveau, att);

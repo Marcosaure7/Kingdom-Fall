@@ -6,9 +6,11 @@ import personnages.Ennemi;
 import personnages.Joueur;
 import user.Action;
 
+import java.io.Serializable;
 import java.util.*;
 
-public class Donjon {
+public class Donjon implements Serializable
+{
     private final int niveau;
     private final Jeu jeu;
     private Boss boss_donjon;

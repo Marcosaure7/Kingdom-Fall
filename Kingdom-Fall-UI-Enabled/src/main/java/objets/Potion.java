@@ -1,6 +1,9 @@
 package objets;
 
-public class Potion extends Objet {
+import java.io.Serializable;
+
+public class Potion extends Objet implements Serializable
+{
     private final int soin;
     private final String description;
 

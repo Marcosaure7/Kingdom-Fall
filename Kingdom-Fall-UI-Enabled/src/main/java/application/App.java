@@ -20,8 +20,8 @@ public class App extends Application {
     }
 
     @Override
-    public void start(Stage primaryStage) throws Exception {
-
+    public void start(Stage primaryStage) throws Exception
+    {
         FXMLLoader loaderApp = new FXMLLoader(getClass().getResource("/fenetreApp.fxml"));
         Parent root = loaderApp.load(); // Charger le layout depuis le fichier FXML
 
@@ -35,6 +35,7 @@ public class App extends Application {
         // Charger le fichier CSS pour la scène
         scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
 
+        ((FenetreAppController) loaderApp.getController()).stageApp = primaryStage;
         primaryStage.setOnCloseRequest(event -> System.exit(0));
         primaryStage.show();
 

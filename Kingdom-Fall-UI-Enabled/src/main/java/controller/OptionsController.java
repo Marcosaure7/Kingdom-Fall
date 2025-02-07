@@ -11,7 +11,7 @@ public class OptionsController {
     public static String PLAYER_NAME = "Joueur";
 
     private Stage stageOptions;
-    private FenetreAppController fenetreAppController;
+    private static FenetreAppController fenetreAppController;
 
     @FXML
     private CheckBox OPT_CONFIRMER_JETER;
@@ -24,11 +24,13 @@ public class OptionsController {
     public void initialize() {
         OPT_CONFIRMER_JETER.setSelected(CONFIRMER_JETER);
         OPT_CONFIRMER_JETER.selectedProperty().addListener((observable, oldValue, newValue) -> CONFIRMER_JETER = newValue);
-        PLAYER_NAME_TextField.setOnAction(event ->
-        {
-            PLAYER_NAME = PLAYER_NAME_TextField.getText();
-            fenetreAppController.updateUsername(PLAYER_NAME);
-        });
+        PLAYER_NAME_TextField.setOnAction(event -> renommerJoueur(PLAYER_NAME_TextField.getText()));
+
+    }
+
+    public static void renommerJoueur(String nom) {
+        PLAYER_NAME = nom;
+        fenetreAppController.updateUsername(PLAYER_NAME);
     }
 
     public void setStageOptions(Stage stageOptions)
