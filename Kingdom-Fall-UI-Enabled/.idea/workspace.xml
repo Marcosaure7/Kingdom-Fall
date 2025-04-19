@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="090de7e3-5d53-47b4-b1d4-beddaa658b83" name="Changes" comment="Save fonctionnality added">
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/application/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/App.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/FenetreAppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/FenetreAppController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fenetreApp.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fenetreApp.fxml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="Kingdom-Fall-UI-Enabled" type="f1a62948:ProjectNode" />
+              </path>
+            </expand>
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Exception" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="2sB585k1Iokj6aeoPWW0LwysEM7" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Kingdom-Fall.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Build Kingdom-Fall-UI-Enabled.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Kingdom-Fall-UI-Enabled:app [:app:application.App.main()].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/marc-antoine-gourdeau/dev/my-website/Marcosaure7.github.io/ng-website&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
+    ]
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/sauvegardes" />
+      <recent name="$PROJECT_DIR$" />
+      <recent name="$PROJECT_DIR$/app/src/main/domain" />
+      <recent name="$PROJECT_DIR$/app/src/main" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Kingdom-Fall" type="Application" factoryName="Application" activateToolWindowBeforeRun="false" temporary="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="21" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="application.App" />
+      <module name="Kingdom-Fall" />
+      <option name="VM_PARAMETERS" value="--module-path /lib/javafx/javafx-sdk-21.0.6/lib --add-modules javafx.controls,javafx.fxml -Dprism.forceGPU=true -Dprism.allowhidpi=false" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="application.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Kingdom-Fall" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-a94e463ab2e7-intellij.indexing.shared.core-IU-243.25659.59" />
+        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-IU-243.25659.59" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="090de7e3-5d53-47b4-b1d4-beddaa658b83" name="Changes" comment="" />
+      <created>1737915997013</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1737915997013</updated>
+      <workItem from="1737915998339" duration="3071000" />
+      <workItem from="1737922883615" duration="2844000" />
+      <workItem from="1737925822048" duration="4025000" />
+      <workItem from="1737929864429" duration="1920000" />
+      <workItem from="1737931800723" duration="1856000" />
+      <workItem from="1737941070343" duration="4000" />
+      <workItem from="1738116962115" duration="563000" />
+      <workItem from="1738117533622" duration="117000" />
+      <workItem from="1738117661579" duration="16000" />
+      <workItem from="1738117690204" duration="88000" />
+      <workItem from="1738117839276" duration="125000" />
+      <workItem from="1738117970631" duration="953000" />
+      <workItem from="1738123192105" duration="1012000" />
+      <workItem from="1738203009168" duration="101000" />
+      <workItem from="1738203125685" duration="7016000" />
+      <workItem from="1738284610528" duration="11133000" />
+      <workItem from="1738466938834" duration="3000" />
+      <workItem from="1738883463397" duration="4010000" />
+      <workItem from="1739070046493" duration="372000" />
+      <workItem from="1739675401565" duration="42000" />
+      <workItem from="1741560352266" duration="160000" />
+      <workItem from="1742684657056" duration="134000" />
+    </task>
+    <task id="LOCAL-00001" summary="Maven, changement de nom possible, soin rapide désactivée si pu de potion">
+      <option name="closed" value="true" />
+      <created>1738210826205</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1738210826205</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Save fonctionnality added">
+      <option name="closed" value="true" />
+      <created>1738886497675</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1738886497675</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Maven, changement de nom possible, soin rapide désactivée si pu de potion" />
+    <MESSAGE value="Save fonctionnality added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Save fonctionnality added" />
+  </component>
+</project>

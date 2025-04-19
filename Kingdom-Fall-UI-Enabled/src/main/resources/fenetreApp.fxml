@@ -226,7 +226,7 @@
           <Menu mnemonicParsing="false" text="Sauvegarder/Quitter">
             <items>
               <MenuItem fx:id="menuSauvegarder" mnemonicParsing="false" text="💾 Sauvegarder" />
-                  <MenuItem mnemonicParsing="false" text="⬅ Quitter" />
+                  <MenuItem fx:id="menuQuitter" mnemonicParsing="false" text="⬅ Quitter" />
                   <MenuItem fx:id="menuCharger" mnemonicParsing="false" text="Charger personnage" />
             </items>
           </Menu>
@@ -330,7 +330,7 @@
                   </HBox>
                   <ImageView fx:id="imageDrop" fitHeight="150.0" fitWidth="180.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@images/gourdin%20(0).png" />
+                        <Image url="@images/gourdin (0).png" />
                      </image>
                   </ImageView>
                   <Label fx:id="labelItemDrop" lineSpacing="3.0" text="Gourdin" textFill="WHITE" wrapText="true">

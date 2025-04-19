@@ -36,13 +36,14 @@ public class App extends Application {
         scene.getStylesheets().add(getClass().getResource("/styles.css").toExternalForm());
 
         ((FenetreAppController) loaderApp.getController()).stageApp = primaryStage;
-        primaryStage.setOnCloseRequest(event -> System.exit(0));
+        primaryStage.setOnCloseRequest(event -> ((FenetreAppController) loaderApp.getController()).onQuitRequest());
         primaryStage.show();
 
         gameLogic = new GameLogic(loaderApp.getController());
 
 
         gameLogic.start();
+	
     }
 }
 

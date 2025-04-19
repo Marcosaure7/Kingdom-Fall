@@ -25,6 +25,7 @@ import personnages.Joueur;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Optional;
 
 import static javafx.application.Application.STYLESHEET_CASPIAN;
 
@@ -107,6 +108,9 @@ public class FenetreAppController {
     private MenuItem menuCharger;
 
     @FXML
+    private MenuItem menuQuitter;
+
+    @FXML
     private MenuItem menuSauvegarder;
 
     @FXML
@@ -160,6 +164,8 @@ public class FenetreAppController {
         menuOptions.setOnAction(event -> {
             ouvrirOptions();
         });
+
+        menuQuitter.setOnAction(event -> onQuitRequest());
 
         boutonAttaquer.setOnAction(event -> gameLogic.attaque());
         boutonSoinRapide.setOnAction(event -> soinRapide());
@@ -228,6 +234,20 @@ public class FenetreAppController {
         Text messageBienvenue = new Text("Bienvenue à Kingdom Fall!\n\n");
         messageBienvenue.setFill(Color.WHITE);
         textFlowMessages.getChildren().add(messageBienvenue);
+    }
+
+    public void onQuitRequest() {
+        Dialog<ButtonType> dialog = new Dialog<>();
+        dialog.initModality(Modality.APPLICATION_MODAL);
+        dialog.setTitle("Quitter");
+        dialog.getDialogPane().getButtonTypes().addAll(ButtonType.OK, ButtonType.CANCEL);
+        dialog.setHeaderText("Quitter Kingdom-Fall ?");
+        dialog.setContentText("Êtes-vous sûr de vouloir quitter Kingdom-Fall ? \n\n (Tout changement non sauvegardé sera définitivement perdu)");
+
+        Optional<ButtonType> result = dialog.showAndWait();
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            System.exit(0);
+        }
     }
 
     public static FenetreAppController getSingleton()
