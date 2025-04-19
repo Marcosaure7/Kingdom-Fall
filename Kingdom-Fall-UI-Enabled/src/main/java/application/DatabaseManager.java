@@ -2,17 +2,21 @@ package application;
 
 import java.sql.*;
 import com.mysql.cj.jdbc.MysqlDataSource;
+import io.github.cdimascio.dotenv.Dotenv;
 
 public class DatabaseManager {
     private MysqlDataSource dataSource;
     private Connection conn;
 
     public DatabaseManager() {
+
+        Dotenv dotenv = Dotenv.configure().load();
+
         try {
             dataSource = new MysqlDataSource();
-            dataSource.setURL("jdbc:mysql://localhost:3306/rpg_game");
-            dataSource.setUser("root");
-            dataSource.setPassword("degeneration10");
+            dataSource.setURL(String.format("jdbc:mysql://%s:%s/%s", dotenv.get("DB_HOST"), dotenv.get("DB_PORT"), dotenv.get("DB_NAME")));
+            dataSource.setUser(dotenv.get("DB_USER"));
+            dataSource.setPassword(dotenv.get("DB_PASSWORD"));
             conn = dataSource.getConnection();
         }
 

@@ -5,159 +5,42 @@
       <DefaultCasing>exact</DefaultCasing>
       <DefaultEngine>InnoDB</DefaultEngine>
       <DefaultTmpEngine>InnoDB</DefaultTmpEngine>
-      <Grants>|root||debian-sys-maint|localhost|ALTER|G
-|root||root|localhost|ALTER|G
-|root||debian-sys-maint|localhost|ALTER ROUTINE|G
-|root||root|localhost|ALTER ROUTINE|G
-|root||debian-sys-maint|localhost|APPLICATION_PASSWORD_ADMIN|G
-|root||root|localhost|APPLICATION_PASSWORD_ADMIN|G
-|root||mysql.infoschema|localhost|AUDIT_ABORT_EXEMPT|G
-|root||mysql.session|localhost|AUDIT_ABORT_EXEMPT|G
-|root||mysql.sys|localhost|AUDIT_ABORT_EXEMPT|G
-|root||root|localhost|AUDIT_ABORT_EXEMPT|G
-|root||debian-sys-maint|localhost|AUDIT_ADMIN|G
-|root||root|localhost|AUDIT_ADMIN|G
-|root||debian-sys-maint|localhost|AUTHENTICATION_POLICY_ADMIN|G
-|root||mysql.session|localhost|AUTHENTICATION_POLICY_ADMIN|G
-|root||root|localhost|AUTHENTICATION_POLICY_ADMIN|G
-|root||debian-sys-maint|localhost|BACKUP_ADMIN|G
-|root||mysql.session|localhost|BACKUP_ADMIN|G
-|root||root|localhost|BACKUP_ADMIN|G
-|root||debian-sys-maint|localhost|BINLOG_ADMIN|G
-|root||root|localhost|BINLOG_ADMIN|G
-|root||debian-sys-maint|localhost|BINLOG_ENCRYPTION_ADMIN|G
-|root||root|localhost|BINLOG_ENCRYPTION_ADMIN|G
-|root||debian-sys-maint|localhost|CLONE_ADMIN|G
-|root||mysql.session|localhost|CLONE_ADMIN|G
-|root||root|localhost|CLONE_ADMIN|G
-|root||debian-sys-maint|localhost|CONNECTION_ADMIN|G
-|root||mysql.session|localhost|CONNECTION_ADMIN|G
-|root||root|localhost|CONNECTION_ADMIN|G
-|root||debian-sys-maint|localhost|CREATE|G
-|root||root|localhost|CREATE|G
-|root||debian-sys-maint|localhost|CREATE ROLE|G
-|root||root|localhost|CREATE ROLE|G
-|root||debian-sys-maint|localhost|CREATE ROUTINE|G
-|root||root|localhost|CREATE ROUTINE|G
-|root||debian-sys-maint|localhost|CREATE TABLESPACE|G
-|root||root|localhost|CREATE TABLESPACE|G
-|root||debian-sys-maint|localhost|CREATE TEMPORARY TABLES|G
-|root||root|localhost|CREATE TEMPORARY TABLES|G
-|root||debian-sys-maint|localhost|CREATE USER|G
-|root||root|localhost|CREATE USER|G
-|root||debian-sys-maint|localhost|CREATE VIEW|G
-|root||root|localhost|CREATE VIEW|G
-|root||debian-sys-maint|localhost|DELETE|G
-|root||root|localhost|DELETE|G
-|root||debian-sys-maint|localhost|DROP|G
-|root||root|localhost|DROP|G
-|root||debian-sys-maint|localhost|DROP ROLE|G
-|root||root|localhost|DROP ROLE|G
-|root||debian-sys-maint|localhost|ENCRYPTION_KEY_ADMIN|G
-|root||root|localhost|ENCRYPTION_KEY_ADMIN|G
-|root||debian-sys-maint|localhost|EVENT|G
-|root||root|localhost|EVENT|G
-|root||debian-sys-maint|localhost|EXECUTE|G
-|root||root|localhost|EXECUTE|G
-|root||debian-sys-maint|localhost|FILE|G
-|root||root|localhost|FILE|G
-|root||mysql.infoschema|localhost|FIREWALL_EXEMPT|G
-|root||mysql.session|localhost|FIREWALL_EXEMPT|G
-|root||mysql.sys|localhost|FIREWALL_EXEMPT|G
-|root||root|localhost|FIREWALL_EXEMPT|G
-|root||debian-sys-maint|localhost|FLUSH_OPTIMIZER_COSTS|G
-|root||root|localhost|FLUSH_OPTIMIZER_COSTS|G
-|root||debian-sys-maint|localhost|FLUSH_STATUS|G
-|root||root|localhost|FLUSH_STATUS|G
-|root||debian-sys-maint|localhost|FLUSH_TABLES|G
-|root||root|localhost|FLUSH_TABLES|G
-|root||debian-sys-maint|localhost|FLUSH_USER_RESOURCES|G
-|root||root|localhost|FLUSH_USER_RESOURCES|G
-|root||debian-sys-maint|localhost|GROUP_REPLICATION_ADMIN|G
-|root||root|localhost|GROUP_REPLICATION_ADMIN|G
-|root||debian-sys-maint|localhost|GROUP_REPLICATION_STREAM|G
-|root||root|localhost|GROUP_REPLICATION_STREAM|G
-|root||debian-sys-maint|localhost|INDEX|G
-|root||root|localhost|INDEX|G
-|root||debian-sys-maint|localhost|INNODB_REDO_LOG_ARCHIVE|G
-|root||root|localhost|INNODB_REDO_LOG_ARCHIVE|G
-|root||debian-sys-maint|localhost|INNODB_REDO_LOG_ENABLE|G
-|root||root|localhost|INNODB_REDO_LOG_ENABLE|G
-|root||debian-sys-maint|localhost|INSERT|G
-|root||root|localhost|INSERT|G
-|root||debian-sys-maint|localhost|LOCK TABLES|G
-|root||root|localhost|LOCK TABLES|G
-|root||debian-sys-maint|localhost|PASSWORDLESS_USER_ADMIN|G
-|root||root|localhost|PASSWORDLESS_USER_ADMIN|G
-|root||debian-sys-maint|localhost|PERSIST_RO_VARIABLES_ADMIN|G
-|root||mysql.session|localhost|PERSIST_RO_VARIABLES_ADMIN|G
-|root||root|localhost|PERSIST_RO_VARIABLES_ADMIN|G
-|root||debian-sys-maint|localhost|PROCESS|G
-|root||root|localhost|PROCESS|G
-|root||debian-sys-maint|localhost|REFERENCES|G
-|root||root|localhost|REFERENCES|G
-|root||debian-sys-maint|localhost|RELOAD|G
-|root||root|localhost|RELOAD|G
-|root||debian-sys-maint|localhost|REPLICATION CLIENT|G
-|root||root|localhost|REPLICATION CLIENT|G
-|root||debian-sys-maint|localhost|REPLICATION SLAVE|G
-|root||root|localhost|REPLICATION SLAVE|G
-|root||debian-sys-maint|localhost|REPLICATION_APPLIER|G
-|root||root|localhost|REPLICATION_APPLIER|G
-|root||debian-sys-maint|localhost|REPLICATION_SLAVE_ADMIN|G
-|root||root|localhost|REPLICATION_SLAVE_ADMIN|G
-|root||debian-sys-maint|localhost|RESOURCE_GROUP_ADMIN|G
-|root||root|localhost|RESOURCE_GROUP_ADMIN|G
-|root||debian-sys-maint|localhost|RESOURCE_GROUP_USER|G
-|root||root|localhost|RESOURCE_GROUP_USER|G
-|root||debian-sys-maint|localhost|ROLE_ADMIN|G
-|root||root|localhost|ROLE_ADMIN|G
-|root||debian-sys-maint|localhost|SELECT|G
-|root||mysql.infoschema|localhost|SELECT|G
-|root||root|localhost|SELECT|G
-|root||debian-sys-maint|localhost|SENSITIVE_VARIABLES_OBSERVER|G
-|root||root|localhost|SENSITIVE_VARIABLES_OBSERVER|G
-|root||debian-sys-maint|localhost|SERVICE_CONNECTION_ADMIN|G
-|root||root|localhost|SERVICE_CONNECTION_ADMIN|G
-|root||debian-sys-maint|localhost|SESSION_VARIABLES_ADMIN|G
-|root||mysql.session|localhost|SESSION_VARIABLES_ADMIN|G
-|root||root|localhost|SESSION_VARIABLES_ADMIN|G
-|root||debian-sys-maint|localhost|SET_USER_ID|G
-|root||root|localhost|SET_USER_ID|G
-|root||debian-sys-maint|localhost|SHOW DATABASES|G
-|root||root|localhost|SHOW DATABASES|G
-|root||debian-sys-maint|localhost|SHOW VIEW|G
-|root||root|localhost|SHOW VIEW|G
-|root||debian-sys-maint|localhost|SHOW_ROUTINE|G
-|root||root|localhost|SHOW_ROUTINE|G
-|root||debian-sys-maint|localhost|SHUTDOWN|G
-|root||mysql.session|localhost|SHUTDOWN|G
-|root||root|localhost|SHUTDOWN|G
-|root||debian-sys-maint|localhost|SUPER|G
-|root||mysql.session|localhost|SUPER|G
-|root||root|localhost|SUPER|G
-|root||debian-sys-maint|localhost|SYSTEM_USER|G
-|root||mysql.infoschema|localhost|SYSTEM_USER|G
-|root||mysql.session|localhost|SYSTEM_USER|G
-|root||mysql.sys|localhost|SYSTEM_USER|G
-|root||root|localhost|SYSTEM_USER|G
-|root||debian-sys-maint|localhost|SYSTEM_VARIABLES_ADMIN|G
-|root||mysql.session|localhost|SYSTEM_VARIABLES_ADMIN|G
-|root||root|localhost|SYSTEM_VARIABLES_ADMIN|G
-|root||debian-sys-maint|localhost|TABLE_ENCRYPTION_ADMIN|G
-|root||root|localhost|TABLE_ENCRYPTION_ADMIN|G
-|root||debian-sys-maint|localhost|TELEMETRY_LOG_ADMIN|G
-|root||root|localhost|TELEMETRY_LOG_ADMIN|G
-|root||debian-sys-maint|localhost|TRIGGER|G
-|root||root|localhost|TRIGGER|G
-|root||debian-sys-maint|localhost|UPDATE|G
-|root||root|localhost|UPDATE|G
-|root||debian-sys-maint|localhost|XA_RECOVER_ADMIN|G
-|root||root|localhost|XA_RECOVER_ADMIN|G
-|root||debian-sys-maint|localhost|grant option|G
-|root||root|localhost|grant option|G
-performance_schema|schema||mysql.session|localhost|SELECT|G
-sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
+      <Grants>Kingdom_Fall|schema||mag2003|localhost|ALTER|G
+Kingdom_Fall|schema||mag2003|localhost|ALTER ROUTINE|G
+Kingdom_Fall|schema||mag2003|localhost|CREATE|G
+Kingdom_Fall|schema||mag2003|localhost|CREATE ROUTINE|G
+Kingdom_Fall|schema||mag2003|localhost|CREATE TEMPORARY TABLES|G
+Kingdom_Fall|schema||mag2003|localhost|CREATE VIEW|G
+Kingdom_Fall|schema||mag2003|localhost|DELETE|G
+Kingdom_Fall|schema||mag2003|localhost|DROP|G
+Kingdom_Fall|schema||mag2003|localhost|EVENT|G
+Kingdom_Fall|schema||mag2003|localhost|EXECUTE|G
+Kingdom_Fall|schema||mag2003|localhost|INDEX|G
+Kingdom_Fall|schema||mag2003|localhost|INSERT|G
+Kingdom_Fall|schema||mag2003|localhost|LOCK TABLES|G
+Kingdom_Fall|schema||mag2003|localhost|REFERENCES|G
+Kingdom_Fall|schema||mag2003|localhost|SELECT|G
+Kingdom_Fall|schema||mag2003|localhost|SHOW VIEW|G
+Kingdom_Fall|schema||mag2003|localhost|TRIGGER|G
+Kingdom_Fall|schema||mag2003|localhost|UPDATE|G
+rpg_game|schema||mag2003|localhost|ALTER|G
+rpg_game|schema||mag2003|localhost|ALTER ROUTINE|G
+rpg_game|schema||mag2003|localhost|CREATE|G
+rpg_game|schema||mag2003|localhost|CREATE ROUTINE|G
+rpg_game|schema||mag2003|localhost|CREATE TEMPORARY TABLES|G
+rpg_game|schema||mag2003|localhost|CREATE VIEW|G
+rpg_game|schema||mag2003|localhost|DELETE|G
+rpg_game|schema||mag2003|localhost|DROP|G
+rpg_game|schema||mag2003|localhost|EVENT|G
+rpg_game|schema||mag2003|localhost|EXECUTE|G
+rpg_game|schema||mag2003|localhost|INDEX|G
+rpg_game|schema||mag2003|localhost|INSERT|G
+rpg_game|schema||mag2003|localhost|LOCK TABLES|G
+rpg_game|schema||mag2003|localhost|REFERENCES|G
+rpg_game|schema||mag2003|localhost|SELECT|G
+rpg_game|schema||mag2003|localhost|SHOW VIEW|G
+rpg_game|schema||mag2003|localhost|TRIGGER|G
+rpg_game|schema||mag2003|localhost|UPDATE|G</Grants>
       <ServerVersion>8.0.41</ServerVersion>
     </root>
     <collation id="2" parent="1" name="armscii8_bin">
@@ -1062,336 +945,322 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
     <schema id="288" parent="1" name="information_schema">
       <CollationName>utf8mb3_general_ci</CollationName>
     </schema>
-    <schema id="289" parent="1" name="mysql">
+    <schema id="289" parent="1" name="performance_schema">
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
-    <schema id="290" parent="1" name="performance_schema">
-      <CollationName>utf8mb4_0900_ai_ci</CollationName>
-    </schema>
-    <schema id="291" parent="1" name="rpg_game">
+    <schema id="290" parent="1" name="rpg_game">
+      <AutoIntrospectionLevel>3</AutoIntrospectionLevel>
       <Current>1</Current>
-      <LastIntrospectionLocalTimestamp>2025-02-07.00:00:04</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLevel>3</LastIntrospectionLevel>
+      <LastIntrospectionLocalTimestamp>2025-04-19.20:27:19</LastIntrospectionLocalTimestamp>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
-    <schema id="292" parent="1" name="sys">
-      <CollationName>utf8mb4_0900_ai_ci</CollationName>
-    </schema>
-    <user id="293" parent="1" name="debian-sys-maint">
-      <Host>localhost</Host>
-      <Plugin>caching_sha2_password</Plugin>
-    </user>
-    <user id="294" parent="1" name="mysql.infoschema">
-      <CanLogin>0</CanLogin>
-      <Host>localhost</Host>
-      <Plugin>caching_sha2_password</Plugin>
-    </user>
-    <user id="295" parent="1" name="mysql.session">
-      <CanLogin>0</CanLogin>
-      <Host>localhost</Host>
-      <Plugin>caching_sha2_password</Plugin>
-    </user>
-    <user id="296" parent="1" name="mysql.sys">
-      <CanLogin>0</CanLogin>
-      <Host>localhost</Host>
-      <Plugin>caching_sha2_password</Plugin>
-    </user>
-    <user id="297" parent="1" name="root">
+    <user id="291" parent="1" name="mag2003">
       <Host>localhost</Host>
     </user>
-    <table id="298" parent="291" name="armes">
+    <table id="292" parent="290" name="armes">
+      <DetailsLevel>3</DetailsLevel>
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
-    <table id="299" parent="291" name="armures">
+    <table id="293" parent="290" name="armures">
+      <DetailsLevel>3</DetailsLevel>
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
-    <table id="300" parent="291" name="boss_drops">
+    <table id="294" parent="290" name="boss_drops">
+      <DetailsLevel>3</DetailsLevel>
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
-    <table id="301" parent="291" name="bosses">
+    <table id="295" parent="290" name="bosses">
+      <DetailsLevel>3</DetailsLevel>
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
-    <table id="302" parent="291" name="divers">
+    <table id="296" parent="290" name="divers">
+      <DetailsLevel>3</DetailsLevel>
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
-    <table id="303" parent="291" name="ennemi_drops">
+    <table id="297" parent="290" name="ennemi_drops">
+      <DetailsLevel>3</DetailsLevel>
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
-    <table id="304" parent="291" name="ennemis">
+    <table id="298" parent="290" name="ennemis">
+      <DetailsLevel>3</DetailsLevel>
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
-    <table id="305" parent="291" name="invocation_boss">
+    <table id="299" parent="290" name="invocation_boss">
+      <DetailsLevel>3</DetailsLevel>
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
-    <table id="306" parent="291" name="potions">
+    <table id="300" parent="290" name="potions">
+      <DetailsLevel>3</DetailsLevel>
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
-    <column id="307" parent="298" name="id">
+    <column id="301" parent="292" name="id">
       <AutoIncrement>7</AutoIncrement>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="308" parent="298" name="nom">
+    <column id="302" parent="292" name="nom">
       <Position>2</Position>
       <StoredType>varchar(256)|0s</StoredType>
     </column>
-    <column id="309" parent="298" name="description">
+    <column id="303" parent="292" name="description">
       <Position>3</Position>
       <StoredType>varchar(256)|0s</StoredType>
     </column>
-    <column id="310" parent="298" name="drop_rate">
+    <column id="304" parent="292" name="drop_rate">
       <Position>4</Position>
       <StoredType>double|0s</StoredType>
     </column>
-    <column id="311" parent="298" name="degats">
+    <column id="305" parent="292" name="degats">
       <Position>5</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="312" parent="298" name="effetStatut">
+    <column id="306" parent="292" name="effetStatut">
       <Position>6</Position>
       <StoredType>enum(&apos;aucun&apos;, &apos;saignement&apos;, &apos;poison&apos;, &apos;gele&apos;, &apos;regen&apos;, &apos;force&apos;, &apos;fortifie&apos;)|0e</StoredType>
     </column>
-    <index id="313" parent="298" name="PRIMARY">
+    <index id="307" parent="292" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="314" parent="298" name="PRIMARY">
+    <key id="308" parent="292" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="315" parent="299" name="id">
+    <column id="309" parent="293" name="id">
       <AutoIncrement>3</AutoIncrement>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="316" parent="299" name="nom">
+    <column id="310" parent="293" name="nom">
       <Position>2</Position>
       <StoredType>varchar(256)|0s</StoredType>
     </column>
-    <column id="317" parent="299" name="description">
+    <column id="311" parent="293" name="description">
       <Position>3</Position>
       <StoredType>varchar(256)|0s</StoredType>
     </column>
-    <column id="318" parent="299" name="drop_rate">
+    <column id="312" parent="293" name="drop_rate">
       <Position>4</Position>
       <StoredType>double|0s</StoredType>
     </column>
-    <column id="319" parent="299" name="ptsArmure">
+    <column id="313" parent="293" name="ptsArmure">
       <Position>5</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <index id="320" parent="299" name="PRIMARY">
+    <index id="314" parent="293" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="321" parent="299" name="PRIMARY">
+    <key id="315" parent="293" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="322" parent="300" name="boss_id">
+    <column id="316" parent="294" name="boss_id">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="323" parent="300" name="drop_id">
+    <column id="317" parent="294" name="drop_id">
       <Position>2</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="324" parent="300" name="drop_type">
+    <column id="318" parent="294" name="drop_type">
       <Position>3</Position>
       <StoredType>enum(&apos;arme&apos;, &apos;armure&apos;, &apos;potion&apos;, &apos;divers&apos;)|0e</StoredType>
     </column>
-    <foreign-key id="325" parent="300" name="boss_id">
+    <foreign-key id="319" parent="294" name="boss_id">
       <ColNames>boss_id</ColNames>
       <RefColNames>id</RefColNames>
       <RefTableName>bosses</RefTableName>
     </foreign-key>
-    <index id="326" parent="300" name="boss_id">
+    <index id="320" parent="294" name="boss_id">
       <ColNames>boss_id</ColNames>
       <Type>btree</Type>
     </index>
-    <column id="327" parent="301" name="id">
+    <column id="321" parent="295" name="id">
       <AutoIncrement>2</AutoIncrement>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="328" parent="301" name="nom">
+    <column id="322" parent="295" name="nom">
       <Position>2</Position>
       <StoredType>varchar(256)|0s</StoredType>
     </column>
-    <column id="329" parent="301" name="description">
+    <column id="323" parent="295" name="description">
       <Position>3</Position>
       <StoredType>varchar(256)|0s</StoredType>
     </column>
-    <column id="330" parent="301" name="donjon">
+    <column id="324" parent="295" name="donjon">
       <Position>4</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="331" parent="301" name="ptsVie">
+    <column id="325" parent="295" name="ptsVie">
       <Position>5</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="332" parent="301" name="attaque">
+    <column id="326" parent="295" name="attaque">
       <Position>6</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="333" parent="301" name="xp_drop">
+    <column id="327" parent="295" name="xp_drop">
       <Position>7</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="334" parent="301" name="ptsArmure">
+    <column id="328" parent="295" name="ptsArmure">
       <Position>8</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <index id="335" parent="301" name="PRIMARY">
+    <index id="329" parent="295" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="336" parent="301" name="PRIMARY">
+    <key id="330" parent="295" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="337" parent="302" name="id">
+    <column id="331" parent="296" name="id">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="338" parent="303" name="ennemi_id">
+    <column id="332" parent="297" name="ennemi_id">
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="339" parent="303" name="drop_id">
+    <column id="333" parent="297" name="drop_id">
       <Position>2</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="340" parent="303" name="drop_type">
+    <column id="334" parent="297" name="drop_type">
       <Position>3</Position>
       <StoredType>enum(&apos;arme&apos;, &apos;armure&apos;, &apos;potion&apos;, &apos;divers&apos;)|0e</StoredType>
     </column>
-    <foreign-key id="341" parent="303" name="ennemi_id">
+    <foreign-key id="335" parent="297" name="ennemi_id">
       <ColNames>ennemi_id</ColNames>
       <RefColNames>id</RefColNames>
       <RefTableName>ennemis</RefTableName>
     </foreign-key>
-    <index id="342" parent="303" name="ennemi_id">
+    <index id="336" parent="297" name="ennemi_id">
       <ColNames>ennemi_id</ColNames>
       <Type>btree</Type>
     </index>
-    <column id="343" parent="304" name="id">
+    <column id="337" parent="298" name="id">
       <AutoIncrement>4</AutoIncrement>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="344" parent="304" name="nom">
+    <column id="338" parent="298" name="nom">
       <Position>2</Position>
       <StoredType>varchar(256)|0s</StoredType>
     </column>
-    <column id="345" parent="304" name="ptsVie">
+    <column id="339" parent="298" name="ptsVie">
       <Position>3</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="346" parent="304" name="niveau">
+    <column id="340" parent="298" name="niveau">
       <Position>4</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="347" parent="304" name="attaque">
+    <column id="341" parent="298" name="attaque">
       <Position>5</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="348" parent="304" name="poidsSpawn">
+    <column id="342" parent="298" name="poidsSpawn">
       <Position>6</Position>
       <StoredType>double|0s</StoredType>
     </column>
-    <column id="349" parent="304" name="xpDrop">
+    <column id="343" parent="298" name="xpDrop">
       <Position>7</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="350" parent="304" name="donjon">
+    <column id="344" parent="298" name="donjon">
       <Position>8</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <index id="351" parent="304" name="PRIMARY">
+    <index id="345" parent="298" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="352" parent="304" name="PRIMARY">
+    <key id="346" parent="298" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="353" parent="305" name="id">
+    <column id="347" parent="299" name="id">
       <AutoIncrement>2</AutoIncrement>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="354" parent="305" name="nom">
+    <column id="348" parent="299" name="nom">
       <Position>2</Position>
       <StoredType>varchar(256)|0s</StoredType>
     </column>
-    <column id="355" parent="305" name="description">
+    <column id="349" parent="299" name="description">
       <Position>3</Position>
       <StoredType>varchar(256)|0s</StoredType>
     </column>
-    <column id="356" parent="305" name="drop_rate">
+    <column id="350" parent="299" name="drop_rate">
       <Position>4</Position>
       <StoredType>double|0s</StoredType>
     </column>
-    <column id="357" parent="305" name="boss_id">
+    <column id="351" parent="299" name="boss_id">
       <Position>5</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <index id="358" parent="305" name="PRIMARY">
+    <index id="352" parent="299" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="359" parent="305" name="PRIMARY">
+    <key id="353" parent="299" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="360" parent="306" name="id">
+    <column id="354" parent="300" name="id">
       <AutoIncrement>2</AutoIncrement>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="361" parent="306" name="nom">
+    <column id="355" parent="300" name="nom">
       <Position>2</Position>
       <StoredType>varchar(256)|0s</StoredType>
     </column>
-    <column id="362" parent="306" name="soin">
+    <column id="356" parent="300" name="soin">
       <Position>3</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="363" parent="306" name="drop_rate">
+    <column id="357" parent="300" name="drop_rate">
       <Position>4</Position>
       <StoredType>double|0s</StoredType>
     </column>
-    <index id="364" parent="306" name="PRIMARY">
+    <index id="358" parent="300" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="365" parent="306" name="PRIMARY">
+    <key id="359" parent="300" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>

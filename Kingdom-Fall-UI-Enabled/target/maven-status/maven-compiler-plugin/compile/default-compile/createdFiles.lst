@@ -4,8 +4,9 @@ objets/ObjetInvoqueBoss.class
 personnages/Boss.class
 objets/Arme.class
 objets/Potion.class
-application/Jeu.class
 exceptions/InventairePleinException.class
+application/Jeu.class
+application/Sauvegarde.class
 personnages/Joueur$1.class
 application/App.class
 controller/InventaireController.class
@@ -13,6 +14,7 @@ personnages/Entite.class
 personnages/Joueur$Inventaire.class
 personnages/Ennemi.class
 controller/OptionsController.class
+exceptions/InventaireVideException.class
 application/Donjon.class
 objets/Type_Objet.class
 application/DatabaseManager$ResultSetHandler.class

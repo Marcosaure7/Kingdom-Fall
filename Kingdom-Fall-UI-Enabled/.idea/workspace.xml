@@ -5,10 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="090de7e3-5d53-47b4-b1d4-beddaa658b83" name="Changes" comment="Save fonctionnality added">
+      <change afterPath="$PROJECT_DIR$/.idea/Kingdom-Fall-UI-Enabled.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/194aa670-e8e4-410c-aefa-afc73d33b30f.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/194aa670-e8e4-410c-aefa-afc73d33b30f.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dependency-reduced-pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/dependency-reduced-pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/application/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/FenetreAppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/FenetreAppController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fenetreApp.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fenetreApp.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/application/DatabaseManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/DatabaseManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Kingdom-Fall-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/Kingdom-Fall-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application/DatabaseManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application/DatabaseManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/bordures.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bordures.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/progress.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/progress.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/original-Kingdom-Fall-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/original-Kingdom-Fall-1.0-SNAPSHOT.jar" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +60,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "Marcosaure7"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "git@github.com:Marcosaure7/Kingdom-Fall.git",
+    "accountId": "218b6bcb-2496-40a7-8b82-cb79ed4c8402"
+  }
+}]]></component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
   </component>
@@ -59,33 +83,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Kingdom-Fall.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Build Kingdom-Fall-UI-Enabled.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Kingdom-Fall-UI-Enabled:app [:app:application.App.main()].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/marc-antoine-gourdeau/dev/my-website/Marcosaure7.github.io/ng-website&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Kingdom-Fall.executor": "Run",
+    "Gradle.Build Kingdom-Fall-UI-Enabled.executor": "Run",
+    "Gradle.Kingdom-Fall-UI-Enabled:app [:app:application.App.main()].executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "dev/desktop",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/home/mag2003/dev/Kingdom-Fall/Kingdom-Fall-UI-Enabled",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "editor.preferences.tabs",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/sauvegardes" />
@@ -100,7 +125,7 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="application.App" />
       <module name="Kingdom-Fall" />
-      <option name="VM_PARAMETERS" value="--module-path /lib/javafx/javafx-sdk-21.0.6/lib --add-modules javafx.controls,javafx.fxml -Dprism.forceGPU=true -Dprism.allowhidpi=false" />
+      <option name="VM_PARAMETERS" value="--module-path /lib/javafx/javafx-sdk-21.0.7/lib --add-modules javafx.controls,javafx.fxml -Dprism.forceGPU=true -Dprism.allowhidpi=false" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="application.*" />
@@ -120,8 +145,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-a94e463ab2e7-intellij.indexing.shared.core-IU-243.25659.59" />
-        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-IU-243.25659.59" />
+        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.23774.435" />
+        <option value="bundled-js-predefined-d6986cc7102b-f27c65a3e318-JavaScript-IU-251.23774.435" />
       </set>
     </attachedChunks>
   </component>
@@ -155,6 +180,7 @@
       <workItem from="1739675401565" duration="42000" />
       <workItem from="1741560352266" duration="160000" />
       <workItem from="1742684657056" duration="134000" />
+      <workItem from="1745093948457" duration="3484000" />
     </task>
     <task id="LOCAL-00001" summary="Maven, changement de nom possible, soin rapide désactivée si pu de potion">
       <option name="closed" value="true" />
