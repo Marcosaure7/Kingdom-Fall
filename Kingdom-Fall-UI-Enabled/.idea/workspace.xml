@@ -5,21 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="090de7e3-5d53-47b4-b1d4-beddaa658b83" name="Changes" comment="Save fonctionnality added">
-      <change afterPath="$PROJECT_DIR$/.idea/Kingdom-Fall-UI-Enabled.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/194aa670-e8e4-410c-aefa-afc73d33b30f.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/194aa670-e8e4-410c-aefa-afc73d33b30f.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dependency-reduced-pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/dependency-reduced-pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/application/DatabaseManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/DatabaseManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/Kingdom-Fall-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/Kingdom-Fall-1.0-SNAPSHOT.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/application/DatabaseManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application/DatabaseManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/bordures.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/bordures.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/progress.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/progress.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/original-Kingdom-Fall-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/original-Kingdom-Fall-1.0-SNAPSHOT.jar" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -180,7 +170,7 @@
       <workItem from="1739675401565" duration="42000" />
       <workItem from="1741560352266" duration="160000" />
       <workItem from="1742684657056" duration="134000" />
-      <workItem from="1745093948457" duration="3484000" />
+      <workItem from="1745093948457" duration="6260000" />
     </task>
     <task id="LOCAL-00001" summary="Maven, changement de nom possible, soin rapide désactivée si pu de potion">
       <option name="closed" value="true" />
