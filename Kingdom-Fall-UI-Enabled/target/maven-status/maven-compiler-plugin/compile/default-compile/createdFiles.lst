@@ -4,8 +4,8 @@ objets/ObjetInvoqueBoss.class
 personnages/Boss.class
 objets/Arme.class
 objets/Potion.class
-exceptions/InventairePleinException.class
 application/Jeu.class
+exceptions/InventairePleinException.class
 application/Sauvegarde.class
 personnages/Joueur$1.class
 application/App.class

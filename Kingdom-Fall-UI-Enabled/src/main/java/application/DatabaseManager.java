@@ -5,8 +5,7 @@ import java.sql.*;
 import com.jcraft.jsch.JSchException;
 import com.mysql.cj.jdbc.MysqlDataSource;
 import io.github.cdimascio.dotenv.Dotenv;
-import com.jcraft.jsch.JSch;
-import com.jcraft.jsch.Session;
+import com.jcraft.jsch.*;
 
 public class DatabaseManager {
     private MysqlDataSource dataSource;
@@ -29,6 +28,7 @@ public class DatabaseManager {
                 String sshHost = dotenv.get("SSH_HOST");
                 String sshUser = dotenv.get("SSH_USER");
                 String sshPrivateKey = System.getProperty("user.home") + "/.ssh/id_rsa";
+                System.out.println(sshPrivateKey);
                 int sshPort = Integer.parseInt(dotenv.get("SSH_PORT"));
 
                 JSch jsch = new JSch();
