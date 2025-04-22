@@ -41,7 +41,6 @@ public class App extends Application {
 
         gameLogic = new GameLogic(loaderApp.getController());
 
-
         gameLogic.start();
 	
     }

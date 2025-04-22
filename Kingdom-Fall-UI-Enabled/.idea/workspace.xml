@@ -7,13 +7,11 @@
     <list default="true" id="090de7e3-5d53-47b4-b1d4-beddaa658b83" name="Changes" comment="Save fonctionnality added">
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/application/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/application/DatabaseManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/DatabaseManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Kingdom-Fall-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/Kingdom-Fall-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/FenetreAppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/FenetreAppController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fenetreApp.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fenetreApp.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/application/DatabaseManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application/DatabaseManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/original-Kingdom-Fall-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/original-Kingdom-Fall-1.0-SNAPSHOT.jar" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,7 +87,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "dev/desktop",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/mag2003/dev/Kingdom-Fall/Kingdom-Fall-UI-Enabled",
+    "last_opened_file_path": "/home/mag2003/scenebuilder/opt/scenebuilder/bin/SceneBuilder",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -141,8 +139,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-a94e463ab2e7-intellij.indexing.shared.core-IU-243.25659.59" />
-        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-IU-243.25659.59" />
+        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.23774.435" />
+        <option value="bundled-js-predefined-d6986cc7102b-f27c65a3e318-JavaScript-IU-251.23774.435" />
       </set>
     </attachedChunks>
   </component>
@@ -179,6 +177,10 @@
       <workItem from="1745093948457" duration="6260000" />
       <workItem from="1745122375131" duration="512000" />
       <workItem from="1745122906072" duration="2425000" />
+      <workItem from="1745125927394" duration="1414000" />
+      <workItem from="1745199204047" duration="190000" />
+      <workItem from="1745200410256" duration="813000" />
+      <workItem from="1745278400530" duration="1790000" />
     </task>
     <task id="LOCAL-00001" summary="Maven, changement de nom possible, soin rapide désactivée si pu de potion">
       <option name="closed" value="true" />
@@ -217,6 +219,17 @@
     <MESSAGE value="Maven, changement de nom possible, soin rapide désactivée si pu de potion" />
     <MESSAGE value="Save fonctionnality added" />
     <option name="LAST_COMMIT_MESSAGE" value="Save fonctionnality added" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/controller/FenetreAppController.java</url>
+          <line>356</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

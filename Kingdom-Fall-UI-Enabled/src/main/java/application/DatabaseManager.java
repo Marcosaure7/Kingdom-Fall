@@ -15,7 +15,6 @@ public class DatabaseManager {
     public DatabaseManager() {
 
         try {
-
             Dotenv dotenv = Dotenv.configure().load();
             boolean sessionSsh = dotenv.get("SSH_REQUIRED").equals("true");
 

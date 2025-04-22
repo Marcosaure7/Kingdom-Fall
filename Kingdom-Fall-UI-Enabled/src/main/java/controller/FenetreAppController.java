@@ -86,6 +86,9 @@ public class FenetreAppController {
     private Label labelNomJoueur;
 
     @FXML
+    private Label labelPotionsRestantes;
+
+    @FXML
     private Label labelVie;
 
     @FXML
@@ -96,6 +99,9 @@ public class FenetreAppController {
 
     @FXML
     private MenuItem menuOptions;
+
+    @FXML
+    private ScrollPane scrollMessages;
 
     @FXML
     private TextFlow textFlowMessages;
@@ -148,15 +154,23 @@ public class FenetreAppController {
         boutonRamasser.setVisible(false);
         boutonJeter.setVisible(false);
 
+        scrollMessages.setVvalue(0.0);
+
         initializeFenetreInventaire();
         initializeFenetreOptions();
 
         root.setOnKeyPressed(event -> {
             switch (event.getCode())
             {
-                case A -> gameLogic.attaque();
-                case I -> inventaireController.ouvrirInventaire(root.getScene().getWindow().getX(), root.getScene().getWindow().getY(), gameLogic.getJeuEnCours().getJoueur());
-                case H -> soinRapide();
+                case A -> {
+                    if (!boutonAttaquer.isDisabled()) gameLogic.attaque();
+                }
+                case I -> {
+                    if (!boutonInventaire.isDisabled()) inventaireController.ouvrirInventaire(root.getScene().getWindow().getX(), root.getScene().getWindow().getY(), gameLogic.getJeuEnCours().getJoueur());
+                }
+                case H -> {
+                    if (!boutonSoinRapide.isDisabled()) soinRapide();
+                }
                 case ESCAPE -> ouvrirOptions();
             }
         });
@@ -344,10 +358,13 @@ public class FenetreAppController {
     public void envoyerMessage(String message) {
         if (message != null && !message.isEmpty())
             Platform.runLater(() -> {
-                if (textFlowMessages.getChildren().size() >= 4) textFlowMessages.getChildren().removeFirst(); // Permet de régler le nombre de messages affichés à 4.
                 Text messageEnTexte = new Text(message + "\n\n");
                 messageEnTexte.setFill(Color.WHITE);
                 textFlowMessages.getChildren().add(messageEnTexte);
+                textFlowMessages.layout();
+                scrollMessages.layout();
+                if (textFlowMessages.getHeight() > scrollMessages.getHeight())
+                    Platform.runLater(() -> scrollMessages.setVvalue(textFlowMessages.getHeight()));
             });
     }
 
