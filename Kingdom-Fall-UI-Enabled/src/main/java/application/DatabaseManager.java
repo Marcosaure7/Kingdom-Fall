@@ -1,65 +1,43 @@
 package application;
 
+import java.io.File;
+import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.sql.*;
-
-import com.jcraft.jsch.JSchException;
-import com.mysql.cj.jdbc.MysqlDataSource;
-import io.github.cdimascio.dotenv.Dotenv;
 import com.jcraft.jsch.*;
+import java.sql.DriverManager;
 
 public class DatabaseManager {
-    private MysqlDataSource dataSource;
     private Connection conn;
     Session session = null;
 
     public DatabaseManager() {
-
         try {
-            Dotenv dotenv = Dotenv.configure().load();
-            boolean sessionSsh = dotenv.get("SSH_REQUIRED").equals("true");
+//            // Copy the database from resources to a temporary file
+//            String dbPath = "rpg_game.db";
+//            try (InputStream dbStream = DatabaseManager.class.getResourceAsStream("/database/rpg_game.db")) {
+//                if (dbStream == null) {
+//                    throw new IllegalStateException("Database file not found in resources: /database/rpg_game.db");
+//                }
+//                Files.copy(dbStream, Paths.get(dbPath), StandardCopyOption.REPLACE_EXISTING);
+//            }
 
-            String dbHost = dotenv.get("DB_HOST");
-            int dbPort = Integer.parseInt(dotenv.get("DB_PORT"));
-            String dbUser = dotenv.get("DB_USER");
-            String dbPassword = dotenv.get("DB_PASSWORD");
+            String jarPath = new File(App.class.getProtectionDomain()
+                    .getCodeSource()
+                    .getLocation()
+                    .toURI())
+                    .getParent();
 
-            if (sessionSsh) {
-                String sshHost = dotenv.get("SSH_HOST");
-                String sshUser = dotenv.get("SSH_USER");
-                String sshPrivateKey = System.getProperty("user.home") + "/.ssh/id_rsa";
-                System.out.println(sshPrivateKey);
-                int sshPort = Integer.parseInt(dotenv.get("SSH_PORT"));
-
-                JSch jsch = new JSch();
-                jsch.addIdentity(sshPrivateKey); // Ajouter la clé privée SSH
-
-                // Créer une session SSH
-                session = jsch.getSession(sshUser, sshHost, sshPort);
-                session.setConfig("StrictHostKeyChecking", "no");
-                session.connect();
-
-                // Configurer le tunnel SSH (port forwarding local)
-                int assignedPort = session.setPortForwardingL(dbPort, dbHost, dbPort);
-                System.out.println("Tunnel SSH établi sur localhost:" + assignedPort);
-            }
-
-            dataSource = new MysqlDataSource();
-            dataSource.setURL(String.format("jdbc:mysql://%s:%s/%s", dbHost, dbPort, dotenv.get("DB_NAME")));
-            dataSource.setUser(dbUser);
-            dataSource.setPassword(dbPassword);
-            conn = dataSource.getConnection();
+            String url = "jdbc:sqlite:" + jarPath + "/classes/database/rpg_game.db";
+            System.out.println("Connecting to database " + url);
+            DriverManager.registerDriver(new org.sqlite.JDBC());
+            conn = DriverManager.getConnection(url);
         }
-
-        catch (SQLException sqlException) {
-            sqlException.printStackTrace();
-        } catch (JSchException e) {
+        catch (Exception e) {
             e.printStackTrace();
         }
-
-    }
-
-    public MysqlDataSource getDataSource() {
-        return dataSource;
     }
 
     public interface ResultSetHandler<T> {
@@ -94,5 +72,8 @@ public class DatabaseManager {
         return stmt.executeUpdate(sql);
     }
 
+    public Connection getConnection() {
+        return conn;
+    }
 
 }

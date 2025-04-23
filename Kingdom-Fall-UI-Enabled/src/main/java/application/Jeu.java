@@ -96,7 +96,7 @@ public class Jeu implements Serializable
         Potion potionADOnner = null;
 
         try {
-            Connection c = dbm.getDataSource().getConnection();
+            Connection c = dbm.getConnection();
             PreparedStatement pstmt = c.prepareStatement("SELECT * FROM potions WHERE nom = ?");
 
             pstmt.setString(1, nomPotion);
@@ -241,7 +241,7 @@ public class Jeu implements Serializable
 
         // On charge les ennemis du donjon
         try {
-            Connection c = dbm.getDataSource().getConnection();
+            Connection c = dbm.getConnection();
             EnnemiDAO ennemiDAO = new EnnemiDAO(c);
             ennemis = ennemiDAO.recupererEnnemis(nouveauDonjon);
         } catch (SQLException e) {
