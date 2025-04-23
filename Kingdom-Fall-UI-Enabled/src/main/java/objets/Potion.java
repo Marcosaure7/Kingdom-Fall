@@ -1,5 +1,10 @@
 package objets;
 
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
+import personnages.Joueur;
+
 import java.io.Serializable;
 
 public class Potion extends Objet implements Serializable
@@ -28,4 +33,15 @@ public class Potion extends Objet implements Serializable
         return description;
     }
 
+    @Override
+    public VBox formatComparedDescription(Joueur joueur) {
+        VBox vbox = new VBox();
+        String[] descriptionSplit = getDescription().split("\n");
+
+        for (String s : descriptionSplit) {
+            vbox.getChildren().add(new Text(s));
+        }
+
+        return vbox;
+    }
 }

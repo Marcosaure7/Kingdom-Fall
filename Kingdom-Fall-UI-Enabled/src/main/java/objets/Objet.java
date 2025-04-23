@@ -1,5 +1,10 @@
 package objets;
 
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
+import personnages.Joueur;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -41,6 +46,7 @@ public abstract class Objet extends Drops implements Serializable
     }
 
     public abstract String getDescription();
+    public abstract VBox formatComparedDescription(Joueur joueur);
 
     public static ArrayList<Objet> pondererDropRates(ArrayList<Objet> objets) {
         double totalDropRates = 0;
@@ -57,5 +63,31 @@ public abstract class Objet extends Drops implements Serializable
     public boolean equals(Objet objet)
     {
         return this.nom.equals(objet.nom);
+    }
+
+    /**
+     *
+     * @param newStat the new stat to be compared with the old one
+     * @param oldStat the old stat (most likely item equipped)
+     * @return Text formatted in result of the two stats compared
+     */
+    protected Text getComparisonText(int newStat, int oldStat)
+    {
+        int diff = newStat - oldStat;
+        if (diff == 0)
+            return new Text("-");
+
+        Text retour = new Text();
+        if (diff > 0) {
+            retour.setText("⏶ " + diff);
+            retour.setFill(Color.GREEN);
+        }
+        else {
+            diff = -diff;
+            retour.setText("⏷ " + diff);
+            retour.setFill(Color.RED);
+        }
+
+        return retour;
     }
 }

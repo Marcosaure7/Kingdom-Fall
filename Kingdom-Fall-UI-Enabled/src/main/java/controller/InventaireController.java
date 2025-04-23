@@ -213,7 +213,7 @@ public class InventaireController {
                 imageObjet.setFitHeight(75);
                 imageObjet.setFitWidth(50);
 
-                this.menuInfos = new ContextMenu(new MenuItem(objet.getDescription()));
+                this.menuInfos = new ContextMenu(new CustomMenuItem(objet.formatComparedDescription(joueur)));
 
                 getChildren().add(imageObjet);
                 getChildren().add(new Label(objetStock.getNom()));
@@ -264,6 +264,8 @@ public class InventaireController {
     private void jeterObjet(ObjetSlot objetSlot)
     {
         joueur.getInventaire().jeter(objetSlot.type, objetSlot.index);
+        if (objetSlot.type == Type_Objet.POTIONS)
+            FenetreAppController.getSingleton().setNbPotions(joueur.getInventaire().getListType(Type_Objet.POTIONS).size());
     }
 
     private void utiliserObjet(ObjetSlot objetSlot) {

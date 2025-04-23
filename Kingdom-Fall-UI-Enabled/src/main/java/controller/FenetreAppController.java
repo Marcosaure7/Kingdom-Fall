@@ -27,6 +27,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Optional;
 
+import static java.util.Arrays.stream;
 import static javafx.application.Application.STYLESHEET_CASPIAN;
 
 public class FenetreAppController {
@@ -48,6 +49,9 @@ public class FenetreAppController {
 
     @FXML
     private Button boutonAttaquer;
+
+    @FXML
+    private Button boutonEquiper;
 
     @FXML
     private Button boutonInventaire;
@@ -143,6 +147,7 @@ public class FenetreAppController {
         labelNomEnnemi.setText("");
         labelXPJoueur.setText("0.0%");
         labelVieEnnemi.setText("");
+        labelPotionsRestantes.setText("(0)");
 
         barreVie.setProgress(1.0);
         barreXP.setProgress((0.0));
@@ -153,6 +158,7 @@ public class FenetreAppController {
         boutonAttaquer.setDisable(true);
         boutonRamasser.setVisible(false);
         boutonJeter.setVisible(false);
+        boutonEquiper.setVisible(false);
 
         scrollMessages.setVvalue(0.0);
 
@@ -191,6 +197,7 @@ public class FenetreAppController {
                 labelItemDrop.setText("");
                 boutonRamasser.setVisible(false);
                 boutonJeter.setVisible(false);
+                boutonEquiper.setVisible(false);
             });
         });
 
@@ -201,8 +208,21 @@ public class FenetreAppController {
                 labelItemDrop.setText("");
                 boutonRamasser.setVisible(false);
                 boutonJeter.setVisible(false);
+                boutonEquiper.setVisible(false);
             });
             gameLogic.relacherLatch();
+        });
+
+        boutonEquiper.setOnAction(event -> {
+            gameLogic.equiper();
+            Platform.runLater(() -> {
+                labelEnnemiLache.setText("");
+                imageDrop.setImage(null);
+                labelItemDrop.setText("");
+                boutonRamasser.setVisible(false);
+                boutonJeter.setVisible(false);
+                boutonEquiper.setVisible(false);
+            });
         });
 
         boutonInventaire.setOnAction(event ->
@@ -284,6 +304,8 @@ public class FenetreAppController {
             joueurCourant.getInventaire().utiliser(potions.getFirst(), 0);
         else
             envoyerMessage("Vous n'avez pas de potions dans votre inventaire.");
+
+        setNbPotions(potions.size());
 
         if (potions.isEmpty())
             boutonSoinRapide.setDisable(true);
@@ -458,7 +480,7 @@ public class FenetreAppController {
 
     }
 
-    public void showDrops(Ennemi source, Objet objetChoisi) {
+    public void showDrops(Ennemi source, Objet objetChoisi, Joueur joueur) {
         Platform.runLater(() -> {
             boutonAttaquer.setDisable(true);
 
@@ -466,13 +488,16 @@ public class FenetreAppController {
 
             System.out.println(url);
             imageDrop.setImage(new Image(url));
-            if (!menuInfosDrop.getItems().isEmpty()) menuInfosDrop.getItems().removeFirst();
-            menuInfosDrop.getItems().add(new MenuItem(objetChoisi.getDescription()));
+            if (!menuInfosDrop.getItems().isEmpty()) menuInfosDrop.getItems().clear();
+            menuInfosDrop.getItems().add(new CustomMenuItem(objetChoisi.formatComparedDescription(joueur)));
 
             labelEnnemiLache.setText(source.getNom() + " a lâché :");
             labelItemDrop.setText(objetChoisi.getNom());
             boutonRamasser.setVisible(true);
             boutonJeter.setVisible(true);
+
+            if (objetChoisi.getType() == Type_Objet.ARMES || objetChoisi.getType() == Type_Objet.ARMURES)
+                boutonEquiper.setVisible(true);
         });
     }
 
@@ -499,5 +524,9 @@ public class FenetreAppController {
     public void updateUsername(String playerName) {
         labelNomJoueur.setText(playerName);
         gameLogic.updateUsername(playerName);
+    }
+
+    public void setNbPotions(int nbPotions) {
+        Platform.runLater(() -> labelPotionsRestantes.setText("(" + nbPotions + ")"));
     }
 }

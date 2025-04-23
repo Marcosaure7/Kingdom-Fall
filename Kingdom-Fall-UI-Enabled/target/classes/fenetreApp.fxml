@@ -60,7 +60,7 @@
                   </HBox>
                   <HBox alignment="CENTER" HBox.hgrow="ALWAYS">
                      <children>
-                        <Button fx:id="boutonInventaire" mnemonicParsing="false" text="📖 Inventaire">
+                        <Button fx:id="boutonInventaire" mnemonicParsing="false" text="📚 Inventaire">
                            <font>
                               <Font name="0xProto Nerd Font Propo" size="12.0" />
                            </font>
@@ -144,7 +144,7 @@
                                           <Font name="Old London" size="20.0" />
                                        </font>
                                     </Label>
-                                    <Label fx:id="labelXPJoueur" prefHeight="56.0" prefWidth="36.0" text="Label" textFill="WHITE">
+                                    <Label fx:id="labelXPJoueur" prefHeight="18.0" prefWidth="60.0" text="Label" textFill="WHITE">
                                        <font>
                                           <Font name="Old London" size="18.0" />
                                        </font>
@@ -234,14 +234,14 @@
         <menus>
           <Menu mnemonicParsing="false" text="Sauvegarder/Quitter">
             <items>
-              <MenuItem fx:id="menuSauvegarder" mnemonicParsing="false" text="💾 Sauvegarder" />
+              <MenuItem fx:id="menuSauvegarder" mnemonicParsing="false" text="🖉 Sauvegarder" />
                   <MenuItem fx:id="menuQuitter" mnemonicParsing="false" text="⬅ Quitter" />
-                  <MenuItem fx:id="menuCharger" mnemonicParsing="false" text="Charger personnage" />
+                  <MenuItem fx:id="menuCharger" mnemonicParsing="false" text="🗘 Charger personnage" />
             </items>
           </Menu>
             <Menu mnemonicParsing="false" text="Options">
                <items>
-                  <MenuItem fx:id="menuOptions" mnemonicParsing="false" text="Menu Options" />
+                  <MenuItem fx:id="menuOptions" mnemonicParsing="false" text="⚙ Menu Options" />
                </items>
             </Menu>
           <Menu mnemonicParsing="false" text="Aide" />
@@ -350,7 +350,7 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </Label>
-                  <HBox alignment="TOP_CENTER" prefHeight="100.0" prefWidth="200.0">
+                  <HBox alignment="TOP_CENTER" prefHeight="40.0" prefWidth="191.0">
                      <children>
                         <Button fx:id="boutonRamasser" mnemonicParsing="false" text="Ramasser ✔">
                            <effect>
@@ -363,7 +363,7 @@
                               <Insets right="10.0" />
                            </HBox.margin>
                         </Button>
-                        <Button fx:id="boutonJeter" mnemonicParsing="false" text="Jeter ❌">
+                        <Button fx:id="boutonJeter" mnemonicParsing="false" text="Jeter 🗙">
                            <font>
                               <Font name="0xProto Nerd Font Propo" size="12.0" />
                            </font>
@@ -376,6 +376,14 @@
                         <Insets top="10.0" />
                      </VBox.margin>
                   </HBox>
+                  <Button fx:id="boutonEquiper" mnemonicParsing="false" text="Équiper ✋">
+                     <effect>
+                        <InnerShadow />
+                     </effect>
+                     <font>
+                        <Font name="0xProto Nerd Font Propo" size="12.0" />
+                     </font>
+                  </Button>
                </children>
                <padding>
                   <Insets top="20.0" />

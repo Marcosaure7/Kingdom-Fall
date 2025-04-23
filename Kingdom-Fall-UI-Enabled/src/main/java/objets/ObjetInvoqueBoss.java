@@ -1,7 +1,10 @@
 package objets;
 
 import application.Donjon;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
 import personnages.Boss;
+import personnages.Joueur;
 
 import java.io.Serializable;
 
@@ -28,5 +31,17 @@ public class ObjetInvoqueBoss extends Divers implements Serializable
     public void utiliser ()
     {
         donjon.bossEnFileDattente(bossInvoque);
+    }
+
+    @Override
+    public VBox formatComparedDescription(Joueur joueur) {
+        VBox vbox = new VBox();
+        String[] descriptionSplit = super.getDescription().split("\n");
+
+        for (String s : descriptionSplit) {
+            vbox.getChildren().add(new Text(s));
+        }
+
+        return vbox;
     }
 }

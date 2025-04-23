@@ -78,5 +78,10 @@ public class GameLogic extends Thread {
     public void updateUsername(String playerName) {
         jeuEnCours.updateUsername(playerName);
     }
+
+    public void equiper() {
+        jeuEnCours.equiper();
+        relacherLatch();
+    }
 }
 

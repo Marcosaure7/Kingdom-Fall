@@ -1,5 +1,12 @@
 package objets;
 
+import javafx.scene.Node;
+import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
+import personnages.Joueur;
+
 import java.io.Serializable;
 
 public class Armure extends Objet implements Serializable
@@ -26,5 +33,28 @@ public class Armure extends Objet implements Serializable
     public String getDescription() {
         return String.format("%s\n%s\nArmure : %d\nChances de drop : %.2f",
                 getNom(), description, ptsArmure, getDropRate()*100) + "%";
+    }
+
+    public VBox formatComparedDescription(Joueur joueur) {
+        VBox vbox = new VBox();
+        String[] descriptionSplit = getDescription().split("\n");
+
+        for (int i = 0; i < descriptionSplit.length; i++) {
+            if (i != 2 || joueur.getEquip(Type_Objet.ARMURES) == null)
+                vbox.getChildren().add(new Text(descriptionSplit[i] + " "));
+            else
+            {
+                TextFlow textFlow = new TextFlow();
+                textFlow.getChildren().add(new Text(descriptionSplit[i]));
+                textFlow.getChildren().add(getDifferenceArmure((Armure) joueur.getEquip(Type_Objet.ARMURES)));
+                vbox.getChildren().add(textFlow);
+            }
+        }
+
+        return vbox;
+    }
+
+    private Text getDifferenceArmure(Armure autre) {
+        return getComparisonText(ptsArmure, autre.ptsArmure);
     }
 }

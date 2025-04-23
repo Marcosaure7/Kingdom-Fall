@@ -1,6 +1,7 @@
 package application;
 
 import objets.*;
+import org.jetbrains.annotations.NotNull;
 import personnages.Boss;
 import personnages.Ennemi;
 import personnages.Entite;
@@ -8,6 +9,8 @@ import personnages.Joueur;
 
 import java.io.Serializable;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.*;
 import controller.FenetreAppController;
@@ -77,12 +80,44 @@ public class Jeu implements Serializable
             Thread.sleep(2000);
             controller.envoyerMessage("En situation difficile, n'oubliez pas de vous soigner! Un soin rapide peut être fait à l'aide du bouton correspondant.");
 
+            Thread.sleep(500);
+            controller.envoyerMessage("Voici 5 potions de soin pour bien débuter !");
+            donnerPotions("Soin basique (1)", 5);
+
             controller.envoyerMessage("Chargement du donjon...");
         }
         catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
 
+    }
+
+    private void donnerPotions(String nomPotion, int nbPotions) {
+        Potion potionADOnner = null;
+
+        try {
+            Connection c = dbm.getDataSource().getConnection();
+            PreparedStatement pstmt = c.prepareStatement("SELECT * FROM potions WHERE nom = ?");
+
+            pstmt.setString(1, nomPotion);
+            ResultSet rs = pstmt.executeQuery();
+            rs.next();
+            potionADOnner = new Potion(
+                    nomPotion,
+                    rs.getInt("soin"),
+                    rs.getDouble("drop_rate"));
+
+            pstmt.close();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+
+        for (int i = 0; i < nbPotions; i++) {
+            joueur.getInventaire().ramasserObjet(potionADOnner);
+        }
+
+        controller.activerNode("soin rapide");
+        controller.setNbPotions(nbPotions);
     }
 
     public Joueur getJoueur()
@@ -143,13 +178,29 @@ public class Jeu implements Serializable
 
     public void ramasser() {
         Objet drop = (Objet) dropsCourants.get("Objet");
+        ramasser(drop);
+    }
+
+    private void ramasser(@NotNull Objet drop) {
+        joueur.getInventaire().ramasserObjet(drop);
 
         // Si le joueur ramasse une potion, alors le soin rapide devient disponible.
         if (drop instanceof Potion)
-            controller.activerNode("soin rapide");
+        {
+            controller.setNbPotions(joueur.getInventaire().getListType(Type_Objet.POTIONS).size());
+        }
 
-        joueur.getInventaire().ramasserObjet(drop);
         controller.envoyerMessage(drop.getNom() + " ajouté à l'inventaire !");
+    }
+
+    public void equiper() {
+        Objet drop = (Objet) dropsCourants.get("Objet");
+        ramasser(drop);
+
+        int ind = joueur.getInventaire().invContient(drop);
+        joueur.getInventaire().equiper(drop, ind);
+
+        controller.envoyerMessage(drop.getNom() + " équipé !");
     }
 
     Map<String, Drops> genererDrops(Ennemi ennemiActuel) {
@@ -179,7 +230,7 @@ public class Jeu implements Serializable
         // Generer xp
         drops.put("XP", ennemiActuel.getXpDrop());
 
-        controller.showDrops(ennemiActuel, objetChoisi);
+        controller.showDrops(ennemiActuel, objetChoisi, joueur);
 
         return drops;
     }
@@ -235,4 +286,6 @@ public class Jeu implements Serializable
     public void updateUsername(String playerName) {
         joueur.renommer(playerName);
     }
+
+
 }
