@@ -8,12 +8,18 @@ import java.io.*;
 
 public class Sauvegarde
 {
+    static final String SAVE_DIRECTORY_PATH = System.getProperty("user.home") + "/games/Kingdom-Fall/sauvegardes";
+
     public static void sauvegarderJeu(Jeu jeu, String nomJoueur)
     {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Charger jeu");
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Jeux", "*.jeu"));
-        fileChooser.setInitialDirectory(new File("sauvegardes"));
+        File directory = new File(SAVE_DIRECTORY_PATH);
+        System.out.println(directory.getAbsolutePath());
+        if(!directory.exists())
+            directory.mkdirs();
+        fileChooser.setInitialDirectory(directory);
         fileChooser.setInitialFileName(nomJoueur + ".jeu");
         File file = fileChooser.showSaveDialog(null);
 
@@ -31,7 +37,11 @@ public class Sauvegarde
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Charger jeu");
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Jeux", "*.jeu"));
-        fileChooser.setInitialDirectory(new File("sauvegardes"));
+        File directory = new File(SAVE_DIRECTORY_PATH);
+        System.out.println(directory.getAbsolutePath());
+        if(!directory.exists())
+            directory.mkdirs();
+        fileChooser.setInitialDirectory(directory);
         File file = fileChooser.showOpenDialog(FenetreAppController.getSingleton().stageApp);
 
         try (ObjectInputStream in = new ObjectInputStream(new FileInputStream(file))) {

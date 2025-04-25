@@ -5,22 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="090de7e3-5d53-47b4-b1d4-beddaa658b83" name="Changes" comment="Save fonctionnality added">
-      <change afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/194aa670-e8e4-410c-aefa-afc73d33b30f.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/194aa670-e8e4-410c-aefa-afc73d33b30f.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/application/GameLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/GameLogic.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/application/Jeu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/Jeu.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/FenetreAppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/FenetreAppController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/InventaireController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/InventaireController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/objets/Arme.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/objets/Arme.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/objets/Armure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/objets/Armure.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/objets/Objet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/objets/Objet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/objets/ObjetInvoqueBoss.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/objets/ObjetInvoqueBoss.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/objets/Potion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/objets/Potion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fenetreApp.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fenetreApp.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application/Jeu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application/Jeu.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/FenetreAppController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/FenetreAppController$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/FenetreAppController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/FenetreAppController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fenetreApp.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fenetreApp.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/application/Sauvegarde.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/Sauvegarde.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,34 +73,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Kingdom-Fall.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Build Kingdom-Fall-UI-Enabled.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Kingdom-Fall-UI-Enabled:app [:app:application.App.main()].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;dev/desktop&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/mag2003/dev/Kingdom-Fall/Kingdom-Fall-UI-Enabled/src/main/java&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Kingdom-Fall.executor": "Run",
+    "Gradle.Build Kingdom-Fall-UI-Enabled.executor": "Run",
+    "Gradle.Kingdom-Fall-UI-Enabled:app [:app:application.App.main()].executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "fix/save-func",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/home/mag2003/dev/Kingdom-Fall/Kingdom-Fall-UI-Enabled/src/main/java",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "editor.preferences.fonts.default",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/sauvegardes" />
