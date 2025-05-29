@@ -7,3 +7,8 @@
     -fx-background-color: rgb(227, 227, 227);
     -fx-accent: #e03721;
 }
+
+.arm-bar {
+    -fx-background-color: rgb(227, 227, 227);
+    -fx-accent: #2da810;
+}

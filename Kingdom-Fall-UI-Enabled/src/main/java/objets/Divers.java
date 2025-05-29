@@ -21,7 +21,7 @@ public abstract class Divers extends Objet implements Serializable
 
     @Override
     public String getDescription() {
-        return String.format("%s%n%s%nChances de drop : %.2f%n", nom, description, dropRate);
+        return String.format("%s%n%s%nChances de drop : %.2f", nom, description, dropRate*100) + "%";
     }
 
     public void utiliser () {}

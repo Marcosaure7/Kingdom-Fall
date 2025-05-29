@@ -1,6 +1,5 @@
 package controller;
 
-import application.App;
 import application.GameLogic;
 import application.Sauvegarde;
 import javafx.application.Application;
@@ -18,8 +17,10 @@ import javafx.scene.text.TextFlow;
 import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import objets.Armure;
 import objets.Objet;
 import objets.Type_Objet;
+import org.jetbrains.annotations.NotNull;
 import personnages.Ennemi;
 import personnages.Entite;
 import personnages.Joueur;
@@ -41,6 +42,9 @@ public class FenetreAppController {
 
     @FXML
     private ProgressBar barreVie;
+
+    @FXML
+    private ProgressBar barreArmure;
 
     @FXML
     private ProgressBar barreVieEnnemie;
@@ -97,6 +101,9 @@ public class FenetreAppController {
     private Label labelVie;
 
     @FXML
+    private Label labelArmure;
+
+    @FXML
     private Label labelVieEnnemi;
 
     @FXML
@@ -146,11 +153,13 @@ public class FenetreAppController {
         labelAttaqueEnnemie.setText("");
         labelNiveauJoueur.setText("0");
         labelNomEnnemi.setText("");
+        labelArmure.setText("0");
         labelXPJoueur.setText("0.0%");
         labelVieEnnemi.setText("");
         labelPotionsRestantes.setText("(0)");
 
         barreVie.setProgress(1.0);
+        barreArmure.setProgress(0.0);
         barreXP.setProgress((0.0));
         barreVieEnnemie.setProgress(0.0);
 
@@ -244,6 +253,7 @@ public class FenetreAppController {
             boutonSoinRapide.setDisable(false);
 
         barreVie.setProgress(0);
+        barreArmure.setProgress(0);
         barreVieEnnemie.setProgress(0);
         barreXP.setProgress(0);
         afficherAttaquer(gameLogic.jeuEnCours.getJoueur());
@@ -394,12 +404,35 @@ public class FenetreAppController {
                 Platform.runLater(() -> labelVieEnnemi.setText(stringVieRestante));
                 changerProgresBarreAnime(barreVieEnnemie, ratioVieRestante);
             }
-            case Joueur j ->
-            {
-                Platform.runLater(() -> labelVie.setText(stringVieRestante));
-                changerProgresBarreAnime(barreVie, ratioVieRestante);
-            }
+            case Joueur j -> joueurRecoitAttaque(j);
             default -> throw new IllegalStateException("Unexpected value: " + entiteAttaquee); // Pas sensé aller là
+        }
+    }
+
+    private void joueurRecoitAttaque(Joueur joueur) {
+        Armure armure = (Armure) joueur.getEquip(Type_Objet.ARMURES);
+        if (armure != null && armure.getPtsArmure() > 0)
+        {
+            String stringArmureRestante = armure.getPtsArmure() + "/" + armure.getCapaciteArmure();
+            double ratioArmureRestante = (double) armure.getPtsArmure() / armure.getCapaciteArmure();
+
+            Platform.runLater(() -> labelArmure.setText(stringArmureRestante));
+            changerProgresBarreAnime(barreArmure, ratioArmureRestante);
+        }
+
+        else
+        {
+            if (barreArmure.getProgress() != 0)
+            {
+                changerProgresBarreAnime(barreArmure, 0.0);
+                Platform.runLater(() -> labelArmure.setText("0/" + ((Armure) joueur.getEquip(Type_Objet.ARMURES)).getCapaciteArmure()));
+            }
+
+            String stringVieRestante = joueur.getVieRestante() + "/" + joueur.getPtsVie();
+            double ratioVieRestante = (double) joueur.getVieRestante() / joueur.getPtsVie();
+
+            Platform.runLater(() -> labelVie.setText(stringVieRestante));
+            changerProgresBarreAnime(barreVie, ratioVieRestante);
         }
     }
 
@@ -432,6 +465,22 @@ public class FenetreAppController {
             case "attaquer" -> boutonAttaquer.setDisable(false);
             case "inventaire" -> boutonInventaire.setDisable(false);
             case "soin rapide" -> boutonSoinRapide.setDisable(false);
+        }
+    }
+
+    public void equiperArmure(@NotNull Armure armure)
+    {
+        double ratioArmure = (double) armure.getPtsArmure() / armure.getCapaciteArmure();
+        changerProgresBarreAnime(barreArmure, ratioArmure);
+        Platform.runLater(() -> labelArmure.setText(armure.getPtsArmure() + "/" + armure.getCapaciteArmure()));
+    }
+
+    public void resetArmure(int ptsArmure)
+    {
+        if (ptsArmure != 0)
+        {
+            changerProgresBarreAnime(barreArmure, 1.0);
+            Platform.runLater(() -> labelArmure.setText(ptsArmure + "/" + ptsArmure));
         }
     }
 
@@ -557,4 +606,6 @@ public class FenetreAppController {
             }
         });
     }
+
+
 }

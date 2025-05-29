@@ -6,8 +6,21 @@
   <component name="ChangeListManager">
     <list default="true" id="090de7e3-5d53-47b4-b1d4-beddaa658b83" name="Changes" comment="Save fonctionnality added">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/OptionsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/OptionsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/OptionsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/OptionsController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/application/Jeu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/Jeu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/FenetreAppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/FenetreAppController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/objets/Armure.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/objets/Armure.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/objets/Divers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/objets/Divers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/objets/Objet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/objets/Objet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/personnages/Entite.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/personnages/Entite.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/personnages/Joueur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/personnages/Joueur.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fenetreApp.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fenetreApp.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/progress.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/progress.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application/GameLogic.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application/GameLogic.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application/Jeu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application/Jeu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/FenetreAppController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/FenetreAppController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/FenetreAppController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/FenetreAppController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fenetreApp.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fenetreApp.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/progress.css" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/progress.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,34 +86,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Kingdom-Fall.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Build Kingdom-Fall-UI-Enabled.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Kingdom-Fall-UI-Enabled:app [:app:application.App.main()].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;feat/donjon2&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/mag2003/dev/Kingdom-Fall/Kingdom-Fall-UI-Enabled/src/main/resources/images&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Kingdom-Fall.executor": "Run",
+    "Gradle.Build Kingdom-Fall-UI-Enabled.executor": "Run",
+    "Gradle.Kingdom-Fall-UI-Enabled:app [:app:application.App.main()].executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "feat/new-armor-mechanic",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/home/mag2003/scenebuilder/opt/scenebuilder/bin/SceneBuilder",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "editor.preferences.fonts.default",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources/images" />
@@ -186,7 +199,7 @@
       <workItem from="1745634630810" duration="1201000" />
       <workItem from="1745736146590" duration="789000" />
       <workItem from="1748508797411" duration="1130000" />
-      <workItem from="1748510053927" duration="4201000" />
+      <workItem from="1748510053927" duration="19676000" />
     </task>
     <task id="LOCAL-00001" summary="Maven, changement de nom possible, soin rapide désactivée si pu de potion">
       <option name="closed" value="true" />
@@ -225,6 +238,22 @@
     <MESSAGE value="Maven, changement de nom possible, soin rapide désactivée si pu de potion" />
     <MESSAGE value="Save fonctionnality added" />
     <option name="LAST_COMMIT_MESSAGE" value="Save fonctionnality added" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/personnages/Joueur.java</url>
+          <line>109</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/application/Jeu.java</url>
+          <line>201</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

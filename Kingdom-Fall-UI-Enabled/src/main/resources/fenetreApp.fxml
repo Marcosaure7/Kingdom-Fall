@@ -78,16 +78,16 @@
                      <children>
                         <HBox prefHeight="100.0" prefWidth="200.0">
                            <children>
-                              <VBox prefHeight="45.0" prefWidth="449.0" HBox.hgrow="ALWAYS">
+                              <VBox prefHeight="44.0" prefWidth="494.0" HBox.hgrow="ALWAYS">
                                  <children>
                                     <Label fx:id="labelNomJoueur" prefHeight="17.0" prefWidth="61.0" text="Joueur" textFill="WHITE">
                                        <font>
                                           <Font name="Old London" size="14.0" />
                                        </font>
                                     </Label>
-                                    <HBox alignment="CENTER_LEFT" prefHeight="26.0" prefWidth="100.0">
+                                    <HBox alignment="CENTER_LEFT" prefHeight="24.0" prefWidth="61.0">
                                        <children>
-                                          <Label prefHeight="23.0" prefWidth="55.0" text="Vie :" textFill="WHITE">
+                                          <Label prefHeight="23.0" prefWidth="55.0" text="Santé :" textFill="WHITE">
                                              <HBox.margin>
                                                 <Insets />
                                              </HBox.margin>
@@ -107,21 +107,51 @@
                               </VBox>
                               <VBox alignment="CENTER_LEFT" prefHeight="45.0" prefWidth="1131.0">
                                  <children>
-                                    <HBox alignment="BOTTOM_LEFT" prefHeight="3.0" prefWidth="100.0">
+                                    <HBox>
                                        <children>
-                                          <Label fx:id="labelVie" style="-fx-text-fill: red;" text="100/100">
-                                             <font>
-                                                <Font name="0xProto Nerd Font Propo" size="12.0" />
-                                             </font>
-                                          </Label>
-                                          <Label style="-fx-text-fill: red;" text=" PV">
-                                             <font>
-                                                <Font name="0xProto Nerd Font Propo" size="12.0" />
-                                             </font>
-                                          </Label>
+                                          <VBox prefHeight="44.0" prefWidth="394.0">
+                                             <children>
+                                                <HBox alignment="BOTTOM_LEFT" prefHeight="3.0" prefWidth="100.0">
+                                                   <children>
+                                                      <Label fx:id="labelVie" style="-fx-text-fill: red;" text="100/100">
+                                                         <font>
+                                                            <Font name="0xProto Nerd Font Propo" size="12.0" />
+                                                         </font>
+                                                      </Label>
+                                                      <Label style="-fx-text-fill: red;" text=" PV">
+                                                         <font>
+                                                            <Font name="0xProto Nerd Font Propo" size="12.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </HBox>
+                                                <ProgressBar fx:id="barreVie" prefHeight="14.0" prefWidth="197.0" progress="1.0" styleClass="hp-bar" stylesheets="@progress.css" />
+                                             </children>
+                                          </VBox>
+                                          <VBox>
+                                             <children>
+                                                <HBox prefWidth="712.0">
+                                                   <children>
+                                                      <Label fx:id="labelArmure" style="-fx-text-fill: green;" text="100/100">
+                                                         <font>
+                                                            <Font name="0xProto Nerd Font Propo" size="12.0" />
+                                                         </font>
+                                                         <HBox.margin>
+                                                            <Insets />
+                                                         </HBox.margin>
+                                                      </Label>
+                                                      <Label style="-fx-text-fill: green;" text=" PA">
+                                                         <font>
+                                                            <Font name="0xProto Nerd Font Propo" size="12.0" />
+                                                         </font>
+                                                      </Label>
+                                                   </children>
+                                                </HBox>
+                                                <ProgressBar fx:id="barreArmure" prefHeight="14.0" prefWidth="80.0" progress="1.0" styleClass="arm-bar" stylesheets="@progress.css" />
+                                             </children>
+                                          </VBox>
                                        </children>
                                     </HBox>
-                                    <ProgressBar fx:id="barreVie" prefHeight="14.0" prefWidth="197.0" progress="1.0" styleClass="hp-bar" stylesheets="@progress.css" />
                                  </children>
                                  <opaqueInsets>
                                     <Insets />

@@ -1,16 +1,11 @@
 package personnages;
 
-import application.App;
-import controller.FenetreAppController;
 import objets.EffetStatut;
 
 import java.io.Serializable;
 
 public abstract class Entite implements Serializable
 {
-
-    public final int efficaciteArmure = 100; // 100 et 200 sont des valeurs courantes utilisées
-
     String nom;
     int ptsVie;
     int vieRestante;
@@ -89,8 +84,7 @@ public abstract class Entite implements Serializable
             case null, default -> degatsEffetStatut = 0;
         }
 
-        int degatsReduits = attaqueRecue/(1 + ptsArmure/efficaciteArmure);
-        vieRestante -= degatsReduits;
+        recoitAttaqueSelonArmure(attaqueRecue);
 
         resultat.append(subirEffetPeriodique());
 
@@ -132,5 +126,9 @@ public abstract class Entite implements Serializable
 
     public EffetStatut getEffetStatut () {
         return effetStatut;
+    }
+    protected void recoitAttaqueSelonArmure(int attaqueRecue)
+    {
+        vieRestante -= attaqueRecue;
     }
 }

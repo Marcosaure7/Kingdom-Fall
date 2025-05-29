@@ -146,6 +146,8 @@ public class Jeu implements Serializable
     }
 
     void ennemiVaincu(Ennemi ennemiActuel) {
+        joueur.ennemiVaincu();
+        controller.resetArmure(joueur.getPtsArmure());
         controller.envoyerMessage(ennemiActuel.getNom() + " a été vaincu(e)!");
         dropsCourants = genererDrops(ennemiActuel);
         controller.envoyerMessage(String.format("Il a lâché : %s, %s", dropsCourants.get("Objet").toString(), dropsCourants.get("XP").toString()));

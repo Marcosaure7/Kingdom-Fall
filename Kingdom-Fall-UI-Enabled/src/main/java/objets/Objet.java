@@ -75,16 +75,16 @@ public abstract class Objet extends Drops implements Serializable
     {
         int diff = newStat - oldStat;
         if (diff == 0)
-            return new Text("-");
+            return new Text(" -");
 
         Text retour = new Text();
         if (diff > 0) {
-            retour.setText("⏶ " + diff);
+            retour.setText(" ⏶ " + diff);
             retour.setFill(Color.GREEN);
         }
         else {
             diff = -diff;
-            retour.setText("⏷ " + diff);
+            retour.setText(" ⏷ " + diff);
             retour.setFill(Color.RED);
         }
 

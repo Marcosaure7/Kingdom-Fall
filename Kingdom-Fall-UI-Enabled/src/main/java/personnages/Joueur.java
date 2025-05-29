@@ -8,6 +8,7 @@ import objets.*;
 
 
 import java.io.Serializable;
+import java.sql.SQLOutput;
 import java.util.*;
 
 public class Joueur extends Entite implements Serializable
@@ -84,6 +85,37 @@ public class Joueur extends Entite implements Serializable
     public Objet getEquip (Type_Objet type)
     {
         return type == Type_Objet.ARMES ? armeEquipee : armureEquipee;
+    }
+
+    public int getPtsArmure()
+    {
+        return ptsArmure;
+    }
+
+    @Override
+    protected void recoitAttaqueSelonArmure(int attaqueRecue) {
+        if (armureEquipee != null) {
+            attaqueRecue = armureEquipee.mangerAttaque(attaqueRecue);
+            ptsArmure = armureEquipee.getPtsArmure();
+        }
+
+        super.recoitAttaqueSelonArmure(attaqueRecue);
+    }
+
+    /**
+     * Reset l'armure du joueur
+     */
+    public void ennemiVaincu()
+    {
+        if (armureEquipee != null) {
+            armureEquipee.resetArmure();
+            ptsArmure = armureEquipee.getPtsArmure();
+        }
+        for (Objet armure : inventaire.getListType(Type_Objet.ARMURES))
+        {
+            if (armure != null)
+                ((Armure) armure).resetArmure();
+        }
     }
 
     public class Inventaire implements Serializable
@@ -311,6 +343,8 @@ public class Joueur extends Entite implements Serializable
                 armureEquipee = armureSelectionnee;
                 jeter(Type_Objet.ARMURES, indObjetSelectionne);
                 inv.get(Type_Objet.ARMURES).addFirst(armureAncienne);
+                ptsArmure = armureEquipee.getPtsArmure();
+                FenetreAppController.getSingleton().equiperArmure(armureEquipee);
             }
         }
 
