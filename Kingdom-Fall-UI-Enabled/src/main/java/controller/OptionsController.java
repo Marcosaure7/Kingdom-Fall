@@ -25,8 +25,7 @@ public class OptionsController {
     public void initialize() {
         OPT_CONFIRMER_JETER.setSelected(CONFIRMER_JETER);
         OPT_CONFIRMER_JETER.selectedProperty().addListener((observable, oldValue, newValue) -> CONFIRMER_JETER = newValue);
-        PLAYER_NAME_TextField.setOnAction(event -> renommerJoueur(PLAYER_NAME_TextField.getText()));
-
+        PLAYER_NAME_TextField.setOnKeyTyped(keyEvent -> renommerJoueur(PLAYER_NAME_TextField.getText()));
     }
 
     public static void renommerJoueur(String nom) {
