@@ -54,4 +54,20 @@ public class Sauvegarde
             return null;
         }
     }
+
+    public static boolean hasSaves() {
+        // Définir le répertoire des sauvegardes
+        File savesDir = new File(SAVE_DIRECTORY_PATH);
+
+        // Vérifier si le répertoire existe
+        if (!savesDir.exists() || !savesDir.isDirectory()) {
+            return false; // Aucun répertoire, donc aucune sauvegarde
+        }
+
+        // Lister les fichiers dans le répertoire
+        File[] saveFiles = savesDir.listFiles((dir, name) -> name.endsWith(".jeu"));
+
+        // Vérifier s'il y a des fichiers de sauvegarde
+        return saveFiles != null && saveFiles.length > 0;
+    }
 }

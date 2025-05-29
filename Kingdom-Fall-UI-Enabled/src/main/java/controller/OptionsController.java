@@ -9,6 +9,7 @@ public class OptionsController {
 
     public static boolean CONFIRMER_JETER = true;
     public static String PLAYER_NAME = "Joueur";
+    public static boolean DEV_MODE = false;
 
     private Stage stageOptions;
     private static FenetreAppController fenetreAppController;

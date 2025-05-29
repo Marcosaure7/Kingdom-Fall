@@ -1,5 +1,6 @@
 package controller;
 
+import application.App;
 import application.GameLogic;
 import application.Sauvegarde;
 import javafx.application.Application;
@@ -161,6 +162,7 @@ public class FenetreAppController {
         boutonEquiper.setVisible(false);
 
         scrollMessages.setVvalue(0.0);
+        textFlowMessages.getChildren().clear();
 
         initializeFenetreInventaire();
         initializeFenetreOptions();
@@ -177,53 +179,28 @@ public class FenetreAppController {
                 case H -> {
                     if (!boutonSoinRapide.isDisabled()) soinRapide();
                 }
+                case R -> {
+                    if (boutonRamasser.isVisible()) ramasser();
+                }
+                case J -> {
+                    if (boutonJeter.isVisible()) dissiperDrop();
+                }
+                case E -> {
+                    if (boutonEquiper.isVisible()) equiper();
+                }
                 case ESCAPE -> ouvrirOptions();
             }
         });
 
-        menuOptions.setOnAction(event -> {
-            ouvrirOptions();
-        });
+        menuOptions.setOnAction(event -> ouvrirOptions());
 
         menuQuitter.setOnAction(event -> onQuitRequest());
 
         boutonAttaquer.setOnAction(event -> gameLogic.attaque());
         boutonSoinRapide.setOnAction(event -> soinRapide());
-        boutonRamasser.setOnAction(event -> {
-            gameLogic.ramasser();
-            Platform.runLater(() -> {
-                labelEnnemiLache.setText("");
-                imageDrop.setImage(null);
-                labelItemDrop.setText("");
-                boutonRamasser.setVisible(false);
-                boutonJeter.setVisible(false);
-                boutonEquiper.setVisible(false);
-            });
-        });
-
-        boutonJeter.setOnAction(event -> {
-            Platform.runLater(() -> {
-                labelEnnemiLache.setText("");
-                imageDrop.setImage(null);
-                labelItemDrop.setText("");
-                boutonRamasser.setVisible(false);
-                boutonJeter.setVisible(false);
-                boutonEquiper.setVisible(false);
-            });
-            gameLogic.relacherLatch();
-        });
-
-        boutonEquiper.setOnAction(event -> {
-            gameLogic.equiper();
-            Platform.runLater(() -> {
-                labelEnnemiLache.setText("");
-                imageDrop.setImage(null);
-                labelItemDrop.setText("");
-                boutonRamasser.setVisible(false);
-                boutonJeter.setVisible(false);
-                boutonEquiper.setVisible(false);
-            });
-        });
+        boutonRamasser.setOnAction(event -> ramasser());
+        boutonJeter.setOnAction(event -> dissiperDrop());
+        boutonEquiper.setOnAction(event -> equiper());
 
         boutonInventaire.setOnAction(event ->
                 inventaireController.ouvrirInventaire(((Button) event.getSource()).getScene().getWindow().getX(),
@@ -233,26 +210,10 @@ public class FenetreAppController {
 
         menuSauvegarder.setOnAction(event -> Sauvegarde.sauvegarderJeu(gameLogic.jeuEnCours, OptionsController.PLAYER_NAME));
 
-        menuCharger.setOnAction(event ->
-        {
-            gameLogic.jeuEnCours = Sauvegarde.chargerJeu();
-            labelNomJoueur.setText(OptionsController.PLAYER_NAME);
-            gameLogic.jeuEnCours.loadNouveauDonjon(gameLogic.jeuEnCours.numDonjon);
-            labelDonjon.setText(gameLogic.jeuEnCours.numDonjon + "");
-            labelNomEnnemi.setText(gameLogic.jeuEnCours.ennemiCourant.getNom());
-            labelAttaqueEnnemie.setText(gameLogic.jeuEnCours.ennemiCourant.getAttBase() + "");
-            imageEnnemi.setImage(new Image(String.format("images/%s.png", gameLogic.jeuEnCours.ennemiCourant.getNom().toLowerCase())));
-            boutonInventaire.setDisable(false);
-            if (!gameLogic.jeuEnCours.getJoueur().getInventaire().getListType(Type_Objet.POTIONS).isEmpty())
-                boutonSoinRapide.setDisable(false);
-
-            barreVie.setProgress(0);
-            barreVieEnnemie.setProgress(0);
-            barreXP.setProgress(0);
-            afficherAttaquer(gameLogic.jeuEnCours.getJoueur());
-            afficherAttaquer(gameLogic.jeuEnCours.ennemiCourant);
-            changerProgresBarreAnime(barreXP, gameLogic.jeuEnCours.getJoueur().getXP().getValeur());
-        });
+        if (Sauvegarde.hasSaves())
+            menuCharger.setOnAction(event -> chargerJeu());
+        else
+            menuCharger.setDisable(true);
 
         imageDrop.setOnMouseMoved(event -> {
             if (imageDrop.getImage() != null)
@@ -268,6 +229,26 @@ public class FenetreAppController {
         Text messageBienvenue = new Text("Bienvenue à Kingdom Fall!\n\n");
         messageBienvenue.setFill(Color.WHITE);
         textFlowMessages.getChildren().add(messageBienvenue);
+    }
+
+    private void chargerJeu() {
+        gameLogic.jeuEnCours = Sauvegarde.chargerJeu();
+        labelNomJoueur.setText(OptionsController.PLAYER_NAME);
+        gameLogic.jeuEnCours.loadNouveauDonjon(gameLogic.jeuEnCours.numDonjon);
+        labelDonjon.setText(gameLogic.jeuEnCours.numDonjon + "");
+        labelNomEnnemi.setText(gameLogic.jeuEnCours.ennemiCourant.getNom());
+        labelAttaqueEnnemie.setText(gameLogic.jeuEnCours.ennemiCourant.getAttBase() + "");
+        imageEnnemi.setImage(new Image(String.format("images/%s.png", gameLogic.jeuEnCours.ennemiCourant.getNom().toLowerCase())));
+        boutonInventaire.setDisable(false);
+        if (!gameLogic.jeuEnCours.getJoueur().getInventaire().getListType(Type_Objet.POTIONS).isEmpty())
+            boutonSoinRapide.setDisable(false);
+
+        barreVie.setProgress(0);
+        barreVieEnnemie.setProgress(0);
+        barreXP.setProgress(0);
+        afficherAttaquer(gameLogic.jeuEnCours.getJoueur());
+        afficherAttaquer(gameLogic.jeuEnCours.ennemiCourant);
+        changerProgresBarreAnime(barreXP, gameLogic.jeuEnCours.getJoueur().getXP().getValeur());
     }
 
     public void onQuitRequest() {
@@ -501,6 +482,28 @@ public class FenetreAppController {
         });
     }
 
+    private void ramasser() {
+        gameLogic.ramasser();
+        dissiperDrop();
+    }
+
+    private void equiper() {
+        gameLogic.equiper();
+        dissiperDrop();
+    }
+
+    private void dissiperDrop() {
+        Platform.runLater(() -> {
+            labelEnnemiLache.setText("");
+            imageDrop.setImage(null);
+            labelItemDrop.setText("");
+            boutonRamasser.setVisible(false);
+            boutonJeter.setVisible(false);
+            boutonEquiper.setVisible(false);
+        });
+        gameLogic.relacherLatch();
+    }
+
 
     public void afficherDonjon(int donjon) {
         Platform.runLater(() -> labelDonjon.setText(donjon + ""));
@@ -528,5 +531,30 @@ public class FenetreAppController {
 
     public void setNbPotions(int nbPotions) {
         Platform.runLater(() -> labelPotionsRestantes.setText("(" + nbPotions + ")"));
+    }
+
+    public void jeuTermine() {
+        Platform.runLater(() -> {
+            Dialog<ButtonType> dialog = new Dialog<>();
+            dialog.initModality(Modality.APPLICATION_MODAL);
+            dialog.setTitle("Partie terminée");
+            ButtonType newGame = new ButtonType("Nouvelle partie");
+            ButtonType oldSave = new ButtonType("Charger sauv.");
+            dialog.getDialogPane().getButtonTypes().addAll(newGame, oldSave);
+            dialog.setHeaderText("Votre joueur est mort...");
+            dialog.setContentText("Vous pouvez commencer une nouvelle partie ou choisir une ancienne sauvegarde.");
+
+            Optional<ButtonType> result = dialog.showAndWait();
+            if (result.isPresent()) {
+                if (result.get() == newGame) {
+                    this.initialize();
+                    gameLogic = new GameLogic(this);
+                    gameLogic.start();
+                } else {
+                    if (Sauvegarde.hasSaves())
+                        chargerJeu();
+                }
+            }
+        });
     }
 }

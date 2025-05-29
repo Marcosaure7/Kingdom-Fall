@@ -72,7 +72,6 @@ public class GameLogic extends Thread {
 
     public void ramasser() {
         jeuEnCours.ramasser();
-        relacherLatch();
     }
 
     public void updateUsername(String playerName) {

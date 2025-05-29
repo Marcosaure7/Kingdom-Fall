@@ -1,5 +1,6 @@
 package application;
 
+import controller.OptionsController;
 import objets.*;
 import org.jetbrains.annotations.NotNull;
 import personnages.Boss;
@@ -140,6 +141,8 @@ public class Jeu implements Serializable
             controller.envoyerMessage(joueur.seFaitAttaquer(ennemiCourant.getAttBase(), EffetStatut.AUCUN)); // TODO Effet appliqué au joueur à modifier
             controller.afficherAttaquer(joueur);
         }
+        if (!OptionsController.DEV_MODE && joueur.estMort())
+            controller.jeuTermine();
     }
 
     void ennemiVaincu(Ennemi ennemiActuel) {
