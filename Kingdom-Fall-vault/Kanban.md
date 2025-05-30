@@ -6,43 +6,37 @@ kanban-plugin: board
 
 ## Backlog
 
-- [ ] \[BUG] "Double-drop" lors d'une attaque supp. d'un ennemi en transition vers la mort
-	
-	*fix/double-drop*
-- [ ] \[BUG] La fin des noms de joueur trop longs n'affichent pas
-	
-	*fix/nom-long*
-- [ ] Déployer une nouvelle version
-	
-	*dev/release*
-- [ ] Implémenter des images propres au donjon 2
-	
-	*feat/donjon2*
 - [ ] \[BUG] Damage over time marche pas comme supposé
 	
 	*fix/dmg-over-time*
 - [ ] \[BUG] Chances de drop affichées au joueur incorrectes
 	
 	*fix/drop-chance-value*
+- [ ] \[BUG] Charger sauv. fait one-shot tout ce qui passe
+	
+	*fix/save-func*
+- [ ] Implémenter des images propres au donjon 2
+	
+	*feat/donjon2*
 - [ ] Améliorer UI de l'inventaire
 	
 	*feat/inventory-ui*
-- [ ] \[BUG] Charger sauv. fait one-shot tout ce qui passe
-	
-	*fix/load-save*
 - [ ] Avertir le joueur lorsque l'inventaire est plein quand il ramasse un objet
 	
 	*feat/donjon2*
 - [ ] Afficher le % d'XP monter pendant que la barre d'XP monte
 	
-	*feat/xp-percentage*
+	*feat/xp-bar*
+- [ ] Déployer une nouvelle version
+	
+	*dev/release*
 
 
 ## Scheduled
 
-- [ ] Ajouter l'option "Quitter" lors d'une défaite
+- [ ] \[BUG] "Double-drop" lors d'une attaque supp. d'un ennemi en transition vers la mort
 	
-	*feat/donjon2*
+	*fix/double-drop*
 - [ ] Compléter les données du donjon 2
 	
 	*feat/donjon2*
@@ -54,6 +48,15 @@ kanban-plugin: board
 
 ## Completed
 
+- [ ] Ajouter l'option "Quitter" lors d'une défaite
+	
+	*feat/donjon2*
+- [ ] \[BUG] La fin des noms de joueur trop longs n'affichent pas
+	
+	*feat/donjon2*
+- [ ] Afficher l'XP gagné au dessus de la barre
+	
+	*feat/donjon2*
 - [ ] Implémenter nouvelle mécanique d'armure
 	
 	*feat/new-armor-mechanic*

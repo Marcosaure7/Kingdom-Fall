@@ -39,7 +39,7 @@ public class FenetreAppController {
 
     private final double vieProgresParIteration = 0.025;
     private final double vieEnnemieProgresParIteration = 0.025;
-    private final double XPProgresParIteration = 0.003;
+    private final double XPProgresParIteration = 0.01;
     private final double armureProgresParIteration = 0.03;
     private final double durationPerIteration = 10;
 
@@ -270,7 +270,7 @@ public class FenetreAppController {
         changerProgresBarreAnime(barreXP, gameLogic.jeuEnCours.getJoueur().getXP().getValeur(), XPProgresParIteration);
     }
 
-    public void onQuitRequest() {
+    public boolean onQuitRequest() {
         Dialog<ButtonType> dialog = new Dialog<>();
         dialog.initModality(Modality.APPLICATION_MODAL);
         dialog.setTitle("Quitter");
@@ -281,7 +281,10 @@ public class FenetreAppController {
         Optional<ButtonType> result = dialog.showAndWait();
         if (result.isPresent() && result.get() == ButtonType.OK) {
             System.exit(0);
+            return true;
         }
+        else
+            return false;
     }
 
     public static FenetreAppController getSingleton()
@@ -517,11 +520,13 @@ public class FenetreAppController {
         }
 
         timeline = ajouterProgresBarreTimeline(timeline, barreXP, (double) joueur.getXP().getValeur() / joueur.getXpCap(), XPProgresParIteration);
+        // 0.5 seconde supplémentaire pour afficher l'XP gagné
+        KeyFrame finalKeyFrame = new KeyFrame(timeline.getTotalDuration().add(Duration.millis(500)), e -> labelGainXP.setText(""));
+        timeline.getKeyFrames().add(finalKeyFrame);
         Platform.runLater(timeline::playFromStart);
         if (nbNiveauxGagnes > 0) changerProgresBarreAnime(barreVie, 1.0, vieProgresParIteration);
 
         Platform.runLater(() -> {
-            labelGainXP.setText("");
             labelXPJoueur.setText(String.format("%.1f%%", (double) joueur.getXP().getValeur() / joueur.getXpCap() * 100));
             labelVie.setText(joueur.getVieRestante() + "/" + joueur.getPtsVie());
         });
@@ -605,19 +610,28 @@ public class FenetreAppController {
             Dialog<ButtonType> dialog = new Dialog<>();
             dialog.initModality(Modality.APPLICATION_MODAL);
             dialog.setTitle("Partie terminée");
+            ButtonType quitgame = new ButtonType("Quitter");
             ButtonType newGame = new ButtonType("Nouvelle partie");
             ButtonType oldSave = new ButtonType("Charger sauv.");
-            dialog.getDialogPane().getButtonTypes().addAll(newGame, oldSave);
+            dialog.getDialogPane().getButtonTypes().addAll(quitgame, newGame, oldSave);
             dialog.setHeaderText("Votre joueur est mort...");
             dialog.setContentText("Vous pouvez commencer une nouvelle partie ou choisir une ancienne sauvegarde.");
 
             Optional<ButtonType> result = dialog.showAndWait();
             if (result.isPresent()) {
-                if (result.get() == newGame) {
+                if (result.get() == quitgame && !onQuitRequest())
+                {
+                    // Si le joueur ne veut pas quitter on lui ré-affiche la fenêtre de défaite
+                    jeuTermine();
+                }
+                else if (result.get() == newGame)
+                {
                     this.initialize();
                     gameLogic = new GameLogic(this);
                     gameLogic.start();
-                } else {
+                }
+                else
+                {
                     if (Sauvegarde.hasSaves())
                         chargerJeu();
                 }
