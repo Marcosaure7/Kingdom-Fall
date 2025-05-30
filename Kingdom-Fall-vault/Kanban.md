@@ -6,6 +6,9 @@ kanban-plugin: board
 
 ## Backlog
 
+- [ ] \[BUG] "Double-drop" lors d'une attaque supp. d'un ennemi en transition vers la mort
+	
+	*fix/double-drop*
 - [ ] \[BUG] Damage over time marche pas comme supposé
 	
 	*fix/dmg-over-time*
@@ -21,9 +24,6 @@ kanban-plugin: board
 - [ ] Améliorer UI de l'inventaire
 	
 	*feat/inventory-ui*
-- [ ] Avertir le joueur lorsque l'inventaire est plein quand il ramasse un objet
-	
-	*feat/donjon2*
 - [ ] Afficher le % d'XP monter pendant que la barre d'XP monte
 	
 	*feat/xp-bar*
@@ -34,9 +34,9 @@ kanban-plugin: board
 
 ## Scheduled
 
-- [ ] \[BUG] "Double-drop" lors d'une attaque supp. d'un ennemi en transition vers la mort
+- [ ] Avertir le joueur lorsque l'inventaire est plein quand il ramasse un objet
 	
-	*fix/double-drop*
+	*feat/donjon2*
 - [ ] Compléter les données du donjon 2
 	
 	*feat/donjon2*

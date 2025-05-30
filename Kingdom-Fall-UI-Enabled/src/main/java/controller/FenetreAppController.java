@@ -198,7 +198,7 @@ public class FenetreAppController {
                     if (!boutonSoinRapide.isDisabled()) soinRapide();
                 }
                 case R -> {
-                    if (boutonRamasser.isVisible()) ramasser();
+                    if (boutonRamasser.isVisible()) gameLogic.ramasser();
                 }
                 case J -> {
                     if (boutonJeter.isVisible()) dissiperDrop();
@@ -216,7 +216,7 @@ public class FenetreAppController {
 
         boutonAttaquer.setOnAction(event -> gameLogic.attaque());
         boutonSoinRapide.setOnAction(event -> soinRapide());
-        boutonRamasser.setOnAction(event -> ramasser());
+        boutonRamasser.setOnAction(event -> gameLogic.ramasser());
         boutonJeter.setOnAction(event -> dissiperDrop());
         boutonEquiper.setOnAction(event -> equiper());
 
@@ -554,9 +554,8 @@ public class FenetreAppController {
         });
     }
 
-    private void ramasser() {
-        gameLogic.ramasser();
-        dissiperDrop();
+    public void inventairePlein() {
+        envoyerMessage("Votre inventaire est plein! Veuillez faire de la place ou jeter ce drop.");
     }
 
     private void equiper() {
@@ -564,7 +563,7 @@ public class FenetreAppController {
         dissiperDrop();
     }
 
-    private void dissiperDrop() {
+    public void dissiperDrop() {
         Platform.runLater(() -> {
             labelEnnemiLache.setText("");
             imageDrop.setImage(null);
@@ -638,6 +637,4 @@ public class FenetreAppController {
             }
         });
     }
-
-
 }

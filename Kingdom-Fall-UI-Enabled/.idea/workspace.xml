@@ -6,10 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="090de7e3-5d53-47b4-b1d4-beddaa658b83" name="Changes" comment="Save fonctionnality added">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/application/GameLogic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/application/GameLogic.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/FenetreAppController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/FenetreAppController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fenetreApp.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fenetreApp.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/personnages/Joueur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/personnages/Joueur.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application/GameLogic.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application/GameLogic.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/controller/FenetreAppController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/FenetreAppController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fenetreApp.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fenetreApp.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Kingdom-Fall-vault/Kanban.md" beforeDir="false" afterPath="$PROJECT_DIR$/../Kingdom-Fall-vault/Kanban.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -190,7 +191,7 @@
       <workItem from="1745736146590" duration="789000" />
       <workItem from="1748508797411" duration="1130000" />
       <workItem from="1748510053927" duration="19676000" />
-      <workItem from="1748626109376" duration="5330000" />
+      <workItem from="1748626109376" duration="8067000" />
     </task>
     <task id="LOCAL-00001" summary="Maven, changement de nom possible, soin rapide désactivée si pu de potion">
       <option name="closed" value="true" />
@@ -237,16 +238,6 @@
           <url>file://$PROJECT_DIR$/src/main/java/personnages/Joueur.java</url>
           <line>109</line>
           <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/application/Jeu.java</url>
-          <line>201</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/controller/FenetreAppController.java</url>
-          <line>518</line>
-          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -1,6 +1,7 @@
 package application;
 
 import controller.FenetreAppController;
+import exceptions.InventairePleinException;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
@@ -12,43 +13,25 @@ public class GameLogic extends Thread {
     public Jeu jeuEnCours;
     private ExecutorService executor;
     private CountDownLatch latchFinTour;
+    private FenetreAppController controller;
 
     public GameLogic(FenetreAppController controller)
     {
         super();
+        this.controller = controller;
         controller.setThread(this);
-        executor = Executors.newSingleThreadExecutor();
-        jeuEnCours = new Jeu(this, controller);
+        this.executor = Executors.newSingleThreadExecutor();
+        this.jeuEnCours = new Jeu(this, controller);
     }
 
     @Override
     public void run() {
         jeuEnCours.lancerJeu();
-
-        while (running) {
-            // Logique du jeu ici
-            updateGame(); // Met à jour l'état du jeu
-            try {
-                Thread.sleep(100); // Contrôle la vitesse de mise à jour
-            } catch (InterruptedException e) {
-                // Gérer l'interruption du thread
-                Thread.currentThread().interrupt();
-            }
-        }
     }
 
     public Jeu getJeuEnCours()
     {
         return jeuEnCours;
-    }
-
-    public void stopGame() {
-        running = false; // Arrête le jeu
-        this.interrupt(); // Réveille le thread si en pause
-    }
-
-    private void updateGame() {
-        // Code pour mettre à jour le jeu (mouvement, collision, etc.)
     }
 
     public void attendreFinTour() {
@@ -71,7 +54,14 @@ public class GameLogic extends Thread {
     }
 
     public void ramasser() {
-        jeuEnCours.ramasser();
+        try {
+            jeuEnCours.ramasser();
+            controller.dissiperDrop();
+        }
+        catch (InventairePleinException e)
+        {
+            controller.inventairePlein();
+        }
     }
 
     public void updateUsername(String playerName) {
