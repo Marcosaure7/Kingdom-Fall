@@ -21,6 +21,9 @@ kanban-plugin: board
 - [ ] Déployer une nouvelle version
 	
 	*dev/release*
+- [ ] Background invisible sur les images du donjon 1
+	
+	*feat/invsible-bg*
 
 
 ## Scheduled
@@ -44,6 +47,9 @@ kanban-plugin: board
 
 ## In progress
 
+- [ ] Emphase sur objet cliqué dans l'inventaire
+	
+	*feat/border-on-click*
 
 
 ## Completed
