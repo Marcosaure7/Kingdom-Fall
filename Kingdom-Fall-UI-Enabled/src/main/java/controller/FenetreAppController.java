@@ -2,6 +2,8 @@ package controller;
 
 import application.GameLogic;
 import application.Sauvegarde;
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -17,6 +19,7 @@ import javafx.scene.text.TextFlow;
 import javafx.scene.image.ImageView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 import objets.Armure;
 import objets.Objet;
 import objets.Type_Objet;
@@ -33,6 +36,12 @@ import static java.util.Arrays.stream;
 import static javafx.application.Application.STYLESHEET_CASPIAN;
 
 public class FenetreAppController {
+
+    private final double vieProgresParIteration = 0.025;
+    private final double vieEnnemieProgresParIteration = 0.025;
+    private final double XPProgresParIteration = 0.003;
+    private final double armureProgresParIteration = 0.03;
+    private final double durationPerIteration = 10;
 
     private GameLogic gameLogic;
     public  Stage stageApp;
@@ -258,7 +267,7 @@ public class FenetreAppController {
         barreXP.setProgress(0);
         afficherAttaquer(gameLogic.jeuEnCours.getJoueur());
         afficherAttaquer(gameLogic.jeuEnCours.ennemiCourant);
-        changerProgresBarreAnime(barreXP, gameLogic.jeuEnCours.getJoueur().getXP().getValeur());
+        changerProgresBarreAnime(barreXP, gameLogic.jeuEnCours.getJoueur().getXP().getValeur(), XPProgresParIteration);
     }
 
     public void onQuitRequest() {
@@ -390,7 +399,7 @@ public class FenetreAppController {
             labelAttaqueEnnemie.setText(ennemiAffiche.getAttBase() + "");
         });
 
-        changerProgresBarreAnime(barreVieEnnemie, (double) ennemiAffiche.getVieRestante() / ennemiAffiche.getPtsVie());
+        changerProgresBarreAnime(barreVieEnnemie, (double) ennemiAffiche.getVieRestante() / ennemiAffiche.getPtsVie(), vieEnnemieProgresParIteration);
     }
 
     public void afficherAttaquer(Entite entiteAttaquee) {
@@ -402,7 +411,7 @@ public class FenetreAppController {
             case Ennemi e ->
             {
                 Platform.runLater(() -> labelVieEnnemi.setText(stringVieRestante));
-                changerProgresBarreAnime(barreVieEnnemie, ratioVieRestante);
+                changerProgresBarreAnime(barreVieEnnemie, ratioVieRestante, vieEnnemieProgresParIteration);
             }
             case Joueur j -> joueurRecoitAttaque(j);
             default -> throw new IllegalStateException("Unexpected value: " + entiteAttaquee); // Pas sensé aller là
@@ -417,14 +426,14 @@ public class FenetreAppController {
             double ratioArmureRestante = (double) armure.getPtsArmure() / armure.getCapaciteArmure();
 
             Platform.runLater(() -> labelArmure.setText(stringArmureRestante));
-            changerProgresBarreAnime(barreArmure, ratioArmureRestante);
+            changerProgresBarreAnime(barreArmure, ratioArmureRestante, armureProgresParIteration);
         }
 
         else
         {
             if (barreArmure.getProgress() != 0)
             {
-                changerProgresBarreAnime(barreArmure, 0.0);
+                changerProgresBarreAnime(barreArmure, 0.0, armureProgresParIteration);
                 Platform.runLater(() -> labelArmure.setText("0/" + ((Armure) joueur.getEquip(Type_Objet.ARMURES)).getCapaciteArmure()));
             }
 
@@ -432,32 +441,37 @@ public class FenetreAppController {
             double ratioVieRestante = (double) joueur.getVieRestante() / joueur.getPtsVie();
 
             Platform.runLater(() -> labelVie.setText(stringVieRestante));
-            changerProgresBarreAnime(barreVie, ratioVieRestante);
+            changerProgresBarreAnime(barreVie, ratioVieRestante, vieProgresParIteration);
         }
     }
 
-    public void changerProgresBarreAnime(ProgressBar barre, double nouvelleValeur) {
+    public void changerProgresBarreAnime(ProgressBar barre, double nouvelleValeur, double progresParIteration) {
+        Platform.runLater((ajouterProgresBarreTimeline(new Timeline(), barre, nouvelleValeur, progresParIteration)::playFromStart));
+    }
+
+    public Timeline ajouterProgresBarreTimeline(Timeline timeline, ProgressBar barre, double nouvelleValeur, double progresParIteration) {
         double ancienneValeur = barre.getProgress();
+        double currentDuration = timeline.getTotalDuration().toMillis();
 
         if (ancienneValeur != nouvelleValeur) {
-            double progresParIteration = nouvelleValeur > ancienneValeur ? 0.02 : -0.02;
-            int nombreDAnimations = (int) ((nouvelleValeur - ancienneValeur) / progresParIteration);
+            double progresParIterationCorr = nouvelleValeur > ancienneValeur ? progresParIteration : -progresParIteration;
+            int nombreDAnimations = (int) ((nouvelleValeur - ancienneValeur) / progresParIterationCorr);
             double progresActuel = ancienneValeur;
 
-            for (int i = 0; i < nombreDAnimations; i++)
-            {
-                progresActuel += progresParIteration;
+
+            for (int i = 0; i < nombreDAnimations; i++) {
+                progresActuel += progresParIterationCorr;
                 double progres = progresActuel;
-                try {
-                    Thread.sleep(10);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-                Platform.runLater(() -> barre.setProgress(progres));
+
+                KeyFrame keyframe = new KeyFrame(Duration.millis(currentDuration + durationPerIteration * (i + 1)), e -> barre.setProgress(progres));
+                timeline.getKeyFrames().add(keyframe);
             }
 
-            Platform.runLater(() -> barre.setProgress(nouvelleValeur));
+            KeyFrame finalFrame = new KeyFrame(Duration.millis(durationPerIteration * nombreDAnimations), event -> barre.setProgress(nouvelleValeur));
+            timeline.getKeyFrames().add(finalFrame);
         }
+
+        return timeline;
     }
 
     public void activerNode (String node) {
@@ -471,7 +485,7 @@ public class FenetreAppController {
     public void equiperArmure(@NotNull Armure armure)
     {
         double ratioArmure = (double) armure.getPtsArmure() / armure.getCapaciteArmure();
-        changerProgresBarreAnime(barreArmure, ratioArmure);
+        changerProgresBarreAnime(barreArmure, ratioArmure, armureProgresParIteration);
         Platform.runLater(() -> labelArmure.setText(armure.getPtsArmure() + "/" + armure.getCapaciteArmure()));
     }
 
@@ -479,28 +493,32 @@ public class FenetreAppController {
     {
         if (ptsArmure != 0)
         {
-            changerProgresBarreAnime(barreArmure, 1.0);
+            changerProgresBarreAnime(barreArmure, 1.0, armureProgresParIteration);
             Platform.runLater(() -> labelArmure.setText(ptsArmure + "/" + ptsArmure));
         }
     }
 
     public void gainXp(Joueur joueur, int ancienNiveau, int xpGagne) {
         Platform.runLater(() -> labelGainXP.setText("+" + xpGagne + " XP"));
-
         int nbNiveauxGagnes = joueur.getNiveau() - ancienNiveau;
+        Timeline timeline = new Timeline();
 
         for (int i = 0; i < nbNiveauxGagnes; i++)
         {
-            changerProgresBarreAnime(barreXP, 1.0);
+            timeline = ajouterProgresBarreTimeline(new Timeline(), barreXP, 1.0, XPProgresParIteration);
             int niveauCourant = ancienNiveau + i + 1;
-            Platform.runLater(() -> {
+
+            KeyFrame additionalKeyFrame = new KeyFrame(timeline.getTotalDuration().add(Duration.millis(durationPerIteration)), e -> {
                 barreXP.setProgress(0.0);
-                labelNiveauJoueur.setText(niveauCourant + "");
+                labelNiveauJoueur.setText(niveauCourant + " ");
             });
+            
+            timeline.getKeyFrames().add(additionalKeyFrame);
         }
 
-        changerProgresBarreAnime(barreXP, (double) joueur.getXP().getValeur() / joueur.getXpCap());
-        if (nbNiveauxGagnes > 0) changerProgresBarreAnime(barreVie, 1.0);
+        timeline = ajouterProgresBarreTimeline(timeline, barreXP, (double) joueur.getXP().getValeur() / joueur.getXpCap(), XPProgresParIteration);
+        Platform.runLater(timeline::playFromStart);
+        if (nbNiveauxGagnes > 0) changerProgresBarreAnime(barreVie, 1.0, vieProgresParIteration);
 
         Platform.runLater(() -> {
             labelGainXP.setText("");
@@ -562,14 +580,14 @@ public class FenetreAppController {
         if (entite instanceof Joueur joueur)
         {
             Platform.runLater(() -> labelVie.setText(joueur.getVieRestante() + "/" + joueur.getPtsVie()));
-            changerProgresBarreAnime(barreVie, (double) joueur.getVieRestante() / joueur.getPtsVie());
+            changerProgresBarreAnime(barreVie, (double) joueur.getVieRestante() / joueur.getPtsVie(), vieProgresParIteration);
             boutonSoinRapide.setDisable(joueur.getVieRestante() == joueur.getPtsVie() && joueur.getInventaire().getListType(Type_Objet.POTIONS).isEmpty());
         }
 
         else
         {
             Platform.runLater(() -> labelVieEnnemi.setText(entite.getVieRestante() + "/" + entite.getPtsVie()));
-            changerProgresBarreAnime(barreVieEnnemie, (double) entite.getVieRestante() / entite.getPtsVie());
+            changerProgresBarreAnime(barreVieEnnemie, (double) entite.getVieRestante() / entite.getPtsVie(), vieEnnemieProgresParIteration);
         }
     }
 
