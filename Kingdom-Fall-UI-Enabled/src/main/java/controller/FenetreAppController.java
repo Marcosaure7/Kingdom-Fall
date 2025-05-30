@@ -204,7 +204,7 @@ public class FenetreAppController {
                     if (boutonJeter.isVisible()) dissiperDrop();
                 }
                 case E -> {
-                    if (boutonEquiper.isVisible()) equiper();
+                    if (boutonEquiper.isVisible()) gameLogic.equiper();
                 }
                 case ESCAPE -> ouvrirOptions();
             }
@@ -218,7 +218,7 @@ public class FenetreAppController {
         boutonSoinRapide.setOnAction(event -> soinRapide());
         boutonRamasser.setOnAction(event -> gameLogic.ramasser());
         boutonJeter.setOnAction(event -> dissiperDrop());
-        boutonEquiper.setOnAction(event -> equiper());
+        boutonEquiper.setOnAction(event -> gameLogic.equiper());
 
         boutonInventaire.setOnAction(event ->
                 inventaireController.ouvrirInventaire(((Button) event.getSource()).getScene().getWindow().getX(),
@@ -556,11 +556,6 @@ public class FenetreAppController {
 
     public void inventairePlein() {
         envoyerMessage("Votre inventaire est plein! Veuillez faire de la place ou jeter ce drop.");
-    }
-
-    private void equiper() {
-        gameLogic.equiper();
-        dissiperDrop();
     }
 
     public void dissiperDrop() {

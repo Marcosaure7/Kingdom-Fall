@@ -194,6 +194,7 @@ public class InventaireController {
         Objet objetStock;
         int index;
         ContextMenu menuInfos;
+        Label labelNom;
 
         public ObjetSlot(Type_Objet type, Objet objet, int index)
         {
@@ -202,8 +203,6 @@ public class InventaireController {
 
             setMinSize(100, 120);
             setPrefSize(getMinWidth(), getMinHeight());
-            //setMargin(this, new Insets(100, 0, 0, 0));
-            //setPadding(new Insets(20, 0, 0, 0));
             setAlignment(Pos.BOTTOM_CENTER);
 
             if (objet != null)
@@ -216,7 +215,9 @@ public class InventaireController {
                 this.menuInfos = new ContextMenu(new CustomMenuItem(objet.formatComparedDescription(joueur)));
 
                 getChildren().add(imageObjet);
-                getChildren().add(new Label(objetStock.getNom()));
+                labelNom = new Label(objetStock.getNom());
+                // labelNom.setWrapText(true); // Retour à la ligne auto
+                getChildren().add(labelNom);
 
                 setOnMouseClicked(event -> {
                     if (event.getButton() == MouseButton.PRIMARY && event.getClickCount() >= 2) {
@@ -248,11 +249,13 @@ public class InventaireController {
 
                 setOnMouseMoved(event -> {
                     setStyle("-fx-border-style: solid; -fx-border-color: lightgreen; -fx-border-width: 2px;");
+                    labelNom.setWrapText(true);
                     menuInfos.show(this, event.getScreenX() + 10, event.getScreenY() - 120);
                 });
 
                 setOnMouseExited(event -> {
                     setStyle("");
+                    labelNom.setWrapText(false);
                     menuInfos.hide();
                 });
             }

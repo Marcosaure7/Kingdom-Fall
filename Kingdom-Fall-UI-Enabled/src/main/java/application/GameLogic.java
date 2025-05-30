@@ -53,8 +53,10 @@ public class GameLogic extends Thread {
         executor.submit(() -> jeuEnCours.effectuerAttaque());
     }
 
-    public void ramasser() {
-        try {
+    public void ramasser()
+    {
+        try
+        {
             jeuEnCours.ramasser();
             controller.dissiperDrop();
         }
@@ -68,9 +70,18 @@ public class GameLogic extends Thread {
         jeuEnCours.updateUsername(playerName);
     }
 
-    public void equiper() {
-        jeuEnCours.equiper();
-        relacherLatch();
+    public void equiper()
+    {
+        try
+        {
+            jeuEnCours.equiper();
+            controller.dissiperDrop();
+            relacherLatch();
+        }
+        catch (InventairePleinException e)
+        {
+            controller.inventairePlein();
+        }
     }
 }
 
