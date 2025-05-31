@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="090de7e3-5d53-47b4-b1d4-beddaa658b83" name="Changes" comment="Save fonctionnality added" />
+    <list default="true" id="090de7e3-5d53-47b4-b1d4-beddaa658b83" name="Changes" comment="Save fonctionnality added">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/InventaireController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/InventaireController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/objets/Type_Objet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/objets/Type_Objet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fenetreInventaire.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fenetreInventaire.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/InventaireController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/InventaireController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/InventaireController$ObjetSlot.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/InventaireController$ObjetSlot.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/InventaireController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/InventaireController.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -77,7 +85,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "feat/donjon2",
+    "git-widget-placeholder": "feat/border-on-click",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/home/mag2003/scenebuilder/opt/scenebuilder/bin/SceneBuilder",
     "node.js.detected.package.eslint": "true",
@@ -183,7 +191,7 @@
       <workItem from="1745736146590" duration="789000" />
       <workItem from="1748508797411" duration="1130000" />
       <workItem from="1748510053927" duration="19676000" />
-      <workItem from="1748626109376" duration="9884000" />
+      <workItem from="1748626109376" duration="19201000" />
     </task>
     <task id="LOCAL-00001" summary="Maven, changement de nom possible, soin rapide désactivée si pu de potion">
       <option name="closed" value="true" />
