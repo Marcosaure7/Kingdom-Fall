@@ -5,13 +5,48 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="090de7e3-5d53-47b4-b1d4-beddaa658b83" name="Changes" comment="Save fonctionnality added">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/InventaireController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/InventaireController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/objets/Type_Objet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/objets/Type_Objet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fenetreInventaire.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fenetreInventaire.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/controller/InventaireController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/InventaireController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/personnages/Joueur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/personnages/Joueur.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Kingdom-Fall-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/Kingdom-Fall-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application/App.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application/App.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application/DatabaseManager$ResultSetHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application/DatabaseManager$ResultSetHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application/DatabaseManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application/DatabaseManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application/Donjon.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application/Donjon.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application/EnnemiDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application/EnnemiDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application/GameLogic.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application/GameLogic.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application/Jeu.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application/Jeu.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application/Sauvegarde.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application/Sauvegarde.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/FenetreAppController$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/FenetreAppController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/FenetreAppController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/InventaireController$1.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/controller/InventaireController$ObjetSlot.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/InventaireController$ObjetSlot.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/controller/InventaireController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/InventaireController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/controller/OptionsController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/controller/OptionsController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/exceptions/InventairePleinException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/exceptions/InventairePleinException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/exceptions/InventaireVideException.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/exceptions/InventaireVideException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/objets/Arme.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/objets/Arme.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/objets/Armure.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/objets/Armure.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/objets/Divers.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/objets/Divers.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/objets/Drops.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/objets/Drops.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/objets/EffetStatut.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/objets/EffetStatut.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/objets/Exp.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/objets/Exp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/objets/Objet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/objets/Objet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/objets/ObjetInvoqueBoss.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/objets/ObjetInvoqueBoss.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/objets/Potion.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/objets/Potion.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/objets/Type_Objet.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/objets/Type_Objet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/personnages/Boss.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/personnages/Boss.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/personnages/Ennemi.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/personnages/Ennemi.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/personnages/Entite.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/personnages/Entite.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/personnages/Joueur$Inventaire.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/personnages/Joueur$Inventaire.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/personnages/Joueur.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/personnages/Joueur.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/user/Action.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/user/Action.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/original-Kingdom-Fall-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/target/original-Kingdom-Fall-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Kingdom-Fall-vault/Kanban.md" beforeDir="false" afterPath="$PROJECT_DIR$/../Kingdom-Fall-vault/Kanban.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Kingdom-Fall/.settings/org.eclipse.buildship.core.prefs" beforeDir="false" afterPath="$PROJECT_DIR$/../Kingdom-Fall/.settings/org.eclipse.buildship.core.prefs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Kingdom-Fall/app/bin/main/fenetre.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/../Kingdom-Fall/app/bin/main/fenetre.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Kingdom-Fall/app/bin/main/messages.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../Kingdom-Fall/app/bin/main/messages.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +99,10 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-base/21/javafx-base-21-sources.jar!/javafx/event/Event.java" root0="SKIP_INSPECTION" />
+    <setting file="jar://$USER_HOME$/.jdks/ms-21.0.6/lib/src.zip!/java.base/java/io/ObjectInputStream.java" root0="SKIP_INSPECTION" />
+    <setting file="jar://$USER_HOME$/.jdks/ms-21.0.6/lib/src.zip!/java.base/jdk/internal/misc/Unsafe.java" root0="SKIP_INSPECTION" />
+    <setting file="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-base/21/javafx-base-21-linux.jar!/javafx/event/Event.class" root0="SKIP_INSPECTION" />
+    <setting file="jar://$MAVEN_REPOSITORY$/org/openjfx/javafx-graphics/21/javafx-graphics-21-linux.jar!/javafx/animation/Animation.class" root0="SKIP_INSPECTION" />
   </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
@@ -77,34 +115,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Kingdom-Fall.executor": "Run",
-    "Gradle.Build Kingdom-Fall-UI-Enabled.executor": "Run",
-    "Gradle.Kingdom-Fall-UI-Enabled:app [:app:application.App.main()].executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "feat/border-on-click",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/home/mag2003/scenebuilder/opt/scenebuilder/bin/SceneBuilder",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Kingdom-Fall.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Build Kingdom-Fall-UI-Enabled.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Kingdom-Fall-UI-Enabled:app [:app:application.App.main()].executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;feat/donjon2&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/mag2003/scenebuilder/opt/scenebuilder/bin/SceneBuilder&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/main/resources/images" />
@@ -142,8 +180,8 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.25410.129" />
-        <option value="bundled-js-predefined-d6986cc7102b-6a121458b545-JavaScript-IU-251.25410.129" />
+        <option value="bundled-jdk-9823dce3aa75-fbdcb00ec9e3-intellij.indexing.shared.core-IU-251.26094.121" />
+        <option value="bundled-js-predefined-d6986cc7102b-b26f3e71634d-JavaScript-IU-251.26094.121" />
       </set>
     </attachedChunks>
   </component>
@@ -192,6 +230,13 @@
       <workItem from="1748508797411" duration="1130000" />
       <workItem from="1748510053927" duration="19676000" />
       <workItem from="1748626109376" duration="19201000" />
+      <workItem from="1748803535789" duration="669000" />
+      <workItem from="1749501265643" duration="182000" />
+      <workItem from="1749501463736" duration="28000" />
+      <workItem from="1749501504987" duration="1339000" />
+      <workItem from="1749604479877" duration="381000" />
+      <workItem from="1751228222726" duration="1329000" />
+      <workItem from="1751821392075" duration="1710000" />
     </task>
     <task id="LOCAL-00001" summary="Maven, changement de nom possible, soin rapide désactivée si pu de potion">
       <option name="closed" value="true" />
@@ -236,7 +281,7 @@
       <breakpoints>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/personnages/Joueur.java</url>
-          <line>109</line>
+          <line>112</line>
           <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>

@@ -114,7 +114,6 @@ public class InventaireController {
             ouvrirEquipement(Type_Objet.DIVERS);
         });
 
-
         // TODO : not working
        root.setOnKeyPressed(event ->
        {
@@ -221,7 +220,7 @@ public class InventaireController {
 
     private void equiperObjet(ObjetSlot objetSlot) {
         objetSlot.emphasized = false;
-        objetSlot.animated = true;
+        emphasizedSlot = null;
         joueur.getInventaire().equiper(objetSlot.objetStock, objetSlot.index);
         ouvrirEquipement(objetSlot.type);
     }
@@ -234,14 +233,12 @@ public class InventaireController {
         ContextMenu menuInfos;
         Label labelNom;
         boolean emphasized;
-        boolean animated;
 
         public ObjetSlot(Type_Objet type, Objet objet, int index)
         {
             this.index = index;
             this.type = type;
             emphasized = false;
-            animated = true;
 
             setMinSize(100, 120);
             setPrefSize(getMinWidth(), getMinHeight());
@@ -296,24 +293,27 @@ public class InventaireController {
                 });
 
                 setOnMouseMoved(event -> {
-                    if (!emphasized && animated)
+                    if (!emphasized && emphasizedSlot == null)
                     {
-                        setStyle("-fx-border-style: solid; -fx-border-color: lightgreen; -fx-border-width: 2px;");
-                        labelNom.setWrapText(true);
-                        menuInfos.show(this, event.getScreenX() + 10, event.getScreenY() - menuInfos.getHeight());
+                        Platform.runLater(() -> {
+                            setStyle("-fx-border-style: solid; -fx-border-color: lightgreen; -fx-border-width: 2px;");
+                            labelNom.setWrapText(true);
+                            menuInfos.show(this, event.getScreenX() + 10, event.getScreenY() - menuInfos.getHeight());
+                        });
                     }
                 });
 
                 setOnMouseExited(event -> {
-                    if (!emphasized)
+                    if (!emphasized && emphasizedSlot == null)
                     {
-                        setStyle("");
-                        labelNom.setWrapText(false);
-                        menuInfos.hide();
+                        Platform.runLater(() -> {
+                            setStyle("");
+                            labelNom.setWrapText(false);
+                            menuInfos.hide();
+                        });
                     }
                 });
             }
-
             else getChildren().add(new Label("(Vide)"));
         }
 
@@ -321,20 +321,6 @@ public class InventaireController {
         {
             if (emphase)
             {
-                for (Node child : paneObjets.getChildren())
-                {
-                    if (child instanceof ObjetSlot objetSlot
-                            && this.index != objetSlot.index
-                            && objetSlot.objetStock != null)
-                    {
-                        Platform.runLater(() -> {
-                            objetSlot.setStyle("");
-                            objetSlot.labelNom.setWrapText(false);
-                            objetSlot.animated = false;
-                            menuInfos.hide();
-                        });
-                    }
-                }
                 this.emphasized = true;
                 emphasizedSlot = this;
                 Platform.runLater(() -> {
@@ -345,23 +331,11 @@ public class InventaireController {
             else
             {
                 this.emphasized = false;
+                emphasizedSlot = null;
                 Platform.runLater(() -> setStyle(""));
-                for (Node child : paneObjets.getChildren())
-                {
-                    if (child instanceof ObjetSlot objetSlot)
-                    {
-                        objetSlot.animated = true;
-                    }
-                }
             }
 
             Platform.runLater(() -> labelNom.setWrapText(emphase));
-        }
-
-        protected void resetSlot()
-        {
-            this.emphasized = false;
-            this.animated = true;
         }
     }
 

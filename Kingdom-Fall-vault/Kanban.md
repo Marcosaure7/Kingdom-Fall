@@ -9,9 +9,6 @@ kanban-plugin: board
 - [ ] \[BUG] "Double-drop" lors d'une attaque supp. d'un ennemi en transition vers la mort
 	
 	*fix/double-drop*
-- [ ] \[BUG] Chances de drop affichées au joueur incorrectes
-	
-	*fix/drop-chance-value*
 - [ ] Implémenter des images propres au donjon 2
 	
 	*feat/donjon2*
@@ -24,10 +21,19 @@ kanban-plugin: board
 - [ ] Background invisible sur les images du donjon 1
 	
 	*feat/invsible-bg*
+- [ ] Créer nouveau user MySQL en lecture seulement
+	
+	*feat/sql-readonly-user*
+- [ ] Déplacer l'emphase dans l'inventaire à l'appui du clavier
+	
+	*feat/border-on-click*
 
 
 ## Scheduled
 
+- [ ] \[BUG] Damage over time marche pas comme supposé
+	
+	*fix/dmg-over-time*
 - [ ] Invoquer le roi squelette fait geler le thread JavaFX
 	
 	*fix/invocation-freeze*
@@ -37,9 +43,6 @@ kanban-plugin: board
 - [ ] Afficher le % d'XP monter pendant que la barre d'XP monte
 	
 	*feat/xp-bar*
-- [ ] \[BUG] Damage over time marche pas comme supposé
-	
-	*fix/dmg-over-time*
 - [ ] Compléter les données du donjon 2
 	
 	*feat/donjon2*
@@ -47,13 +50,16 @@ kanban-plugin: board
 
 ## In progress
 
-- [ ] Emphase sur objet cliqué dans l'inventaire
+- [ ] \[BUG] Chances de drop affichées au joueur incorrectes
 	
-	*feat/border-on-click*
+	*fix/drop-chance-value*
 
 
 ## Completed
 
+- [ ] Emphase sur objet cliqué dans l'inventaire
+	
+	*feat/border-on-click*
 - [ ] Retour à la ligne du texte lors du survol avec la souris d'un item dans l'inventaire
 	
 	*feat/donjon2*

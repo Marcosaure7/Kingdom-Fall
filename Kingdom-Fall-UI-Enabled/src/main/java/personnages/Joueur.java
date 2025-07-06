@@ -42,7 +42,10 @@ public class Joueur extends Entite implements Serializable
     public void pincer_bouche() {
         ptsVie -= 50;
     }
-
+    
+    /**
+     * Change le nom
+     */ 
     public void renommer(String nom)
     {
         this.nom = nom;
