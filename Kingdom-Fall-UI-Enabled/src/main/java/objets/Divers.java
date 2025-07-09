@@ -1,8 +1,6 @@
 package objets;
 
-import java.io.Serializable;
-
-public abstract class Divers extends Objet implements Serializable
+public abstract class Divers extends Objet
 {
 
     private final String description;
@@ -21,7 +19,7 @@ public abstract class Divers extends Objet implements Serializable
 
     @Override
     public String getDescription() {
-        return String.format("%s%n%s%nChances de drop : %.2f", nom, description, dropRate*100) + "%";
+        return String.format("%s%n%s%nChances de drop : %s", nom, description, dropRateString);
     }
 
     public void utiliser () {}

@@ -5,9 +5,7 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import personnages.Joueur;
 
-import java.io.Serializable;
-
-public class Potion extends Objet implements Serializable
+public class Potion extends Objet
 {
     private final int soin;
     private final String description;

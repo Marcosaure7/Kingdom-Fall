@@ -33,15 +33,15 @@ public class EnnemiDAO {
                         rs.getInt("attaque"),
                         rs.getDouble("poidsSpawn"),
                         rs.getInt("xpDrop"),
-                        recupererDropsPourEnnemi(rs.getInt("id"), "ennemi")));
+                        recupererDropsPourEnnemi(rs.getInt("id"), "ennemi", rs.getString("nom"))));
             }
         }
         return ennemis;
     }
 
-    private ArrayList<Objet> recupererDropsPourEnnemi(int ennemiId, String typeEnnemi) throws SQLException {
+    private ArrayList<Objet> recupererDropsPourEnnemi(int ennemiId, String classeEnnemi, String typeEnnemi) throws SQLException {
         ArrayList<Objet> drops = new ArrayList<>();
-        String selectDropTypesSQL = "SELECT drop_id, drop_type FROM " + typeEnnemi + "_drops WHERE " + typeEnnemi + "_id = ?";
+        String selectDropTypesSQL = "SELECT drop_id, drop_type FROM " + classeEnnemi + "_drops WHERE " + classeEnnemi + "_id = ?";
 
         try (PreparedStatement pstmt = connection.prepareStatement(selectDropTypesSQL)) {
             pstmt.setInt(1, ennemiId);
@@ -120,7 +120,7 @@ public class EnnemiDAO {
                 }
             }
         }
-        return Objet.pondererDropRates(drops);
+        return Objet.pondererDropRates(drops, typeEnnemi);
     }
 
     private Boss recupererBoss(int bossKey) throws SQLException
@@ -139,7 +139,7 @@ public class EnnemiDAO {
                         rsBoss.getInt("attaque"),
                         rsBoss.getInt("xp_drop"),
                         rsBoss.getInt("ptsArmure"),
-                        recupererDropsPourEnnemi(bossKey, "boss"));
+                        recupererDropsPourEnnemi(bossKey, "boss", rsBoss.getString("nom")));
             }
         }
 

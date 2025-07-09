@@ -4,16 +4,15 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import personnages.Joueur;
-
-import java.io.Serializable;
 import java.util.ArrayList;
 
-public abstract class Objet extends Drops implements Serializable
+public abstract class Objet extends Drops
 {
 
     protected Type_Objet type;
     protected String nom;
     protected double dropRate;
+    protected String dropRateString = "";
 
     public Objet(Type_Objet type, String nom, double dropRate) {
         this.type = type;
@@ -26,6 +25,7 @@ public abstract class Objet extends Drops implements Serializable
         this.type = autre.type;
         this.nom = autre.nom;
         this.dropRate = autre.dropRate;
+        this.dropRateString = autre.dropRateString;
     }
 
     public Type_Objet getType() {
@@ -48,13 +48,14 @@ public abstract class Objet extends Drops implements Serializable
     public abstract String getDescription();
     public abstract VBox formatComparedDescription(Joueur joueur);
 
-    public static ArrayList<Objet> pondererDropRates(ArrayList<Objet> objets) {
+    public static ArrayList<Objet> pondererDropRates(ArrayList<Objet> objets, String ennemi) {
         double totalDropRates = 0;
         for (Objet objet : objets) {
             totalDropRates += objet.getDropRate();
         }
         for (Objet objet : objets) {
             objet.dropRate /= totalDropRates;
+            objet.dropRateString = String.format("%.2f%s (%s)", objet.dropRate * 100, "%", ennemi);
         }
 
         return objets;

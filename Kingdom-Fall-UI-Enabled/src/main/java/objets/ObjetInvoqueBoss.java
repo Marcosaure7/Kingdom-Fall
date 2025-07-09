@@ -6,9 +6,7 @@ import javafx.scene.text.Text;
 import personnages.Boss;
 import personnages.Joueur;
 
-import java.io.Serializable;
-
-public class ObjetInvoqueBoss extends Divers implements Serializable
+public class ObjetInvoqueBoss extends Divers
 {
 
     private final Boss bossInvoque;

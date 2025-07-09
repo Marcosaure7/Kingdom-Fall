@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class Arme extends Objet implements Serializable
+public class Arme extends Objet 
 {
     private int degats;
     private EffetStatut effet;
@@ -41,8 +41,8 @@ public class Arme extends Objet implements Serializable
     }
 
     public String getDescription() {
-        return String.format("%s\n%s\nDégâts : %d\nEffet de statut : %s\nChances de drop : %.2f",
-                getNom(), description, degats, effet, getDropRate()*100) + "%";
+        return String.format("%s\n%s\nDégâts : %d\nEffet de statut : %s\nChances de drop : %s",
+                getNom(), description, degats, effet, dropRateString);
     }
 
     @Override

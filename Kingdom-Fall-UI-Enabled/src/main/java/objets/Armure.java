@@ -5,9 +5,7 @@ import javafx.scene.text.Text;
 import javafx.scene.text.TextFlow;
 import personnages.Joueur;
 
-import java.io.Serializable;
-
-public class Armure extends Objet implements Serializable
+public class Armure extends Objet
 {
 
     private String description;
@@ -33,8 +31,8 @@ public class Armure extends Objet implements Serializable
     }
 
     public String getDescription() {
-        return String.format("%s\n%s\nCapacité : %d\nArmure : %d\nChances de drop : %.2f",
-                getNom(), description, capaciteArmure, ptsArmure, getDropRate()*100) + "%";
+        return String.format("%s\n%s\nCapacité : %d\nArmure : %d\nChances de drop : %s",
+                getNom(), description, capaciteArmure, ptsArmure, dropRateString);
     }
 
     public VBox formatComparedDescription(Joueur joueur) {
