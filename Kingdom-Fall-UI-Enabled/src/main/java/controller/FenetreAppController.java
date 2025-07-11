@@ -477,6 +477,33 @@ public class FenetreAppController {
         return timeline;
     }
 
+    private Timeline animerLabelXPJoueur(Timeline timeline, double currentDuration, double nouvelleValeur, double progresParIteration)
+    {
+        double ancienneValeur = Double.parseDouble(labelXPJoueur.getText().substring(0, labelXPJoueur.getText().length() - 1)) / 100;
+
+        if (ancienneValeur != nouvelleValeur)
+        {
+            double progresParIterationCorr = nouvelleValeur > ancienneValeur ? progresParIteration : -progresParIteration;
+            int nombreDAnimations = (int) ((nouvelleValeur - ancienneValeur) / progresParIterationCorr);
+            double progresActuel = ancienneValeur;
+
+            for (int i = 0; i < nombreDAnimations; i++)
+            {
+                progresActuel += progresParIterationCorr;
+                double progres = progresActuel;
+
+                KeyFrame keyframe = new KeyFrame(Duration.millis(currentDuration + durationPerIteration * (i + 1)), 
+                        e -> labelXPJoueur.setText(String.format("%.1f%%", progres * 100)));
+                timeline.getKeyFrames().add(keyframe);
+            }
+
+            KeyFrame finalFrame = new KeyFrame(Duration.millis(durationPerIteration * nombreDAnimations), event -> labelXPJoueur.setText(String.format("%.1f%%", nouvelleValeur * 100)));
+            timeline.getKeyFrames().add(finalFrame);
+        }
+
+        return timeline;
+    }
+
     public void activerNode (String node) {
         switch (node) {
             case "attaquer" -> boutonAttaquer.setDisable(false);
@@ -508,18 +535,23 @@ public class FenetreAppController {
 
         for (int i = 0; i < nbNiveauxGagnes; i++)
         {
-            timeline = ajouterProgresBarreTimeline(new Timeline(), barreXP, 1.0, XPProgresParIteration);
+            double currentDuration = timeline.getTotalDuration().toMillis();
+            ajouterProgresBarreTimeline(timeline, barreXP, 1.0, XPProgresParIteration);
+            animerLabelXPJoueur(timeline, currentDuration, 1.0, XPProgresParIteration);
             int niveauCourant = ancienNiveau + i + 1;
 
             KeyFrame additionalKeyFrame = new KeyFrame(timeline.getTotalDuration().add(Duration.millis(durationPerIteration)), e -> {
                 barreXP.setProgress(0.0);
                 labelNiveauJoueur.setText(niveauCourant + " ");
+                labelXPJoueur.setText("0.0%");
             });
             
             timeline.getKeyFrames().add(additionalKeyFrame);
         }
 
-        timeline = ajouterProgresBarreTimeline(timeline, barreXP, (double) joueur.getXP().getValeur() / joueur.getXpCap(), XPProgresParIteration);
+        double currentDuration = timeline.getTotalDuration().toMillis();
+        ajouterProgresBarreTimeline(timeline, barreXP, (double) joueur.getXP().getValeur() / joueur.getXpCap(), XPProgresParIteration);
+        animerLabelXPJoueur(timeline, currentDuration,(double) joueur.getXP().getValeur() / joueur.getXpCap(), XPProgresParIteration);
         // 0.5 seconde supplémentaire pour afficher l'XP gagné
         KeyFrame finalKeyFrame = new KeyFrame(timeline.getTotalDuration().add(Duration.millis(500)), e -> labelGainXP.setText(""));
         timeline.getKeyFrames().add(finalKeyFrame);
