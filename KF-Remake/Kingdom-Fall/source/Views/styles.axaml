@@ -1,0 +1,29 @@
+<Styles xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Style Selector="Border.bordure-ridge-doree">
+        <Setter Property="Background" Value="#3B3B3B"/>
+        <Setter Property="BorderBrush" Value="Gold"/>
+        <Setter Property="BorderThickness" Value="2"/>
+    </Style>
+    <Style Selector="ProgressBar.hp-bar">
+        <Setter Property="Foreground" Value="Red"/>
+        <Setter Property="Background" Value="DarkGray"/>
+        <Setter Property="Height" Value="14"/>
+    </Style>
+    <Style Selector="ProgressBar.arm-bar">
+        <Setter Property="Foreground" Value="Green"/>
+        <Setter Property="Background" Value="DarkGray"/>
+        <Setter Property="Height" Value="14"/>
+    </Style>
+    <Style Selector="ProgressBar.exp-bar">
+        <Setter Property="Foreground" Value="Blue"/>
+        <Setter Property="Background" Value="DarkGray"/>
+        <Setter Property="Height" Value="14"/>
+    </Style>
+    <Style Selector="ToolTip">
+        <Setter Property="Background" Value="#525252ff"/>
+        <Setter Property="BorderBrush" Value="Gold"/>
+        <Setter Property="BorderThickness" Value="3"/>
+        <Setter Property="ShowDelay" Value="10"/>
+    </Style>
+</Styles>

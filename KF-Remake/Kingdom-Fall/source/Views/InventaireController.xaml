@@ -1,0 +1,33 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+            xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            x:Class="controllers.InventaireController">
+    <UserControl.Styles>
+        <StyleInclude Source="styles.axaml"/>
+    </UserControl.Styles>
+    <DockPanel>
+        <StackPanel DockPanel.Dock="Left" Orientation="Vertical" Margin="10" Spacing="10">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Name="LabelArmes" Text="Armes"/>
+                <TextBlock Name="LabelArmesOuvert"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Name="LabelArmures" Text="Armures"/>
+                <TextBlock Name="LabelArmuresOuvert"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Name="LabelPotions" Text="Potions"/>
+                <TextBlock Name="LabelPotionsOuvert"/>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Name="LabelDivers" Text="Divers"/>
+                <TextBlock Name="LabelDiversOuvert"/>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Name="VboxEquipe" DockPanel.Dock="Right" Orientation="Vertical" Margin="10" Spacing="10">
+            <TextBlock Text="Objet équipé"/>
+            <Image Name="ImageObjetEquipe" Width="100" Height="100"/>
+            <TextBlock Name="LabelDescriptionEquipee"/>
+        </StackPanel>
+        <WrapPanel Name="PaneObjets" Margin="10"/>
+    </DockPanel>
+</UserControl>

@@ -1,0 +1,122 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="controllers.FenetreAppController"
+        Title="Kingdom Fall"
+        Width="800" Height="500"
+        Background="LightGray"
+        CanResize="False">
+    <Window.Styles>
+        <StyleInclude Source="styles.axaml"/>
+    </Window.Styles>
+    <DockPanel>
+        <!-- Top: MenuBar -->
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="Sauvegarder/Quitter">
+                <MenuItem Name="MenuSauvegarder" Header="🖉 Sauvegarder"/>
+                <MenuItem Name="MenuQuitter" Header="⬅ Quitter"/>
+                <MenuItem Name="MenuCharger" Header="🗘 Charger personnage"/>
+            </MenuItem>
+            <MenuItem Header="Options">
+                <MenuItem Name="MenuOptions" Header="⚙ Menu Options"/>
+            </MenuItem>
+            <MenuItem Header="Aide"/>
+        </Menu>
+        <!-- Right: Donjon and Messages -->
+        <Border Classes="bordure-ridge-doree" DockPanel.Dock="Right" Width="173" Margin="10">
+            <StackPanel Orientation="Vertical" Spacing="10">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Donjon " Foreground="White" FontFamily="Old English Text MT" FontSize="20"/>
+                    <TextBlock Name="LabelDonjon" Text="Label" Foreground="White" FontFamily="Old English Text MT" FontSize="20"/>
+                </StackPanel>
+                <TextBlock Text="Messages :" Foreground="White" FontFamily="Old English Text MT" FontSize="16" Margin="0,20,0,0"/>
+                <Border BorderBrush="Gray" BorderThickness="1">
+                    <ScrollViewer Name="ScrollMessages" VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Disabled" Height="291">
+                        <TextBlock Name="TextFlowMessages" Width="155" Height="279" TextWrapping="Wrap"/>
+                    </ScrollViewer>
+                </Border>
+            </StackPanel>
+        </Border>
+        <!-- Bottom: Player Stats and Buttons -->
+        <Border Classes="bordure-ridge-doree" DockPanel.Dock="Bottom">
+            <StackPanel Orientation="Vertical">
+                <Border Classes="bordure-ridge-doree" Height="45">
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel HorizontalAlignment="Left" Orientation="Horizontal" Margin="5">
+                            <Button Name="BoutonAttaquer" Content="⚔ Attaquer" FontFamily="0xProto Nerd Font Propo" FontSize="12"/>
+                        </StackPanel>
+                        <StackPanel HorizontalAlignment="Center" Orientation="Horizontal" Margin="5" Spacing="5">
+                            <Button Name="BoutonSoinRapide" Content="❤ Soin rapide" FontFamily="0xProto Nerd Font Propo" FontSize="12"/>
+                            <TextBlock Name="LabelPotionsRestantes" Text="Label" Foreground="White" FontFamily="Old London" FontSize="18"/>
+                        </StackPanel>
+                        <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Margin="5">
+                            <Button Name="BoutonInventaire" Content="📚 Inventaire" FontFamily="0xProto Nerd Font Propo" FontSize="12"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+                <Border Classes="bordure-ridge-doree">
+                    <StackPanel>
+                        <TextBlock Name="LabelNomJoueur" Text="Joueur" Foreground="White" FontFamily="Old London" FontSize="14"/>
+                        <StackPanel Orientation="Horizontal" Margin="0,3,0,0">
+                            <StackPanel Orientation="Vertical" HorizontalAlignment="Right">
+                                <TextBlock Text="Santé :" Foreground="White" FontFamily="Old London" FontSize="20"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Vertical" Margin="10,0,0,0">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Name="LabelVie" Text="100/100" Foreground="Red" FontFamily="0xProto Nerd Font Propo" FontSize="12"/>
+                                    <TextBlock Text=" PV" Foreground="Red" FontFamily="0xProto Nerd Font Propo" FontSize="12"/>
+                                </StackPanel>
+                                <ProgressBar Name="BarreVie" Width="197" Height="14" Value="100" Maximum="100" Classes="hp-bar"/>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock Name="LabelArmure" Text="100/100" Foreground="Green" FontFamily="0xProto Nerd Font Propo" FontSize="12"/>
+                                    <TextBlock Text=" PA" Foreground="Green" FontFamily="0xProto Nerd Font Propo" FontSize="12"/>
+                                </StackPanel>
+                                <ProgressBar Name="BarreArmure" Width="80" Height="14" Value="100" Maximum="100" Classes="arm-bar"/>
+                            </StackPanel>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Height="71">
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                                <TextBlock Text="Exp :" Foreground="White" FontFamily="Old London" FontSize="20" Margin="15,0,0,0"/>
+                                <TextBlock Name="LabelXPJoueur" Text="Label" Foreground="White" FontFamily="Old London" FontSize="18" Margin="5,0,0,0"/>
+                                <TextBlock Name="LabelGainXP" Text="+23 XP" Foreground="#e4cd00" FontFamily="0xProto Nerd Font Propo" FontSize="14" Margin="15,0,0,0"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                                <TextBlock Text="NIV." Foreground="White" FontFamily="Old London" FontSize="18"/>
+                                <TextBlock Name="LabelNiveauJoueur" Text="Label" Foreground="White" FontFamily="Old London" FontSize="18" Margin="5,0,0,0"/>
+                            </StackPanel>
+                        </StackPanel>
+                        <ProgressBar Name="BarreXP" Width="792" Value="65" Maximum="100" Classes="exp-bar"/>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </Border>
+        <!-- Center: Enemy and Drop -->
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+            <Image Name="ImageEnnemi" Width="200" Height="358" Source="/Resources/images/squelette.png" Stretch="Uniform"/>
+            <StackPanel Orientation="Vertical" Width="233" Margin="10,0,0,0">
+                <TextBlock Name="LabelNomEnnemi" Text="NomEnnemi" Foreground="White" FontFamily="0xProto Nerd Font Propo" FontSize="16" HorizontalAlignment="Center" Margin="0,20,0,0"/>
+                <Grid ColumnDefinitions="Auto,*" RowDefinitions="Auto,Auto">
+                    <TextBlock Text="Vie :" Foreground="White" FontFamily="Old English Text MT" FontSize="16" Grid.Column="0" Grid.Row="0"/>
+                    <StackPanel Orientation="Vertical" Grid.Column="1" Grid.Row="0" Margin="0,5,0,0">
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Name="LabelVieEnnemi" Text="100/100" Foreground="White" FontFamily="0xProto Nerd Font Propo" FontSize="12"/>
+                            <TextBlock Text=" PV" Foreground="Red" FontFamily="0xProto Nerd Font Propo" FontSize="12"/>
+                        </StackPanel>
+                        <ProgressBar Name="BarreVieEnnemie" Width="110" Height="14" Value="100" Maximum="100" Classes="hp-bar"/>
+                    </StackPanel>
+                    <TextBlock Text="⚔ :" Foreground="White" FontSize="20" Grid.Column="0" Grid.Row="1"/>
+                    <TextBlock Name="LabelAttaqueEnnemie" Text="Label" Foreground="White" FontFamily="0xProto Nerd Font Propo" FontSize="16" Grid.Column="1" Grid.Row="1"/>
+                </Grid>
+            </StackPanel>
+            <StackPanel Orientation="Vertical" Width="197" Margin="0,20,0,0">
+                <TextBlock Name="LabelEnnemiLache" Text="Squelette a lâché :" Foreground="White" FontFamily="0xProto Nerd Font Propo" FontSize="12" Margin="0,0,0,30"/>
+                <Image Name="ImageDrop" Width="180" Height="150" Source="/Resources/images/gourdin (0).png" Stretch="Uniform"/>
+                <TextBlock Name="LabelItemDrop" Text="Gourdin" Foreground="White" FontFamily="0xProto Nerd Font Propo" FontSize="14" TextWrapping="Wrap" Margin="0,10,0,0"/>
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,0">
+                    <Button Name="BoutonRamasser" Content="Ramasser ✔" FontFamily="0xProto Nerd Font Propo" FontSize="12" Margin="0,0,10,0"/>
+                    <Button Name="BoutonJeter" Content="Jeter 🗙" FontFamily="0xProto Nerd Font Propo" FontSize="12"/>
+                </StackPanel>
+                <Button Name="BoutonEquiper" Content="Équiper ✋" FontFamily="0xProto Nerd Font Propo" FontSize="12" Margin="0,10,0,0"/>
+            </StackPanel>
+        </StackPanel>
+    </DockPanel>
+</Window>
