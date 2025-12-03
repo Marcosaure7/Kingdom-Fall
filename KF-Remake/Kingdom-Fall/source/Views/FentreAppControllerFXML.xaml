@@ -1,6 +1,5 @@
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        x:Class="controllers.FenetreAppController"
         Title="Kingdom Fall"
         Width="900" Height="600"
         CanResize="True">
@@ -11,7 +10,7 @@
         <FluentTheme/>
         <StyleInclude Source="styles.axaml"/>
     </Window.Styles>
-        <DockPanel>
+    <DockPanel>
         <!-- Top: MenuBar -->
         <Menu DockPanel.Dock="Top" VerticalAlignment="Stretch" Background="#DD5F5B4E">
             <MenuItem Header="Sauvegarder/Quitter">
@@ -34,7 +33,7 @@
                 <TextBlock Margin="5, 0, 0, 0" Text="Messages :" Foreground="White" FontFamily="Old London" FontSize="16" LineHeight="18"/>
                 <Border BorderBrush="Gray" BorderThickness="1">
                     <ScrollViewer Padding="7, 0, 15, 0" Name="ScrollMessages" AllowAutoHide="False"  VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Disabled" Height="315">
-                        <StackPanel Orientation="Vertical" Name="StackMessages" Height="315"></StackPanel>   
+                        <TextBlock Text="Hi i am a text test. This is a very long txt to show padding." Name="TextFlowMessages" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Height="279" TextWrapping="Wrap"/>
                     </ScrollViewer>
                 </Border>
             </StackPanel>
@@ -86,7 +85,7 @@
                                 <TextBlock Name="LabelXpJoueur" Text="Label" Foreground="White" FontFamily="Old London" FontSize="18" Margin="5,0,0,0"/>
                                 <TextBlock Name="LabelGainXp" Text="+23 XP" Foreground="#e4cd00" FontFamily="0xProto Nerd Font Propo" FontSize="14" Margin="15,0,0,0"/>
                             </StackPanel>
-                            <StackPanel Margin="240, 0" Orientation="Horizontal" HorizontalAlignment="Stretch">
+                            <StackPanel Margin="240, 0" Orientation="Horizontal" HorizontalAlignment="Center">
                                 <TextBlock Text="NIV." Foreground="White" FontFamily="Old London" FontSize="18"/>
                                 <TextBlock Name="LabelNiveauJoueur" Text="Label" Foreground="White" FontFamily="Old London" FontSize="18" Margin="5,0,0,0"/>
                             </StackPanel>

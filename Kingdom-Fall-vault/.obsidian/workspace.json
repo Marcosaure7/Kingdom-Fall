@@ -11,22 +11,14 @@
             "id": "189b16167e4f00d2",
             "type": "leaf",
             "state": {
-              "type": "kanban",
+              "type": "markdown",
               "state": {
-                "file": "Kanban.md",
-                "kanbanViewState": {
-                  "kanban-plugin": "board",
-                  "list-collapse": [
-                    false,
-                    false,
-                    false,
-                    false,
-                    false
-                  ]
-                }
+                "file": "Overview.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-trello",
-              "title": "Kanban"
+              "icon": "lucide-file",
+              "title": "Overview"
             }
           }
         ]
@@ -86,8 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 300
   },
   "right": {
     "id": "a73e3e3a2bb16e8d",
@@ -169,6 +160,7 @@
   },
   "left-ribbon": {
     "hiddenItems": {
+      "bases:Create new base": false,
       "switcher:Open quick switcher": false,
       "graph:Open graph view": false,
       "canvas:Create new canvas": false,
@@ -180,7 +172,16 @@
   },
   "active": "189b16167e4f00d2",
   "lastOpenFiles": [
+    "Pasted image 20250903114547.png",
+    "Pasted image 20250903112709.png",
     "Overview.md",
+    "Pasted image 20250903112707.png",
+    "Pasted image 20250903112710 2.png",
+    "Pasted image 20250903112710 1.png",
+    "Pasted image 20250903112710.png",
+    "Pasted image 20250903112709 2.png",
+    "Pasted image 20250903112709 1.png",
+    "Pasted image 20250903112708.png",
     "Kanban.md",
     "Welcome.md"
   ]

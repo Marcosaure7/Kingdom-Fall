@@ -1,3 +1,6 @@
+using Avalonia.LogicalTree;
+using Avalonia.Themes.Fluent;
+
 namespace controllers;
 
 using App;
@@ -21,49 +24,50 @@ using System.Timers;
 
 public partial class FenetreAppController : Window
 {
-    private readonly double vieProgresParIteration = 0.025;
-    private readonly double vieEnnemieProgresParIteration = 0.025;
-    private readonly double xpProgresParIteration = 0.01;
-    private readonly double armureProgresParIteration = 0.03;
-    private readonly double durationPerIteration = 10;
+    private readonly double _vieProgresParIteration = 0.025;
+    private readonly double _vieEnnemieProgresParIteration = 0.025;
+    private readonly double _xpProgresParIteration = 0.01;
+    private readonly double _armureProgresParIteration = 0.03;
+    private readonly double _durationPerIteration = 10;
 
-    private GameLogic gameLogic;
-    private InventaireController inventaireController;
-    private OptionsController optionsController;
-    private static FenetreAppController singleton;
+    private GameLogic _gameLogic;
+    private InventaireController _inventaireController;
+    private OptionsController _optionsController;
+    private static FenetreAppController _singleton;
+
+    private static int _nbMessages = 0;
 
     // Contrôles Avalonia
-    private ProgressBar barreVie;
-    private ProgressBar barreArmure;
-    private ProgressBar barreVieEnnemie;
-    private ProgressBar barreXP;
-    private Button boutonAttaquer;
-    private Button boutonEquiper;
-    private Button boutonInventaire;
-    private Button boutonJeter;
-    private Button boutonRamasser;
-    private Button boutonSoinRapide;
-    private TextBlock labelAttaqueEnnemie;
-    private TextBlock labelDonjon;
-    private TextBlock labelGainXP;
-    private TextBlock labelEnnemiLache;
-    private TextBlock labelItemDrop;
-    private TextBlock labelNiveauJoueur;
-    private TextBlock labelNomEnnemi;
-    private TextBlock labelNomJoueur;
-    private TextBlock labelPotionsRestantes;
-    private TextBlock labelVie;
-    private TextBlock labelArmure;
-    private TextBlock labelVieEnnemi;
-    private TextBlock labelXPJoueur;
-    private MenuItem menuOptions;
-    private MenuItem menuCharger;
-    private MenuItem menuQuitter;
-    private MenuItem menuSauvegarder;
-    private ScrollViewer scrollMessages;
-    private TextBlock textFlowMessages;
-    private Image imageDrop;
-    private Image imageEnnemi;
+    private ProgressBar _barreVie;
+    private ProgressBar _barreArmure;
+    private ProgressBar _barreVieEnnemie;
+    private ProgressBar _barreXp;
+    private Button _boutonAttaquer;
+    private Button _boutonEquiper;
+    private Button _boutonInventaire;
+    private Button _boutonJeter;
+    private Button _boutonRamasser;
+    private Button _boutonSoinRapide;
+    private TextBlock _labelAttaqueEnnemie;
+    private TextBlock _labelDonjon;
+    private TextBlock _labelGainXp;
+    private TextBlock _labelEnnemiLache;
+    private TextBlock _labelItemDrop;
+    private TextBlock _labelNiveauJoueur;
+    private TextBlock _labelNomEnnemi;
+    private TextBlock _labelNomJoueur;
+    private TextBlock _labelPotionsRestantes;
+    private TextBlock _labelVie;
+    private TextBlock _labelArmure;
+    private TextBlock _labelVieEnnemi;
+    private TextBlock _labelXpJoueur;
+    private MenuItem _menuOptions;
+    private MenuItem _menuCharger;
+    private MenuItem _menuQuitter;
+    private MenuItem _menuSauvegarder;
+    private ScrollViewer _scrollMessages;
+    private Image _imageDrop;
+    private Image _imageEnnemi;
 
     public FenetreAppController()
     {
@@ -73,140 +77,126 @@ public partial class FenetreAppController : Window
     private void InitializeComponent()
     {
         AvaloniaXamlLoader.Load(this);
-        singleton = this;
+        _singleton = this;
         
         // Initialisation des contrôles (normalement définis dans XAML)
-        barreVie = this.FindControl<ProgressBar>("BarreVie");
-        barreArmure = this.FindControl<ProgressBar>("BarreArmure");
-        barreVieEnnemie = this.FindControl<ProgressBar>("BarreVieEnnemie");
-        barreXP = this.FindControl<ProgressBar>("BarreXP");
-        boutonAttaquer = this.FindControl<Button>("BoutonAttaquer");
-        boutonEquiper = this.FindControl<Button>("BoutonEquiper");
-        boutonInventaire = this.FindControl<Button>("BoutonInventaire");
-        boutonJeter = this.FindControl<Button>("BoutonJeter");
-        boutonRamasser = this.FindControl<Button>("BoutonRamasser");
-        boutonSoinRapide = this.FindControl<Button>("BoutonSoinRapide");
-        labelAttaqueEnnemie = this.FindControl<TextBlock>("LabelAttaqueEnnemie");
-        labelDonjon = this.FindControl<TextBlock>("LabelDonjon");
-        labelGainXP = this.FindControl<TextBlock>("LabelGainXP");
-        labelEnnemiLache = this.FindControl<TextBlock>("LabelEnnemiLache");
-        labelItemDrop = this.FindControl<TextBlock>("LabelItemDrop");
-        labelNiveauJoueur = this.FindControl<TextBlock>("LabelNiveauJoueur");
-        labelNomEnnemi = this.FindControl<TextBlock>("LabelNomEnnemi");
-        labelNomJoueur = this.FindControl<TextBlock>("LabelNomJoueur");
-        labelPotionsRestantes = this.FindControl<TextBlock>("LabelPotionsRestantes");
-        labelVie = this.FindControl<TextBlock>("LabelVie");
-        labelArmure = this.FindControl<TextBlock>("LabelArmure");
-        labelVieEnnemi = this.FindControl<TextBlock>("LabelVieEnnemi");
-        labelXPJoueur = this.FindControl<TextBlock>("LabelXPJoueur");
-        menuOptions = this.FindControl<MenuItem>("MenuOptions");
-        menuCharger = this.FindControl<MenuItem>("MenuCharger");
-        menuQuitter = this.FindControl<MenuItem>("MenuQuitter");
-        menuSauvegarder = this.FindControl<MenuItem>("MenuSauvegarder");
-        scrollMessages = this.FindControl<ScrollViewer>("ScrollMessages");
-        textFlowMessages = this.FindControl<TextBlock>("TextFlowMessages");
-        imageDrop = this.FindControl<Image>("ImageDrop");
-        imageEnnemi = this.FindControl<Image>("ImageEnnemi");
+        _barreVie = this.FindControl<ProgressBar>("BarreVie");
+        _barreArmure = this.FindControl<ProgressBar>("BarreArmure");
+        _barreVieEnnemie = this.FindControl<ProgressBar>("BarreVieEnnemie");
+        _barreXp = this.FindControl<ProgressBar>("BarreXp");
+        _boutonAttaquer = this.FindControl<Button>("BoutonAttaquer");
+        _boutonEquiper = this.FindControl<Button>("BoutonEquiper");
+        _boutonInventaire = this.FindControl<Button>("BoutonInventaire");
+        _boutonJeter = this.FindControl<Button>("BoutonJeter");
+        _boutonRamasser = this.FindControl<Button>("BoutonRamasser");
+        _boutonSoinRapide = this.FindControl<Button>("BoutonSoinRapide");
+        _labelAttaqueEnnemie = this.FindControl<TextBlock>("LabelAttaqueEnnemie");
+        _labelDonjon = this.FindControl<TextBlock>("LabelDonjon");
+        _labelGainXp = this.FindControl<TextBlock>("LabelGainXp");
+        _labelEnnemiLache = this.FindControl<TextBlock>("LabelEnnemiLache");
+        _labelItemDrop = this.FindControl<TextBlock>("LabelItemDrop");
+        _labelNiveauJoueur = this.FindControl<TextBlock>("LabelNiveauJoueur");
+        _labelNomEnnemi = this.FindControl<TextBlock>("LabelNomEnnemi");
+        _labelNomJoueur = this.FindControl<TextBlock>("LabelNomJoueur");
+        _labelPotionsRestantes = this.FindControl<TextBlock>("LabelPotionsRestantes");
+        _labelVie = this.FindControl<TextBlock>("LabelVie");
+        _labelArmure = this.FindControl<TextBlock>("LabelArmure");
+        _labelVieEnnemi = this.FindControl<TextBlock>("LabelVieEnnemi");
+        _labelXpJoueur = this.FindControl<TextBlock>("LabelXpJoueur");
+        _menuOptions = this.FindControl<MenuItem>("MenuOptions");
+        _menuCharger = this.FindControl<MenuItem>("MenuCharger");
+        _menuQuitter = this.FindControl<MenuItem>("MenuQuitter");
+        _menuSauvegarder = this.FindControl<MenuItem>("MenuSauvegarder");
+        _scrollMessages = this.FindControl<ScrollViewer>("ScrollMessages");
+        _imageDrop = this.FindControl<Image>("ImageDrop");
+        _imageEnnemi = this.FindControl<Image>("ImageEnnemi");
+        StackMessages = this.FindControl<StackPanel>("StackMessages");
 
-        if (barreVie == null || barreArmure == null || barreVieEnnemie == null || barreXP == null ||
-            boutonAttaquer == null || boutonEquiper == null || boutonInventaire == null || boutonJeter == null ||
-            boutonRamasser == null || boutonSoinRapide == null || labelAttaqueEnnemie == null ||
-            labelDonjon == null || labelGainXP == null || labelEnnemiLache == null || labelItemDrop == null ||
-            labelNiveauJoueur == null || labelNomEnnemi == null || labelNomJoueur == null ||
-            labelPotionsRestantes == null || labelVie == null || labelArmure == null ||
-            labelVieEnnemi == null || labelXPJoueur == null || menuOptions == null ||
-            menuCharger == null || menuQuitter == null || menuSauvegarder == null ||
-            scrollMessages == null || textFlowMessages == null || imageDrop == null || imageEnnemi == null)
+        if (_barreVie == null || _barreArmure == null || _barreVieEnnemie == null || _barreXp == null ||
+            _boutonAttaquer == null || _boutonEquiper == null || _boutonInventaire == null || _boutonJeter == null ||
+            _boutonRamasser == null || _boutonSoinRapide == null || _labelAttaqueEnnemie == null ||
+            _labelDonjon == null || _labelGainXp == null || _labelEnnemiLache == null || _labelItemDrop == null ||
+            _labelNiveauJoueur == null || _labelNomEnnemi == null || _labelNomJoueur == null ||
+            _labelPotionsRestantes == null || _labelVie == null || _labelArmure == null ||
+            _labelVieEnnemi == null || _labelXpJoueur == null || _menuOptions == null ||
+            _menuCharger == null || _menuQuitter == null || _menuSauvegarder == null ||
+            _scrollMessages == null || _imageDrop == null || _imageEnnemi == null || StackMessages == null)
         {
             throw new InvalidOperationException("Un ou plusieurs contrôles requis sont manquants.");
         }
 
         // Initialisation des valeurs par défaut
-        imageEnnemi.Source = null;
-        imageDrop.Source = null;
-        labelGainXP.Text = "";
-        labelEnnemiLache.Text = "";
-        labelItemDrop.Text = "";
-        labelDonjon.Text = "0";
-        labelAttaqueEnnemie.Text = "";
-        labelNiveauJoueur.Text = "0";
-        labelNomEnnemi.Text = "";
-        labelArmure.Text = "0";
-        labelXPJoueur.Text = "0.0%";
-        labelVieEnnemi.Text = "";
-        labelPotionsRestantes.Text = "(0)";
-        barreVie.Value = 100;
-        barreArmure.Value = 0;
-        barreXP.Value = 0;
-        barreVieEnnemie.Value = 0;
-        boutonInventaire.IsEnabled = false;
-        boutonSoinRapide.IsEnabled = false;
-        boutonAttaquer.IsEnabled = false;
-        boutonRamasser.IsVisible = false;
-        boutonJeter.IsVisible = false;
-        boutonEquiper.IsVisible = false;
-        textFlowMessages.Text = "";
+        _imageEnnemi.Source = null;
+        _imageDrop.Source = null;
+        _labelGainXp.Text = "";
+        _labelEnnemiLache.Text = "";
+        _labelItemDrop.Text = "";
+        _labelDonjon.Text = "0";
+        _labelAttaqueEnnemie.Text = "";
+        _labelNiveauJoueur.Text = "0";
+        _labelNomEnnemi.Text = "";
+        _labelArmure.Text = "0";
+        _labelXpJoueur.Text = "0.0%";
+        _labelVieEnnemi.Text = "";
+        _labelPotionsRestantes.Text = "(0)";
+        _barreVie.Value = 100;
+        _barreArmure.Value = 0;
+        _barreXp.Value = 0;
+        _barreVieEnnemie.Value = 0;
+        _boutonInventaire.IsEnabled = false;
+        _boutonSoinRapide.IsEnabled = false;
+        _boutonAttaquer.IsEnabled = false;
+        _boutonRamasser.IsVisible = false;
+        _boutonJeter.IsVisible = false;
+        _boutonEquiper.IsVisible = false;
 
         this.KeyDown += OnKeyDown;
-        menuOptions.Click += (s, e) => OuvrirOptions();
-        menuQuitter.Click += async (s, e) => await OnQuitRequest();
-        boutonAttaquer.Click += (s, e) => gameLogic.Attaque();
-        boutonSoinRapide.Click += (s, e) => SoinRapide();
-        boutonRamasser.Click += (s, e) => { Console.WriteLine("Bouton ramasser appuyé"); gameLogic.Ramasser(); };
-        boutonJeter.Click += (s, e) => DissiperDrop();
-        boutonEquiper.Click += (s, e) => gameLogic.Equiper();
-        boutonInventaire.Click += (s, e) =>
-            inventaireController.OuvrirInventaire(this.Position.X, this.Position.Y, gameLogic.JeuEnCours.joueur);
-        menuSauvegarder.Click += async (s, e) => await Sauvegarde.SauvegarderJeu(gameLogic.JeuEnCours, OptionsController.PlayerName);
-        if (Sauvegarde.HasSaves())
-            menuCharger.Click += (s, e) => ChargerJeu();
-        else
-            menuCharger.IsEnabled = false;
-
-        imageDrop.PointerMoved += (s, e) =>
+        _menuOptions.Click += (s, e) => OuvrirOptions();
+        _menuQuitter.Click += async (s, e) => await OnQuitRequest();
+        _boutonAttaquer.Click += (s, e) => _gameLogic.Attaque();
+        _boutonSoinRapide.Click += (s, e) => SoinRapide();
+        _boutonRamasser.Click += (s, e) => { Console.WriteLine("Bouton ramasser appuyé"); _gameLogic.Ramasser(); };
+        _boutonJeter.Click += (s, e) => DissiperDrop();
+        _boutonEquiper.Click += (s, e) => _gameLogic.Equiper();
+        _boutonInventaire.Click += (s, e) =>
         {
-            if (imageDrop.Source != null)
-            {
-                var point = e.GetPosition(null);
-                //TODO menuInfosDrop.(imageDrop, point.X + 10, point.Y - 120);
-            }
+            InitializeFenetreInventaire();
+            _inventaireController.OuvrirInventaire(this.Position.X, this.Position.Y, _gameLogic.JeuEnCours.joueur);
         };
-        //TODO imageDrop.PointerExited += (s, e) => menuInfosDrop.();
+            
+        _menuSauvegarder.Click += async (s, e) => await Sauvegarde.SauvegarderJeu(_gameLogic.JeuEnCours, OptionsController.PlayerName);
+        if (Sauvegarde.HasSaves())
+            _menuCharger.Click += (s, e) => ChargerJeu();
+        else
+            _menuCharger.IsEnabled = false;
 
         // Initialisation des fenêtres secondaires
         InitializeFenetreInventaire();
         InitializeFenetreOptions();
 
         // Message de bienvenue
-        Dispatcher.UIThread.Post(() =>
-                {
-                textFlowMessages.Text += "Bienvenue à Kingdom Fall!\n\n";
-                textFlowMessages.Foreground = Brushes.White;
-                });
+        EnvoyerMessage("Bienvenue à Kingdom Fall!");
     }
 
     private void OnKeyDown(object sender, KeyEventArgs e)
     {
         switch (e.Key)
         {
-            case Key.A:
-                if (boutonAttaquer.IsEnabled) gameLogic.Attaque();
-                break;
             case Key.I:
-                if (boutonInventaire.IsEnabled)
-                    inventaireController.OuvrirInventaire(this.Position.X, this.Position.Y, gameLogic.JeuEnCours.joueur);
+                if (_boutonInventaire.IsEnabled)
+                    _inventaireController.OuvrirInventaire(this.Position.X, this.Position.Y, _gameLogic.JeuEnCours.joueur);
                 break;
             case Key.H:
-                if (boutonSoinRapide.IsEnabled) SoinRapide();
+                if (_boutonSoinRapide.IsEnabled) SoinRapide();
                 break;
             case Key.R:
-                if (boutonRamasser.IsVisible) gameLogic.Ramasser();
+                if (_boutonRamasser.IsVisible) _gameLogic.Ramasser();
                 break;
             case Key.J:
-                if (boutonJeter.IsVisible) DissiperDrop();
+                if (_boutonJeter.IsVisible) DissiperDrop();
                 break;
             case Key.E:
-                if (boutonEquiper.IsVisible) gameLogic.Equiper();
+                if (_boutonEquiper.IsVisible) _gameLogic.Equiper();
                 break;
             case Key.Escape:
                 OuvrirOptions();
@@ -217,49 +207,58 @@ public partial class FenetreAppController : Window
 
     private async void ChargerJeu()
     {
-        gameLogic.JeuEnCours = await Sauvegarde.ChargerJeu();
-        labelNomJoueur.Text = OptionsController.PlayerName;
-        gameLogic.JeuEnCours.LoadNouveauDonjon(gameLogic.JeuEnCours.numDonjon);
+        _gameLogic.JeuEnCours = await Sauvegarde.ChargerJeu();
+        _labelNomJoueur.Text = OptionsController.PlayerName;
+        _gameLogic.JeuEnCours.LoadNouveauDonjon(_gameLogic.JeuEnCours.numDonjon);
 
-        if (gameLogic.JeuEnCours.joueur == null || gameLogic.JeuEnCours.ennemiCourant == null)
+        if (_gameLogic.JeuEnCours.joueur == null || _gameLogic.JeuEnCours.ennemiCourant == null)
         {
             throw new exceptions.KFException("Le joueur ou l'ennemi courant est null après le chargement du jeu.");
         }
 
-        labelDonjon.Text = gameLogic.JeuEnCours.numDonjon.ToString();
-        labelNomEnnemi.Text = gameLogic.JeuEnCours.ennemiCourant.nom;
-        labelAttaqueEnnemie.Text = gameLogic.JeuEnCours.ennemiCourant.attBase.ToString();
-        imageEnnemi.Source = new Bitmap($"Resources/images/{gameLogic.JeuEnCours.ennemiCourant.nom.ToLower()}.png");
-        boutonInventaire.IsEnabled = true;
-        if (gameLogic.JeuEnCours.joueur.inventaire.GetListType(objets.TypeObjet.Potions).Any())
-            boutonSoinRapide.IsEnabled = true;
+        _labelDonjon.Text = _gameLogic.JeuEnCours.numDonjon.ToString();
+        _labelNomEnnemi.Text = _gameLogic.JeuEnCours.ennemiCourant.nom;
+        _labelAttaqueEnnemie.Text = _gameLogic.JeuEnCours.ennemiCourant.attBase.ToString();
+        _imageEnnemi.Source = new Bitmap($"Resources/images/{_gameLogic.JeuEnCours.ennemiCourant.nom.ToLower()}.png");
+        _boutonInventaire.IsEnabled = true;
+        if (_gameLogic.JeuEnCours.joueur.inventaire.GetListType(objets.TypeObjet.Potions).Any())
+            _boutonSoinRapide.IsEnabled = true;
 
-        barreVie.Value = 0;
-        barreArmure.Value = 0;
-        barreVieEnnemie.Value = 0;
-        barreXP.Value = 0;
-        AfficherAttaquer(gameLogic.JeuEnCours.joueur);
-        AfficherAttaquer(gameLogic.JeuEnCours.ennemiCourant);
-        ChangerProgresBarreAnime(barreXP, gameLogic.JeuEnCours.joueur.xp.valeur, xpProgresParIteration);
+        _barreVie.Value = 0;
+        _barreArmure.Value = 0;
+        _barreVieEnnemie.Value = 0;
+        _barreXp.Value = 0;
+        AfficherAttaquer(_gameLogic.JeuEnCours.joueur);
+        AfficherAttaquer(_gameLogic.JeuEnCours.ennemiCourant);
+        ChangerProgresBarreAnime(_barreXp, _gameLogic.JeuEnCours.joueur.xp.valeur, _xpProgresParIteration);
     }
 
+    /// <summary>
+    /// PLEASE CALL ON UITHREAD !!!
+    /// </summary>
+    /// <returns></returns>
     public async Task<bool> OnQuitRequest()
     {
         var dialog = new Window
         {
             Title = "Quitter",
-            Width = 300,
+            Width = 400,
             Height = 200,
             WindowStartupLocation = WindowStartupLocation.CenterOwner,
             CanResize = false
         };
+        dialog.Styles.Add(new FluentTheme());
         var stackPanel = new StackPanel
         {
             Spacing = 10,
             Margin = new Thickness(10)
         };
         stackPanel.Children.Add(new TextBlock { Text = "Quitter Kingdom-Fall ?" });
-        stackPanel.Children.Add(new TextBlock { Text = "Êtes-vous sûr de vouloir quitter Kingdom-Fall ?\n\n(Tout changement non sauvegardé sera définitivement perdu)" });
+        stackPanel.Children.Add(new TextBlock
+        {
+            TextWrapping = TextWrapping.Wrap,
+            Text = "Êtes-vous sûr de vouloir quitter Kingdom-Fall ?\n\n(Tout changement non sauvegardé sera définitivement perdu)"
+        });
         var okButton = new Button { Content = "OK", Width = 100 };
         var cancelButton = new Button { Content = "Annuler", Width = 100 };
         var buttonPanel = new StackPanel { Orientation = Orientation.Horizontal, Spacing = 10, HorizontalAlignment = HorizontalAlignment.Center };
@@ -279,22 +278,33 @@ public partial class FenetreAppController : Window
         return result;
     }
 
-    public static FenetreAppController GetSingleton() => singleton;
+    public static FenetreAppController GetSingleton() => _singleton;
 
     private void OuvrirOptions()
     {
-        if (optionsController.StageOptions is null)
+        if (_optionsController.StageOptions is null)
         {
             throw new InvalidOperationException("OptionsController n'est pas initialisé.");
         }
 
-        optionsController.StageOptions.Show();
-        optionsController.StageOptions.Activate();
+        _optionsController.StageOptions.Show();
+        _optionsController.StageOptions.Activate();
     }
 
     private void SoinRapide()
     {
-        var joueurCourant = gameLogic.JeuEnCours.joueur;
+        var joueurCourant = _gameLogic.JeuEnCours.joueur;
+        var potions = joueurCourant.inventaire.GetListType(objets.TypeObjet.Potions);
+
+        if (potions.Count > 0)
+            joueurCourant.inventaire.Utiliser(potions.First(), 0);
+        else
+            EnvoyerMessage("Vous n'avez pas de potions dans votre inventaire.");
+
+        SetNbPotions(potions.Count);
+
+        if (potions.Count == 0)
+            BoutonSoinRapide.IsEnabled = true;
     }
 
     private void InitializeFenetreInventaire()
@@ -307,9 +317,9 @@ public partial class FenetreAppController : Window
         };
         var inventaireControllerInstance = new InventaireController();
         stageInventaire.Content = inventaireControllerInstance;
-        inventaireController = inventaireControllerInstance;
-        inventaireController.SetStageInventaire(stageInventaire);
-        inventaireController.SetFenetreAppController(this);
+        _inventaireController = inventaireControllerInstance;
+        _inventaireController.SetStageInventaire(stageInventaire);
+        _inventaireController.SetFenetreAppController(this);
     }
 
     private void InitializeFenetreOptions()
@@ -322,15 +332,15 @@ public partial class FenetreAppController : Window
         };
         var optionsControllerInstance = new OptionsController();
         stageOptions.Content = optionsControllerInstance;
-        optionsController = optionsControllerInstance;
-        optionsController.SetStageOptions(stageOptions);
-        optionsController.SetFenetreAppController(this);
+        _optionsController = optionsControllerInstance;
+        _optionsController.SetStageOptions(stageOptions);
+        _optionsController.SetFenetreAppController(this);
         stageOptions.SizeToContent = SizeToContent.WidthAndHeight;
     }
 
     public void SetThread(GameLogic thread)
     {
-        gameLogic = thread;
+        _gameLogic = thread;
     }
 
     public void EnvoyerMessage(string message)
@@ -339,9 +349,16 @@ public partial class FenetreAppController : Window
         {
             Dispatcher.UIThread.Post(() =>
             {
-                textFlowMessages.Text += $"{message}\n\n";
-                textFlowMessages.Foreground = Brushes.White;
-                scrollMessages.ScrollToEnd();
+                TextBlock textBlockMessage = new TextBlock
+                {
+                    Text = message + "\n",
+                    TextWrapping = TextWrapping.Wrap,
+                    Foreground = Brushes.White,
+                };
+                StackMessages.Children.Add(textBlockMessage);
+                StackMessages.Height += textBlockMessage.Height;
+                _scrollMessages.ScrollToEnd();
+                
             });
         }
     }
@@ -350,12 +367,12 @@ public partial class FenetreAppController : Window
     {
         Dispatcher.UIThread.Post(() =>
         {
-           imageEnnemi.Source = new Bitmap($"Resources/images/{ennemiAffiche.nom.ToLower()}.png");
-           labelNomEnnemi.Text = ennemiAffiche.nom;
-           labelVieEnnemi.Text = $"{ennemiAffiche.vieRestante}/{ennemiAffiche.ptsVie}";
-           labelAttaqueEnnemie.Text = ennemiAffiche.attBase.ToString();
+           _imageEnnemi.Source = new Bitmap($"Resources/images/{ennemiAffiche.nom.ToLower()}.png");
+           _labelNomEnnemi.Text = ennemiAffiche.nom;
+           _labelVieEnnemi.Text = $"{ennemiAffiche.vieRestante}/{ennemiAffiche.ptsVie}";
+           _labelAttaqueEnnemie.Text = ennemiAffiche.attBase.ToString();
         });
-        ChangerProgresBarreAnime(barreVieEnnemie, (double)ennemiAffiche.vieRestante / ennemiAffiche.ptsVie, vieEnnemieProgresParIteration);
+        ChangerProgresBarreAnime(_barreVieEnnemie, (double)ennemiAffiche.vieRestante / ennemiAffiche.ptsVie, _vieEnnemieProgresParIteration);
     }
 
     public void AfficherAttaquer(Entite entiteAttaquee)
@@ -365,8 +382,8 @@ public partial class FenetreAppController : Window
 
         if (entiteAttaquee is Ennemi ennemi)
         {
-            Dispatcher.UIThread.Post(() => labelVieEnnemi.Text = stringVieRestante);
-            ChangerProgresBarreAnime(barreVieEnnemie, rationVieRestante, vieEnnemieProgresParIteration);
+            Dispatcher.UIThread.Post(() => _labelVieEnnemi.Text = stringVieRestante);
+            ChangerProgresBarreAnime(_barreVieEnnemie, rationVieRestante, _vieEnnemieProgresParIteration);
         }
         else if (entiteAttaquee is Joueur joueur)
         {
@@ -385,45 +402,71 @@ public partial class FenetreAppController : Window
         {
             string stringArmureRestante = $"{armure.ptsArmure}/{armure.capaciteArmure}";
             double ratioArmureRestante = (double)armure.ptsArmure / armure.capaciteArmure;
-            Dispatcher.UIThread.Post(() => labelArmure.Text = stringArmureRestante);
-            ChangerProgresBarreAnime(barreArmure, ratioArmureRestante, armureProgresParIteration);
+            Dispatcher.UIThread.Post(() => _labelArmure.Text = stringArmureRestante);
+            ChangerProgresBarreAnime(_barreArmure, ratioArmureRestante, _armureProgresParIteration);
         }
-        else
+        if (armure != null && armure.ptsArmure == 0)
         {
-            if (barreArmure.Value != 0)
-            {
-                ChangerProgresBarreAnime(barreArmure, 0.0, armureProgresParIteration);
-                Dispatcher.UIThread.Post(() => labelArmure.Text = $"0/{((objets.Armure)joueur.GetEquip(objets.TypeObjet.Armures)).capaciteArmure}");
-            }
+            ChangerProgresBarreAnime(_barreArmure, 0.0, _armureProgresParIteration);
+            Dispatcher.UIThread.Post(() => _labelArmure.Text = $"0/{((objets.Armure)joueur.GetEquip(objets.TypeObjet.Armures)).capaciteArmure}");
+        }
+        
+        if (armure == null || armure.ptsArmure == 0)
+        {
             string stringVieRestante = $"{joueur.vieRestante}/{joueur.ptsVie}";
             double ratioVieRestante = (double)joueur.vieRestante / joueur.ptsVie;
-            Dispatcher.UIThread.Post(() => labelVie.Text = stringVieRestante);
-            ChangerProgresBarreAnime(barreVie, ratioVieRestante, vieProgresParIteration);
+            Dispatcher.UIThread.Post(() => _labelVie.Text = stringVieRestante);
+            ChangerProgresBarreAnime(_barreVie, ratioVieRestante, _vieProgresParIteration);
         }
     }
 
     public void ChangerProgresBarreAnime(ProgressBar barre, double nouvelleValeur, double progresParIteration)
     {
-        Dispatcher.UIThread.Post(async () =>
-        {
-            double ancienneValeur = barre.Value / 100.0;
-            if (Math.Abs(ancienneValeur - nouvelleValeur) > 0.0001)
-            {
-                double progresParIterationCorr = nouvelleValeur > ancienneValeur ? progresParIteration : -progresParIteration;
-                int nombreDAnimations = (int)((nouvelleValeur - ancienneValeur) / progresParIterationCorr);
-                double progresActuel = ancienneValeur;
 
-                for (int i = 0; i < nombreDAnimations; i++)
-                {
-                    progresActuel += progresParIterationCorr;
-                    barre.Value = progresActuel * 100;
-                    await Task.Delay((int)durationPerIteration);
-                }
-                barre.Value = nouvelleValeur * 100;
-            }
-        });
-
+        double ancienneValeur = 0;
+        Dispatcher.UIThread.Invoke(() =>  ancienneValeur = barre.Value);
+        if (!(Math.Abs(ancienneValeur - nouvelleValeur) > 0.0001)) return;
         
+        double progresParIterationCorr =
+            nouvelleValeur > ancienneValeur ? progresParIteration : -progresParIteration;
+        int nombreDAnimations = (int)((nouvelleValeur - ancienneValeur) / progresParIterationCorr);
+        double progresActuel = ancienneValeur;
+        for (int i = 0; i < nombreDAnimations; i++)
+        {
+            Dispatcher.UIThread.Post(() =>
+            {
+                progresActuel += progresParIterationCorr;
+                barre.Value = progresActuel;
+                Thread.Sleep((int)_durationPerIteration);
+            });
+        }
+        Dispatcher.UIThread.Post(() => barre.Value = nouvelleValeur);
+    }
+
+    /// <summary>
+    /// Override for xp show
+    /// </summary>
+    /// <param name="nouvelleValeur"></param>
+    public void ChangerXpProgresAnime(double nouvelleValeur)
+    {
+        double ancienneValeur = 0;
+        Dispatcher.UIThread.Invoke(() =>  ancienneValeur = _barreXp.Value);
+        if (!(Math.Abs(ancienneValeur - nouvelleValeur) > 0.0001)) return;
+        
+        int nombreDAnimations = (int)((nouvelleValeur - ancienneValeur) / _xpProgresParIteration);
+        double progresActuel = ancienneValeur;
+        for (int i = 0; i < nombreDAnimations; i++)
+        {
+            Dispatcher.UIThread.Post(() =>
+            {
+                progresActuel += _xpProgresParIteration;
+                _barreXp.Value = progresActuel;
+                _labelXpJoueur.Text = $"{progresActuel * 100:F1}%";
+                Thread.Sleep((int)_durationPerIteration);
+            });
+        }
+        Dispatcher.UIThread.Post(() => _barreXp.Value = nouvelleValeur);
+        Dispatcher.UIThread.Post(() => _labelXpJoueur.Text = $"{nouvelleValeur * 100:F1}%");
     }
 
     public void ActiverNode(string node)
@@ -431,13 +474,13 @@ public partial class FenetreAppController : Window
         switch (node)
         {
             case "attaquer":
-                Dispatcher.UIThread.Post(() => boutonAttaquer.IsEnabled = true );
+                Dispatcher.UIThread.Post(() => _boutonAttaquer.IsEnabled = true );
                 break;
             case "inventaire":
-                Dispatcher.UIThread.Post(() => boutonInventaire.IsEnabled = true );
+                Dispatcher.UIThread.Post(() => _boutonInventaire.IsEnabled = true );
                 break;
             case "soin rapide":
-                Dispatcher.UIThread.Post(() => boutonSoinRapide.IsEnabled = true );
+                Dispatcher.UIThread.Post(() => _boutonSoinRapide.IsEnabled = true );
                 break;
         }
     }
@@ -445,65 +488,61 @@ public partial class FenetreAppController : Window
     public void EquiperArmure(objets.Armure armure)
     {
         double ratioArmure = (double)armure.ptsArmure / armure.capaciteArmure;
-        ChangerProgresBarreAnime(barreArmure, ratioArmure, armureProgresParIteration);
-        Dispatcher.UIThread.Post(() => labelArmure.Text = $"{armure.ptsArmure}/{armure.capaciteArmure}");
+        ChangerProgresBarreAnime(_barreArmure, ratioArmure, _armureProgresParIteration);
+        Dispatcher.UIThread.Post(() => _labelArmure.Text = $"{armure.ptsArmure}/{armure.capaciteArmure}");
     }
 
     public void ResetArmure(int ptsArmure)
     {
         if (ptsArmure != 0)
         {
-            ChangerProgresBarreAnime(barreArmure, 1.0, armureProgresParIteration);
-            Dispatcher.UIThread.Post(() => labelArmure.Text = $"{ptsArmure}/{ptsArmure}");
+            ChangerProgresBarreAnime(_barreArmure, 1.0, _armureProgresParIteration);
+            Dispatcher.UIThread.Post(() => _labelArmure.Text = $"{ptsArmure}/{ptsArmure}");
         }
     }
 
     public void GainXp(Joueur joueur, int ancienNiveau, int xpGagne)
     {
-        Dispatcher.UIThread.Post(() => labelGainXP.Text = $"+{xpGagne} XP");
+        Dispatcher.UIThread.Post(() => _labelGainXp.Text = $"+{xpGagne} XP");
         int nbNiveauxGagnes = joueur.niveau - ancienNiveau;
 
         for (int i = 0; i < nbNiveauxGagnes; i++)
         {
-            ChangerProgresBarreAnime(barreXP, 1.0, xpProgresParIteration);
+            ChangerXpProgresAnime(1.0);
             int niveauCoutant = ancienNiveau + i + 1;
             Dispatcher.UIThread.Post(() => 
             {
-                barreXP.Value = 0;
-                labelNiveauJoueur.Text = $"{niveauCoutant}";
+                _barreXp.Value = 0;
+                _labelNiveauJoueur.Text = $"{niveauCoutant}";
+                _labelXpJoueur.Text = "0.0%";
             });
         }
 
-        ChangerProgresBarreAnime(barreXP, (double)joueur.xp.valeur / joueur.xpCap, xpProgresParIteration);
-        Thread.Sleep(500); // Pause pour laisser le temps à l'animation de se terminer
-        Dispatcher.UIThread.Post(() => labelGainXP.Text = "");
+        ChangerXpProgresAnime((double)joueur.xp.valeur / joueur.xpCap);
+        Dispatcher.UIThread.Post(() => _labelGainXp.Text = "");
 
         if (nbNiveauxGagnes > 0)
-            ChangerProgresBarreAnime(barreVie, 1.0, vieProgresParIteration);
+            ChangerProgresBarreAnime(_barreVie, 1.0, _vieProgresParIteration);
 
-        Dispatcher.UIThread.Post(() =>
-        {
-            labelXPJoueur.Text = $"{(double)joueur.xp.valeur / joueur.xpCap * 100:F1}%";
-            labelVie.Text = $"{joueur.vieRestante}/{joueur.ptsVie}";
-        });
+        Dispatcher.UIThread.Post(() => _labelVie.Text = $"{joueur.vieRestante}/{joueur.ptsVie}");
     }
 
     public void ShowDrops(Ennemi source, objets.Objet objetChoisi, Joueur joueur)
     {
         Dispatcher.UIThread.Post(() =>
         {
-            boutonAttaquer.IsEnabled = false;
+            _boutonAttaquer.IsEnabled = false;
             string url = $"Resources/images/{objetChoisi.nom.ToLower()}.png";
             Console.WriteLine(url);
-            imageDrop.Source = new Bitmap(url);
-            ToolTip.SetTip(imageDrop, objetChoisi.FormatComparedDescription(joueur));
-            labelEnnemiLache.Text = $"{source.nom} a làché : ";
-            labelItemDrop.Text = objetChoisi.nom;
-            boutonRamasser.IsVisible = true;
-            boutonJeter.IsVisible = true;
+            _imageDrop.Source = new Bitmap(url);
+            ToolTip.SetTip(_imageDrop, objetChoisi.FormatComparedDescription(joueur));
+            _labelEnnemiLache.Text = $"{source.nom} a làché : ";
+            _labelItemDrop.Text = objetChoisi.nom;
+            _boutonRamasser.IsVisible = true;
+            _boutonJeter.IsVisible = true;
             
             if (objetChoisi.type == objets.TypeObjet.Armes || objetChoisi.type == objets.TypeObjet.Armures)
-                boutonEquiper.IsVisible = true;
+                _boutonEquiper.IsVisible = true;
         });
     }
 
@@ -516,67 +555,75 @@ public partial class FenetreAppController : Window
     {
         Dispatcher.UIThread.Post(() =>
         {
-            labelEnnemiLache.Text = "";
-            imageDrop.Source = null;
-            labelItemDrop.Text = "";
-            boutonRamasser.IsVisible = false;
-            boutonJeter.IsVisible = false;
-            boutonEquiper.IsVisible = false;
+            _labelEnnemiLache.Text = "";
+            _imageDrop.Source = null;
+            _labelItemDrop.Text = "";
+            _boutonRamasser.IsVisible = false;
+            _boutonJeter.IsVisible = false;
+            _boutonEquiper.IsVisible = false;
         });
-        gameLogic.RelacherLatch();
+        _gameLogic.RelacherLatch();
     }
 
     public void AfficherDonjon(int donjon)
     {
-        Dispatcher.UIThread.Post(() => labelDonjon.Text = donjon.ToString());
+        Dispatcher.UIThread.Post(() => _labelDonjon.Text = donjon.ToString());
     }
 
     public void AfficherSoin(Entite entite)
     {
         if (entite is Joueur joueur)
         {
-            Dispatcher.UIThread.Post(() => labelVie.Text = $"{joueur.vieRestante}/{joueur.ptsVie}");
-            ChangerProgresBarreAnime(barreVie, (double)joueur.vieRestante / joueur.ptsVie, vieProgresParIteration);
-            boutonSoinRapide.IsEnabled = joueur.vieRestante != joueur.ptsVie || joueur.inventaire.GetListType(objets.TypeObjet.Potions).Any();
+            Dispatcher.UIThread.Post(() => _labelVie.Text = $"{joueur.vieRestante}/{joueur.ptsVie}");
+            ChangerProgresBarreAnime(_barreVie, (double)joueur.vieRestante / joueur.ptsVie, _vieProgresParIteration);
+            _boutonSoinRapide.IsEnabled = joueur.vieRestante != joueur.ptsVie || joueur.inventaire.GetListType(objets.TypeObjet.Potions).Any();
         }
         else
         {
-            Dispatcher.UIThread.Post(() => labelVieEnnemi.Text = $"{entite.vieRestante}/{entite.ptsVie}");
-            ChangerProgresBarreAnime(barreVieEnnemie, (double)entite.vieRestante / entite.ptsVie, vieProgresParIteration);
+            Dispatcher.UIThread.Post(() => _labelVieEnnemi.Text = $"{entite.vieRestante}/{entite.ptsVie}");
+            ChangerProgresBarreAnime(_barreVieEnnemie, (double)entite.vieRestante / entite.ptsVie, _vieProgresParIteration);
         }
     }
 
     public void UpdateUsername(string playerName)
     {
-        labelNomJoueur.Text = playerName;
-        gameLogic.UpdateUsername(playerName);
+        _labelNomJoueur.Text = playerName;
+        _gameLogic.UpdateUsername(playerName);
     }
 
     public void SetNbPotions(int nbPotions)
     {
-        Dispatcher.UIThread.Post(() => labelPotionsRestantes.Text = $"({nbPotions})");
+        Dispatcher.UIThread.Post(() => _labelPotionsRestantes.Text = $"({nbPotions})");
     }
 
+    /// <summary>
+    /// PLEASE CALL ME ON UITHREAD !!!
+    /// </summary>
     public async void JeuTermine()
     {
         var dialog = new Window
         {
             Title = "Partie terminée",
-            Width = 300,
+            Width = 400,
             Height = 200,
             WindowStartupLocation = WindowStartupLocation.CenterOwner,
             CanResize = false
         };
+        dialog.Styles.Add(new FluentTheme());
         var stackPanel = new StackPanel
         {
             Spacing = 10,
             Margin = new Thickness(10)
         };
         stackPanel.Children.Add(new TextBlock { Text = "Votre joueur est mort..." });
-        stackPanel.Children.Add(new TextBlock { Text = "Vous pouvez commencer une nouvelle partie ou choisir une ancienne sauvegarde." });
-        var quitButton = new Button { Content = "Quitter", Width = 100 };
-        var newGameButton = new Button { Content = "Nouvelle partie", Width = 100 };
-        var oldSaveButton = new Button { Content = "Charger sauv.", Width = 100 };
+        stackPanel.Children.Add(new TextBlock
+        {
+            Text = "Vous pouvez commencer une nouvelle partie ou choisir une ancienne sauvegarde.",
+            TextWrapping  = TextWrapping.Wrap
+        });
+        var quitButton = new Button { Content = "Quitter"};
+        var newGameButton = new Button { Content = "Nouvelle partie"};
+        var oldSaveButton = new Button { Content = "Charger sauv."};
         var buttonPanel = new StackPanel { Orientation = Orientation.Horizontal, Spacing = 10, HorizontalAlignment = HorizontalAlignment.Center };
         buttonPanel.Children.Add(quitButton);
         buttonPanel.Children.Add(newGameButton);
@@ -593,8 +640,8 @@ public partial class FenetreAppController : Window
         newGameButton.Click += (s, e) =>
         {
             InitializeComponent();
-            gameLogic = new App.GameLogic(this);
-            gameLogic.Run();
+            _gameLogic = new App.GameLogic(this);
+            _gameLogic.Run();
             dialog.Close();
         };
         oldSaveButton.Click += (s, e) =>

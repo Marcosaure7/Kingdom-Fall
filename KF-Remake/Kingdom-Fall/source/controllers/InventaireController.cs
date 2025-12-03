@@ -14,6 +14,9 @@ using objets;
 using Avalonia.Threading;
 using Avalonia.Layout;
 using Avalonia.Markup.Xaml;
+using Avalonia.Markup.Xaml.Styling;
+using Avalonia.Styling;
+using Avalonia.Themes.Fluent;
 
 namespace controllers
 {
@@ -217,10 +220,12 @@ namespace controllers
 
             for (int i = 0; i < TypeObjetExtensions.GetEspaceInventaire(typeObjet); i++)
             {
+                Border border = new Border();
+                Dispatcher.UIThread.Post(() => _paneObjets.Children.Add(border));
                 ObjetSlot objetSlot = i >= objetsSlotInventaire.Count || objetsSlotInventaire[i] == null
                     ? new ObjetSlot(typeObjet, null, i)
                     : new ObjetSlot(typeObjet, objetsSlotInventaire[i], i);
-                Dispatcher.UIThread.Post(() => _paneObjets.Children.Add(objetSlot));
+                Dispatcher.UIThread.Post(() => border.Child = objetSlot);
             }
         }
 
@@ -258,8 +263,10 @@ namespace controllers
                     Width = 300,
                     Height = 200,
                     WindowStartupLocation = WindowStartupLocation.CenterOwner,
-                    CanResize = false
+                    CanResize = false,
+                    
                 };
+                dialog.Styles.Add(new FluentTheme());
                 var stackPanel = new StackPanel
                 {
                     Spacing = 10,
@@ -311,15 +318,15 @@ namespace controllers
                 MinWidth = 100;
                 MinHeight = 120;
                 VerticalAlignment = VerticalAlignment.Center;
-                HorizontalAlignment = HorizontalAlignment.Center;
+                HorizontalAlignment = HorizontalAlignment.Left;
 
                 if (objet != null)
                 {
                     var imageObjet = new Image
                     {
                         Source = new Bitmap($"Resources/images/{objet.nom.ToLower()}.png"),
-                        Width = 50,
-                        Height = 75
+                        Width = MinWidth,
+                        Height = MinHeight - 40,
                     };
                     LabelNom = new TextBlock { Text = objet.nom };
                     ToolTip.SetTip(this, objet.FormatComparedDescription(_inventaireController._joueur));
@@ -353,12 +360,12 @@ namespace controllers
 
                     PointerMoved += (s, e) =>
                     {
-                        if (!Emphasized && _inventaireController._emphasizedSlot == null)
+                        if (!Emphasized && _inventaireController._emphasizedSlot == null && Parent is Border parentBorder)
                         {
                             Dispatcher.UIThread.Post(() =>
                             {
-                                _inventaireController.BorderBrush = Brushes.LightGreen;
-                                _inventaireController.BorderThickness = new Thickness(2);
+                                parentBorder.BorderBrush = Brushes.LightGreen;
+                                parentBorder.BorderThickness = new Thickness(2);
                                 LabelNom.TextWrapping = TextWrapping.Wrap;
                             });
                         }
@@ -366,12 +373,12 @@ namespace controllers
 
                     PointerExited += (s, e) =>
                     {
-                        if (!Emphasized && _inventaireController._emphasizedSlot == null)
+                        if (!Emphasized && _inventaireController._emphasizedSlot == null && Parent is Border parentBorder)
                         {
                             Dispatcher.UIThread.Post(() =>
                             {
-                                _inventaireController.BorderBrush = null;
-                                _inventaireController.BorderThickness = new Thickness(0);
+                                parentBorder.BorderBrush = null;
+                                parentBorder.BorderThickness = new Thickness(0);
                                 LabelNom.TextWrapping = TextWrapping.NoWrap;
                             });
                         }
@@ -389,17 +396,20 @@ namespace controllers
                 _inventaireController._emphasizedSlot = emphase ? this : null;
                 Dispatcher.UIThread.Post(() =>
                 {
-                    if (emphase)
+                    if (Parent is Border parentBorder)
                     {
-                        _inventaireController.BorderBrush = Brushes.LightGreen;
-                        _inventaireController.BorderThickness = new Thickness(4);
-                        LabelNom.TextWrapping = TextWrapping.Wrap;
-                    }
-                    else
-                    {
-                        _inventaireController.BorderBrush = null;
-                        _inventaireController.BorderThickness = new Thickness(0);
-                        LabelNom.TextWrapping = TextWrapping.NoWrap;
+                        if (emphase)
+                        {
+                            parentBorder.BorderBrush = Brushes.LightGreen;
+                            parentBorder.BorderThickness = new Thickness(4);
+                            LabelNom.TextWrapping = TextWrapping.Wrap;
+                        }
+                        else
+                        {
+                            parentBorder.BorderBrush = null;
+                            parentBorder.BorderThickness = new Thickness(0);
+                            LabelNom.TextWrapping = TextWrapping.NoWrap;
+                        }
                     }
                 });
             }

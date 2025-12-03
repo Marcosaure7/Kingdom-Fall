@@ -8,11 +8,11 @@
         <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
             <StackPanel Orientation="Horizontal" Margin="20">
                 <TextBlock Text="Nom du joueur :" FontSize="18" VerticalAlignment="Center"/>
-                <TextBox x:Name="PLAYER_NAME_TextField" Margin="100,0,0,0" Width="200"/>
+                <TextBox x:Name="PlayerNameTextField" Margin="100,0,0,0" Width="200"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="20">
                 <TextBlock Text="Confirmation avant de jeter un objet" FontSize="18" VerticalAlignment="Center"/>
-                <CheckBox x:Name="OPT_CONFIRMER_JETER" Margin="100,0,0,0"/>
+                <CheckBox x:Name="OptConfirmerJeter" Margin="100,0,0,0"/>
             </StackPanel>
         </StackPanel>
     </Border>

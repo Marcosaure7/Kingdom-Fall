@@ -11,6 +11,8 @@
   <ItemGroup>
     <PackageReference Include="Avalonia" Version="11.3.2" />
     <PackageReference Include="Avalonia.Desktop" Version="11.3.2" />
+    <PackageReference Include="Avalonia.Themes.Simple" Version="11.3.2" />
+    <PackageReference Include="Avalonia.Themes.Fluent" Version="11.3.2" />
     <PackageReference Include="DotNetEnv" Version="3.1.1" />
     <PackageReference Include="MySql.Data" Version="9.3.0" />
   </ItemGroup>
@@ -19,11 +21,11 @@
     <AvaloniaXaml Include="source\Views\*.xaml" />
     <AvaloniaXaml Include="source\Styles\*.axaml" />
 
-    <AvaloniaResource Include="Resources\images\*.png" />
+    <AvaloniaResource Include="Resources\images\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="Resources\images\*.png">
+    <None Update="Resources\images\**">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>

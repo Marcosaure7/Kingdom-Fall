@@ -1,3 +1,5 @@
+using Avalonia.Threading;
+
 namespace App;
 
 using System;
@@ -118,6 +120,9 @@ public class Jeu
         {
             joueur?.inventaire.RamasserObjet(potionADonner);
         }
+        
+        FenetreAppController.GetSingleton().ActiverNode("soin rapide");
+        FenetreAppController.GetSingleton().SetNbPotions(5);
     }
 
     public Objet GetDropCourant()
@@ -147,7 +152,7 @@ public class Jeu
             controller.AfficherAttaquer(joueur);
         }
         if (!controllers.OptionsController.DEV_MODE && joueur.estMort())
-            controller.JeuTermine();
+            Dispatcher.UIThread.Post(() => controller.JeuTermine());
     }
 
     private void EnnemiVaincu(Ennemi ennemiCourant)
@@ -162,13 +167,14 @@ public class Jeu
             throw new exceptions.KFException("Le joueur est null.");
 
         joueur.ennemiVaincu();
-        controller.ResetArmure(joueur.ptsArmure);
+        controller.ResetArmure(joueur.ptsArmure); 
         controller.EnvoyerMessage($"Vous avez vaincu {ennemiCourant.nom} !");
         dropsCourants = GenererDrops(ennemiCourant);
         controller.EnvoyerMessage($"Il a lâché : {dropsCourants["Objet"]}, {dropsCourants["XP"]}.");
         int ancienNiveau = joueur.niveau;
         joueur.GainXp((Exp)dropsCourants["XP"]);
         controller.GainXp(joueur, ancienNiveau, ((Exp)dropsCourants["XP"]).valeur);
+        FenetreAppController.GetSingleton().ShowDrops(ennemiCourant, (Objet)dropsCourants["Objet"], joueur);
 
         if (ennemiCourant is Boss bossActuel) BossVaincu(bossActuel);
     }
@@ -235,7 +241,7 @@ public class Jeu
         Objet drop = (Objet)dropsCourants["Objet"];
         Ramasser(drop);
 
-        int ind = joueur.inventaire.InvContient(drop);
+        var (ind, equip) = joueur.inventaire.InvContient(drop);
         joueur.inventaire.Equiper(drop, ind);
 
         controller.EnvoyerMessage($"{drop.nom} équipé !");
@@ -285,7 +291,6 @@ public class Jeu
             }
         }
         drops["XP"] = ennemiActuel.xpDrop;
-        FenetreAppController.GetSingleton().ShowDrops(ennemiActuel, objetChoisi, joueur);
         return drops;
     }
 

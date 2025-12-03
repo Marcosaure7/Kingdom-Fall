@@ -5,14 +5,14 @@ namespace App;
 public class DatabaseManager
 {
 
-    private readonly Stack<MySqlConnection> Connections = new();
+    private readonly Stack<MySqlConnection> _connections = new();
 
-    private string URL;
+    private readonly string _url;
 
     public DatabaseManager()
     {
         Env.TraversePath().Load();
-        URL = $"Server={Env.GetString("DB_HOST")};"
+        _url = $"Server={Env.GetString("DB_HOST")};"
             + $"Port={Env.GetString("DB_PORT")};"
             + $"Database={Env.GetString("DB_NAME")};"
             + $"Uid={Env.GetString("DB_USER")};"
@@ -21,38 +21,38 @@ public class DatabaseManager
 
     public void NewConnection()
     {
-        Connections.Push(new MySqlConnection(URL));
-        Console.WriteLine($"Connecting to database with URL: {URL}");
+        _connections.Push(new MySqlConnection(_url));
+        Console.WriteLine($"Connecting to database with URL.");
     }
 
     public MySqlDataReader ExecuteQuery(string query)
     {
-        return new MySqlCommand(query, Connections.Peek()).ExecuteReader();
+        return new MySqlCommand(query, _connections.Peek()).ExecuteReader();
     }
 
     public void OpenConnection()
     {
         NewConnection();
-        if (Connections.Peek().State != System.Data.ConnectionState.Open)
+        if (_connections.Peek().State != System.Data.ConnectionState.Open)
         {
-            Connections.Peek().Open();
+            _connections.Peek().Open();
         }
     }
 
     public void CloseConnection()
     {
-        if (Connections.Peek() != null && Connections.Peek().State == System.Data.ConnectionState.Open)
+        if (_connections.Peek().State == System.Data.ConnectionState.Open)
         {
-            Connections.Peek().Close();
+            _connections.Peek().Close();
         }
     }
 
     public void CloseAllConnections()
     {
-        while (Connections.Count > 0)
+        while (_connections.Count > 0)
         {
             CloseConnection();
-            Connections.Pop();
+            _connections.Pop();
         }
     }
 }

@@ -27,8 +27,11 @@ class Program
             if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
             {
                 desktop.MainWindow = new controllers.FenetreAppController();
-                _gameLogic = new GameLogic(desktop.MainWindow as controllers.FenetreAppController);
-                await _gameLogic.Run();
+                if (!Design.IsDesignMode)
+                {
+                    _gameLogic = new GameLogic(desktop.MainWindow as controllers.FenetreAppController);
+                    await _gameLogic.Run();
+                }
             }
             base.OnFrameworkInitializationCompleted();
         }

@@ -3,26 +3,29 @@
             x:Class="controllers.InventaireController">
     <UserControl.Styles>
         <StyleInclude Source="styles.axaml"/>
+        <FluentTheme/>
     </UserControl.Styles>
     <DockPanel>
-        <StackPanel DockPanel.Dock="Left" Orientation="Vertical" Margin="10" Spacing="10">
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Name="LabelArmes" Text="Armes"/>
-                <TextBlock Name="LabelArmesOuvert"/>
+        <Border BorderBrush="Black" BorderThickness="0, 0, 2, 0">
+            <StackPanel DockPanel.Dock="Left" Orientation="Vertical" Margin="10" Spacing="10">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Name="LabelArmes" Text="Armes" FontSize="25"/>
+                    <TextBlock Name="LabelArmesOuvert" FontSize="25"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Name="LabelArmures" Text="Armures" FontSize="25"/>
+                    <TextBlock Name="LabelArmuresOuvert" FontSize="25"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Name="LabelPotions" Text="Potions" FontSize="25"/>
+                    <TextBlock Name="LabelPotionsOuvert" FontSize="25"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Name="LabelDivers" Text="Divers" FontSize="25"/>
+                    <TextBlock Name="LabelDiversOuvert" FontSize="25"/>
+                </StackPanel>
             </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Name="LabelArmures" Text="Armures"/>
-                <TextBlock Name="LabelArmuresOuvert"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Name="LabelPotions" Text="Potions"/>
-                <TextBlock Name="LabelPotionsOuvert"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Name="LabelDivers" Text="Divers"/>
-                <TextBlock Name="LabelDiversOuvert"/>
-            </StackPanel>
-        </StackPanel>
+        </Border>
         <StackPanel Name="VboxEquipe" DockPanel.Dock="Right" Orientation="Vertical" Margin="10" Spacing="10">
             <TextBlock Text="Objet équipé"/>
             <Image Name="ImageObjetEquipe" Width="100" Height="100"/>

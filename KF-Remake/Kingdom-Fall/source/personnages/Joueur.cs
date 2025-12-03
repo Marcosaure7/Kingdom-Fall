@@ -175,26 +175,26 @@ public class Joueur : Entite
         /// </summary>
         /// <param name="objet">L'objet à vérifier</param>
         /// <returns>L'index de l'objet dans l'inventaire, -1 si l'objet est équipé, sinon -2.</returns>
-        public int InvContient(Objet objet)
+        public (int index, bool equip) InvContient(Objet objet)
         {
             if (objet is null)
-                return -2;
+                return (-1, false);
 
             TypeObjet typeObjet = objet.type;
 
             foreach (Objet obj in inv[typeObjet])
             {
-                if (obj is not null && obj.equals(objet))
+                if (obj.equals(objet))
                 {
-                    return inv[typeObjet].IndexOf(obj);
+                    return (inv[typeObjet].IndexOf(obj), false);
                 }
             }
 
             if (typeObjet == TypeObjet.Armes && joueur.armeEquipee.equals(objet)
                     || typeObjet == TypeObjet.Armures && joueur.armureEquipee != null && joueur.armureEquipee.equals(objet))
-                return -1; // est équipée
+                return (-1, true); // est équipée
 
-            return -2; // n'est pas dans l'inventaire
+            return (-1, false); // n'est pas dans l'inventaire
         }
 
         public List<Objet> GetListType(TypeObjet type)
